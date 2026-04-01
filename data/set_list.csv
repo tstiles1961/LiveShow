@@ -1,0 +1,5 @@
+set_list_id,set_name,set_description,set_file_name,display_order,active,created_date,modified_date
+1,Set1,Welcome to the Room,Set 1 Welcome.band,1,1,,1961-06-02
+2,Set2,The Deep Cuts,Set 2 Deep Cuts.band,2,1,,1961-06-02
+3,Set3,Soul & Groove,Set 3 Soul & Groove.band,3,1,,1961-06-02
+4,Set4,The Send-Off,Set 4 Send Off.band,4,1,,1961-06-02

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T Stiles — Set 4: The Send-Off</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--gold:#f5c842;--gold-bright:#ffe680;--gold-dark:#b8860b;--gold-glow:rgba(245,168,0,0.55);--white:#ffffff;--cream:#fff9e6;--bg-deep:#080a0e;--bg-card:#0e1118;--bg-hover:#161b26;--border-gold:rgba(245,200,66,0.35);--text-main:#ffffff;--text-sub:#ffe082;--text-dim:#aac4e0;--go-bg:#b8860b;--go-hover:#d4a017;--active-glow:rgba(245,200,66,0.13);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{font-size:16px}
+  body{background:var(--bg-deep);color:var(--text-main);font-family:'DM Mono',monospace;min-height:100vh;overflow-x:hidden}
+  .hero{position:relative;width:100%;height:240px;overflow:hidden;background:radial-gradient(ellipse 60% 70% at 50% 55%,#2c1d00 0%,#140e00 45%,#060408 100%)}
+  .hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-48%);width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(245,168,0,0.18) 0%,rgba(245,168,0,0.06) 45%,transparent 70%);animation:glowPulse 3s ease-in-out infinite alternate;pointer-events:none}
+  @keyframes glowPulse{0%{opacity:.7;transform:translate(-50%,-48%) scale(1)}100%{opacity:1;transform:translate(-50%,-48%) scale(1.12)}}
+  .hero svg.scene{position:absolute;top:0;left:0;width:100%;height:100%}
+  .staff-wrap{animation:staffScroll 22s linear infinite}@keyframes staffScroll{from{transform:translateX(0)}to{transform:translateX(-960px)}}
+  .fn1{animation:floatNote1 7s ease-in-out infinite alternate}.fn2{animation:floatNote2 9s ease-in-out infinite alternate}.fn4{animation:floatNote4 11s ease-in-out infinite alternate}.fn5{animation:floatNote5 8s ease-in-out 1s infinite alternate}
+  @keyframes floatNote1{0%{transform:translate(0,0) rotate(-8deg);opacity:.4}100%{transform:translate(-6px,-14px) rotate(6deg);opacity:.85}}@keyframes floatNote2{0%{transform:translate(0,0) rotate(4deg);opacity:.3}100%{transform:translate(8px,-10px) rotate(-6deg);opacity:.7}}@keyframes floatNote4{0%{transform:translate(0,0) rotate(6deg);opacity:.35}100%{transform:translate(6px,-12px) rotate(-4deg);opacity:.75}}@keyframes floatNote5{0%{transform:translate(0,0) rotate(-5deg);opacity:.4}100%{transform:translate(-8px,-16px) rotate(7deg);opacity:.8}}
+  .clef-shimmer{animation:clefShimmer 4s ease-in-out infinite alternate;filter:drop-shadow(0 0 12px rgba(245,180,0,0.7))}@keyframes clefShimmer{0%{filter:drop-shadow(0 0 10px rgba(245,180,0,0.6))}100%{filter:drop-shadow(0 0 24px rgba(255,220,80,0.95))}}
+  .hero-brand{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;pointer-events:none;text-align:center;padding:0 16px}
+  .brand-name{font-family:'Cinzel Decorative',serif;font-weight:900;font-size:clamp(2rem,6vw,3.8rem);color:var(--gold);letter-spacing:.08em;line-height:1;text-shadow:0 0 30px rgba(255,200,50,.9),0 0 60px rgba(255,160,0,.5),2px 2px 0 rgba(0,0,0,.8)}
+  .brand-subtitle{font-family:'Cinzel',serif;font-weight:600;font-size:clamp(.6rem,1.6vw,.88rem);color:var(--gold-bright);letter-spacing:.4em;text-transform:uppercase;margin-top:5px;text-shadow:0 0 12px rgba(255,200,50,.6),1px 1px 3px rgba(0,0,0,.9)}
+  .ribbon-wrap{margin-top:10px}.ribbon-svg{width:clamp(260px,52vw,480px);height:36px;filter:drop-shadow(0 3px 8px rgba(0,0,0,.7))}
+  .ribbon-text-el{font-family:'Cinzel',serif;font-weight:700;font-size:12px;fill:#fff9e6;letter-spacing:3px;text-transform:uppercase;dominant-baseline:middle;text-anchor:middle}
+  .transport-bar{display:flex;background:#040608;border-bottom:2px solid rgba(245,200,66,.2);padding:10px 12px;gap:8px;justify-content:center;flex-wrap:wrap}
+  .t-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:none;border-radius:8px;cursor:pointer;padding:10px 18px;min-width:80px;font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.12em;color:var(--white);transition:filter .15s,transform .1s;border:1px solid rgba(255,255,255,.08);text-shadow:0 1px 3px rgba(0,0,0,.7);position:relative;overflow:hidden}
+  .t-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,transparent 60%);pointer-events:none}
+  .t-btn:hover{filter:brightness(1.3);transform:translateY(-1px)}.t-btn:active{filter:brightness(.85);transform:translateY(1px)}
+  .t-btn .t-icon{font-size:1.4rem;line-height:1}.t-btn .t-label{font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.2em;opacity:.85}
+  .t-setup{background:linear-gradient(160deg,#1e4a7a,#0f2a4a)}.t-start{background:linear-gradient(160deg,#1a5c30,#0a2e18)}.t-stop{background:linear-gradient(160deg,#8b2020,#4a0f0f)}.t-play{background:linear-gradient(160deg,#1a7a38,#0a3c1c)}.t-record{background:linear-gradient(160deg,#b82020,#6e0f0f)}.t-fade{background:linear-gradient(160deg,#5a2a8b,#2c1246)}
+  .t-btn.fired{animation:tFired .4s ease-out forwards}@keyframes tFired{0%{filter:brightness(2)}100%{filter:brightness(1)}}
+  .set-nav{display:flex;background:#06080c;border-bottom:3px solid var(--gold);box-shadow:0 4px 20px rgba(0,0,0,.6)}
+  .nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:11px 8px;text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.15em;color:var(--text-dim);border-right:1px solid rgba(245,200,66,.12);transition:background .15s,color .15s;line-height:1;gap:3px;position:relative}
+  .nav-btn:last-child{border-right:none}.nav-btn span{font-family:'Cinzel',serif;font-size:.52rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--text-dim);opacity:.65;transition:color .15s,opacity .15s}
+  .nav-btn:hover{background:rgba(245,200,66,.07);color:var(--gold)}.nav-btn:hover span{color:var(--gold);opacity:1}
+  .nav-btn.active{background:rgba(245,200,66,.12);color:var(--gold);border-bottom:3px solid var(--gold);margin-bottom:-3px;box-shadow:0 0 14px rgba(245,200,66,.15)}.nav-btn.active span{color:var(--gold-bright);opacity:1}.nav-btn.nav-alpha{border-left:2px solid rgba(245,200,66,0.3)}.nav-btn.nav-alpha:hover{background:rgba(245,200,66,.12);color:var(--gold-bright)}.nav-btn.nav-alpha:hover span{color:var(--gold-bright);opacity:1}
+  .container{max-width:960px;margin:0 auto;padding:16px 14px 60px}
+  .status-row{display:flex;align-items:center;justify-content:space-between;background:var(--bg-card);border:2px solid var(--border-gold);border-radius:10px;padding:10px 16px;margin-bottom:11px;flex-wrap:wrap;gap:8px}
+  .status-indicator{display:flex;align-items:center;gap:8px;font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:600;letter-spacing:.2em;color:var(--text-dim);text-transform:uppercase}
+  .dot{width:11px;height:11px;border-radius:50%;background:#444;flex-shrink:0;transition:background .3s,box-shadow .3s}.dot.live{background:#00e676;box-shadow:0 0 10px #00e676,0 0 20px rgba(0,230,118,.4);animation:pulse 2s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+  .now-playing{font-family:'Cinzel',serif;font-size:.88rem;font-weight:700;color:var(--gold);letter-spacing:.06em;text-align:right;max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-shadow:0 0 12px var(--gold-glow)}
+  .controls-row{display:flex;align-items:center;gap:10px;margin-bottom:11px;flex-wrap:wrap}.controls-row .label{font-family:'Oswald',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.2em;color:var(--text-dim);text-transform:uppercase;margin-right:auto}
+  .btn-sm{background:transparent;border:2px solid var(--border-gold);border-radius:6px;color:var(--text-dim);font-family:'Oswald',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.12em;padding:5px 14px;cursor:pointer;transition:all .15s;text-transform:uppercase}.btn-sm:hover{border-color:var(--gold);color:var(--gold)}
+  .song-grid{display:grid;grid-template-columns:1fr;gap:6px}
+  .song-card{background:var(--bg-card);border:2px solid var(--border-gold);border-radius:9px;display:flex;align-items:stretch;overflow:hidden;position:relative;min-height:54px;transition:border-color .15s,background .15s,transform .15s}
+  .song-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:transparent;transition:background .2s}
+  .song-card:hover{border-color:var(--gold);background:var(--bg-hover);transform:translateX(3px)}.song-card.active{border-color:var(--gold);background:var(--active-glow);box-shadow:0 0 16px rgba(245,200,66,.1)}.song-card.active::before{background:var(--gold)}
+  .track-num{width:50px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.35rem;color:var(--gold-dark);border-right:2px solid var(--border-gold);flex-shrink:0;letter-spacing:.05em;transition:color .2s}.song-card.active .track-num{color:var(--gold);text-shadow:0 0 8px var(--gold-glow)}
+  .song-info{flex:1;display:flex;flex-direction:column;justify-content:center;padding:6px 16px;min-width:0}
+  .song-name{font-family:'Oswald',sans-serif;font-size:clamp(.95rem,2.2vw,1.15rem);font-weight:600;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--white);transition:color .2s;line-height:1.2}.song-card.active .song-name{color:var(--gold-bright);text-shadow:0 0 10px var(--gold-glow)}
+  .song-artist{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--text-dim);letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;font-style:italic}.song-card.active .song-artist{color:var(--text-sub)}
+  .dur-badge{font-family:'DM Mono',monospace;font-size:.78rem;font-weight:500;flex-shrink:0;padding:0 14px;border-left:2px solid var(--border-gold);display:flex;align-items:center;height:100%;white-space:nowrap;color:#7aaa7a;letter-spacing:.05em}.song-card.active .dur-badge{color:#aaffaa}.go-btn{background:var(--go-bg);border:none;border-left:2px solid rgba(0,0,0,.4);color:var(--cream);font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.18em;padding:0 28px;cursor:pointer;height:100%;flex-shrink:0;transition:background .15s;text-shadow:1px 1px 3px rgba(0,0,0,.6)}.go-btn:hover{background:var(--go-hover)}.go-btn:active{background:#8b6508}.song-card.active .go-btn{background:var(--gold);color:#0a0800;text-shadow:none}
+  @keyframes flash{0%{background:rgba(245,200,66,.28)}100%{background:var(--bg-card)}}.song-card.flash{animation:flash .5s ease-out forwards}
+  .playhead-bar{background:var(--bg-card);border:3px solid var(--gold);border-radius:12px;padding:14px 20px;margin-top:12px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;box-shadow:0 0 28px rgba(245,200,66,.12)}
+  .playhead-label{font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--text-dim)}.playhead-time{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--gold);letter-spacing:.08em;line-height:1;text-shadow:0 0 18px var(--gold-glow)}.playhead-time .ms{font-size:1.2rem;color:var(--text-sub)}.playhead-song{font-family:'Cinzel',serif;font-size:.85rem;font-weight:700;color:var(--white);letter-spacing:.08em;text-transform:uppercase;margin-left:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:300px}
+  .footer{margin-top:18px;padding-top:12px;border-top:1px solid var(--border-gold);text-align:center}.footer-text{font-family:'Cinzel',serif;font-size:.6rem;font-weight:600;color:var(--gold-dark);letter-spacing:.22em;text-transform:uppercase}
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:#0e0c00;border:3px solid var(--gold);border-radius:8px;padding:11px 26px;font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:600;letter-spacing:.12em;color:var(--gold);z-index:1000;transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .3s;opacity:0;white-space:nowrap;text-transform:uppercase;box-shadow:0 4px 24px rgba(0,0,0,.7)}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+  @media(max-width:600px){.playhead-song{display:none}.go-btn{padding:0 16px;font-size:1.3rem}.hero{height:190px}.t-btn{min-width:56px;padding:8px 10px;font-size:.9rem}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-glow"></div>
+  <svg class="scene" viewBox="0 0 1000 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs><radialGradient id="clefGrad" cx="50%" cy="45%" r="50%"><stop offset="0%" stop-color="#ffe680"/><stop offset="35%" stop-color="#f5c842"/><stop offset="70%" stop-color="#c8860a"/><stop offset="100%" stop-color="#7a4e00"/></radialGradient><filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="softglow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="noteglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+    <ellipse cx="500" cy="130" rx="160" ry="130" fill="rgba(180,110,0,0.12)" filter="url(#softglow)"/>
+    <g class="staff-wrap" opacity="0.2" stroke="#d4a010" stroke-width="1"><line x1="0" y1="82" x2="1960" y2="82"/><line x1="0" y1="97" x2="1960" y2="97"/><line x1="0" y1="112" x2="1960" y2="112"/><line x1="0" y1="127" x2="1960" y2="127"/><line x1="0" y1="142" x2="1960" y2="142"/></g>
+    <g class="fn1" fill="rgba(255,240,160,0.75)" filter="url(#noteglow)"><ellipse cx="120" cy="138" rx="9" ry="7" transform="rotate(-20,120,138)"/><line x1="129" y1="134" x2="129" y2="96" stroke="rgba(255,240,160,0.75)" stroke-width="2.5"/></g>
+    <g class="fn2" fill="rgba(255,240,160,0.6)" filter="url(#noteglow)"><ellipse cx="185" cy="108" rx="8" ry="6" transform="rotate(-20,185,108)"/><line x1="193" y1="104" x2="193" y2="72" stroke="rgba(255,240,160,0.6)" stroke-width="2"/><path d="M193 72 Q210 65 208 82" fill="rgba(255,240,160,0.6)"/></g>
+    <g class="fn4" fill="rgba(255,240,160,0.7)" filter="url(#noteglow)"><ellipse cx="830" cy="130" rx="9" ry="7" transform="rotate(-20,830,130)"/><line x1="839" y1="126" x2="839" y2="90" stroke="rgba(255,240,160,0.7)" stroke-width="2.5"/></g>
+    <g class="fn5" fill="rgba(255,240,160,0.55)" filter="url(#noteglow)"><ellipse cx="900" cy="105" rx="8" ry="6" transform="rotate(-20,900,105)"/><line x1="908" y1="101" x2="908" y2="68" stroke="rgba(255,240,160,0.55)" stroke-width="2"/><path d="M908 68 Q925 60 923 78" fill="rgba(255,240,160,0.55)"/></g>
+    <g class="clef-shimmer" transform="translate(500,120)"><path d="M 0,-85 C 8,-85 18,-77 20,-63 C 22,-49 18,-36 10,-24 C 22,-16 32,-3 32,14 C 32,38 18,56 0,62 C -4,64 -8,65 -12,65 C -28,65 -40,54 -40,38 C -40,22 -28,12 -14,12 C -4,12 4,18 8,26 C 10,22 12,16 12,10 C 12,-2 6,-12 -2,-18 C -12,-8 -18,6 -18,22 C -18,46 -4,64 0,62 C 18,56 30,40 30,16 C 30,-4 18,-18 4,-26 C 14,-38 20,-54 18,-67 C 16,-79 8,-85 0,-85 Z" fill="url(#clefGrad)" filter="url(#glow)"/><path d="M 0,62 C 2,70 4,82 2,92 C 0,102 -6,110 -12,112 C -18,114 -22,110 -20,104 C -18,98 -10,96 -6,100" fill="none" stroke="url(#clefGrad)" stroke-width="7" stroke-linecap="round" filter="url(#glow)"/></g>
+    <text x="52" y="168" font-size="50" font-family="serif" fill="rgba(200,140,10,0.15)" filter="url(#softglow)">𝄞</text>
+    <text x="926" y="165" font-size="46" font-family="serif" fill="rgba(200,140,10,0.12)" filter="url(#softglow)">𝄞</text>
+  </svg>
+  <div class="hero-brand">
+    <div class="brand-name">T Stiles</div>
+    <div class="brand-subtitle">Yacht Rock &nbsp;·&nbsp; Soul of the Street</div>
+    <div class="ribbon-wrap">
+      <svg class="ribbon-svg" viewBox="0 0 460 36" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="ribGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d44030"/><stop offset="50%" stop-color="#b8280f"/><stop offset="100%" stop-color="#8b1a0a"/></linearGradient></defs>
+        <path d="M 18 0 L 442 0 L 460 18 L 442 36 L 18 36 L 0 18 Z" fill="url(#ribGrad)"/>
+        <text class="ribbon-text-el" x="230" y="19">Set 4 &nbsp;·&nbsp; The Send-Off &nbsp;·&nbsp; 17 Songs</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="transport-bar">
+  <button class="t-btn t-setup"  onclick="transport('setup')"><span class="t-icon">⚙️</span><span class="t-label">Setup</span></button>
+  <button class="t-btn t-start"  onclick="transport('start')"><span class="t-icon">⏮</span><span class="t-label">Goto Start</span></button>
+  <button class="t-btn t-stop"   onclick="transport('stop')"><span class="t-icon">⏹</span><span class="t-label">Stop</span></button>
+  <button class="t-btn t-play"   onclick="transport('play')"><span class="t-icon">⏵</span><span class="t-label">Play</span></button>
+  <button class="t-btn t-record" onclick="transport('record')"><span class="t-icon">⏺</span><span class="t-label">Record</span></button>
+  <button class="t-btn t-fade"   onclick="transport('fade')"><span class="t-icon">⏷</span><span class="t-label">Fade Out</span></button>
+</div>
+
+<nav class="set-nav">
+  <a class="nav-btn"        href="file:///Users/timstiles/Music/Show%20Controller/set1-welcome-controller.html">Set 1<span>Welcome</span></a>
+  <a class="nav-btn"        href="file:///Users/timstiles/Music/Show%20Controller/set2-deepcuts-controller.html">Set 2<span>Deep Cuts</span></a>
+  <a class="nav-btn"        href="file:///Users/timstiles/Music/Show%20Controller/set3-soul-controller.html">Set 3<span>Soul &amp; Groove</span></a>
+  <a class="nav-btn active" href="file:///Users/timstiles/Music/Show%20Controller/set4-sendoff-controller.html">Set 4<span>Send-Off</span></a>
+  <a class="nav-btn nav-alpha" href="file:///Users/timstiles/Music/Show%20Controller/all-controller.html">Alpha<span>A–Z</span></a>
+</nav>
+
+<div class="container">
+  <div class="status-row"><div class="status-indicator"><div class="dot live" id="statusDot"></div><span id="statusText">Ready</span></div><div class="now-playing" id="nowPlayingHeader">— Select a Track —</div></div>
+  <div class="controls-row"><span class="label">17 Songs · Tap GO to cue GarageBand playhead</span><button class="btn-sm" onclick="exportJSON()">⬇ Export</button></div>
+  <div class="song-grid" id="songGrid"></div>
+  <div class="playhead-bar"><div class="playhead-label">Cued</div><div class="playhead-time" id="playheadTime">—</div><div class="playhead-song" id="playheadSong">No track selected</div></div>
+  <div class="footer"><div class="footer-text">T Stiles &nbsp;·&nbsp; Yacht Rock &nbsp;·&nbsp; Soul of the Street &nbsp;·&nbsp; GarageBand Show Controller</div></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const KM_BASE="kmtrigger://macro=";
+const KM_GOTO="FCE13B05-4E20-4CE2-9F4D-F69557ADDE15";
+const KM_TRANSPORT={setup:"SETUP-UUID-PASTE-HERE",start:"START-UUID-PASTE-HERE",stop:"STOP-UUID-PASTE-HERE",play:"PLAY-UUID-PASTE-HERE",record:"RECORD-UUID-PASTE-HERE",fade:"FADE-UUID-PASTE-HERE"};
+
+const SONGS=[
+  {name:"God Only Knows",            artist:"Beach Boys",    time:"0:00:00.000", dur:"3:03"},
+  {name:"Hello It's Me",             artist:"Todd Rundgren", time:"0:03:03.453", dur:"3:58"},
+  {name:"Adore You",                 artist:"Harry Styles",  time:"0:07:01.650", dur:"3:35"},
+  {name:"Too Sweet",                 artist:"Hozier",        time:"0:10:37.198", dur:"4:16"},
+  {name:"As It Was",                 artist:"Harry Styles",  time:"0:14:54.143", dur:"2:53"},
+  {name:"Yellow",                    artist:"Coldplay",      time:"0:17:47.846", dur:"4:35"},
+  {name:"Viva la Vida",              artist:"Coldplay",      time:"0:22:23.653", dur:"4:20"},
+  {name:"99",                        artist:"Toto",          time:"0:26:44.555", dur:"5:20"},
+  {name:"Way of the World",          artist:"EWF",           time:"0:32:05.095", dur:"5:25"},
+  {name:"Boomerang",                 artist:"Tim Stiles",    time:"0:37:30.750", dur:"3:06"},
+  {name:"Dare",                      artist:"Gorillaz",      time:"0:40:37.547", dur:"4:19"},
+  {name:"Light Ray",                 artist:"Tim Stiles",    time:"0:44:57.334", dur:"3:56"},
+  {name:"One Headlight",             artist:"Wallflowers",   time:"0:48:53.720", dur:"4:51"},
+  {name:"It Fills Around Me",        artist:"Tim Stiles",    time:"0:53:45.685", dur:"3:29"},
+  {name:"My Stories",                artist:"Tim Stiles",    time:"0:57:15.605", dur:"2:39"},
+  {name:"Power of Free",             artist:"Tim Stiles",    time:"0:59:55.239", dur:"3:51"},
+  {name:"The Way You Look Tonight",  artist:"Frank Sinatra", time:"1:03:46.610", dur:"3:21"},
+];
+
+function transport(action){const btn=document.querySelector(`.t-${action}`);if(btn){btn.classList.add('fired');setTimeout(()=>btn.classList.remove('fired'),500);}const uuid=KM_TRANSPORT[action];if(!uuid||uuid.includes('PASTE-HERE')){showToast(`⚠  Set KM UUID for: ${action.toUpperCase()}`);return;}window.location.href = KM_BASE + encodeURIComponent(uuid); showToast(`${action.toUpperCase()} → sent`);}
+function splitTime(t){const dot=t.lastIndexOf('.');return{main:dot===-1?t:t.substring(0,dot),ms:''};}
+function renderGrid(){const grid=document.getElementById('songGrid');grid.innerHTML='';SONGS.forEach((song,i)=>{const{main,ms}=splitTime(song.time);const card=document.createElement('div');card.className='song-card';card.innerHTML=`<div class="track-num">${String(i+1).padStart(2,'0')}</div><div class="song-info"><div class="song-name">${esc(song.name)}</div><div class="song-artist">${esc(song.artist)}</div></div><div class="dur-badge">${esc(song.dur)}</div><button class="go-btn" onclick="goToSong(${i})" title="${esc(main+ms)}">GO</button>`;grid.appendChild(card);});}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function goToSong(index){document.querySelectorAll('.song-card').forEach((c,i)=>c.classList.toggle('active',i===index));const song=SONGS[index];const{main,ms}=splitTime(song.time);document.getElementById('playheadTime').innerHTML=`${esc(main)}<span class="ms">${esc(ms)}</span>`;document.getElementById('playheadSong').textContent=song.name;document.getElementById('nowPlayingHeader').textContent=song.name;document.querySelectorAll('.song-card')[index].classList.add('flash');setTimeout(()=>document.querySelectorAll('.song-card')[index].classList.remove('flash'),600);setStatus('Sending…','#f5c842');window.location.href = KM_BASE + encodeURIComponent(KM_GOTO) + '&value=' + encodeURIComponent(song.time); showToast(`▶  ${song.name}  →  ${song.time.split('.')[0]}`); setStatus('Sent ✓', '#00e676'); setTimeout(() => setStatus('Ready', null), 1800);}
+function setStatus(text,color){document.getElementById('statusText').textContent=text;const dot=document.getElementById('statusDot');dot.classList.remove('live');if(color){dot.style.background=color;dot.style.boxShadow=`0 0 10px ${color}`;}else{dot.style.background='';dot.style.boxShadow='';dot.classList.add('live');}}
+function exportJSON(){const blob=new Blob([JSON.stringify({project:'Set 4 The Send-Off',songs:SONGS},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='set4-sendoff-songs.json';a.click();showToast('⬇  Exported JSON');}
+let toastTimer;function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),3000);}
+document.addEventListener('keydown',e=>{if(!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){const n=parseInt(e.key);if(n>=1&&n<=9&&n<=SONGS.length)goToSong(n-1);}});
+renderGrid();
+localStorage.setItem('tstiles_currentSet', 'Set4');
+localStorage.setItem('tstiles_currentFile', 'Set 4 Send Off.band');
+</script>
+</body>
+</html>

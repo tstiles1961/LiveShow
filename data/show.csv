@@ -1,0 +1,6 @@
+show_id,name,description,audience_type,location_focus,active,created_date,modified_date
+1,Yacht Rock,Union Square audience aligned around yacht rock and crossover classics,YACHT_ROCK,Union Square,1,,1961-06-02
+2,Pier 39,High-turnover tourist audience requiring fast-recognition songs,CURRENT_HITS,Pier 39,1,,1961-06-02
+3,Current Hits,Modern crowd-response show,CURRENT_HITS,General,1,,1961-06-02
+4,Tim Stiles Originals,Original material showcase,ORIGINALS,General,1,,1961-06-02
+5,Hotel,Hotel and lounge-appropriate show,HOTEL,Hotels,1,,1961-06-02

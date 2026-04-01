@@ -1,0 +1,3 @@
+rig_id,rig_name,description,mobility_level,automation_level,audio_profile,lighting_profile,camera_enabled,voice_enabled,notes,created_date,modified_date
+1,Jetsons,Compact primary street rig,HIGH,FULL,StreetPA,Minimal,0,0,Current compact rig baseline,,1961-06-02
+2,NextRig,Future Jetsons successor with deeper invisible tech,HIGH,FULL,StreetPA,Minimal,1,1,Planning placeholder for next-generation rig,,1961-06-02

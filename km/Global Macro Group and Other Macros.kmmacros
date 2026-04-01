@@ -1,0 +1,2647 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>5441</integer>
+						<key>IsDefaultApplication</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>Open1File</string>
+						<key>Path</key>
+						<string>~/Music/Lyrics 4:2:25/99.pdf</string>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>795927247.163149</real>
+				<key>ModificationDate</key>
+				<real>795927499.13788998</real>
+				<key>Name</key>
+				<string>Lyrics Open</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>MacroTriggerType</key>
+						<string>PublicWeb</string>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>A326DFF8-EC34-4D34-BBE1-14CA8EED8302</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9857</integer>
+						<key>MacroActionType</key>
+						<string>SetVariableToText</string>
+						<key>Text</key>
+						<string>/Users/timstiles/Music/LiveShow/Data/set_list.csv</string>
+						<key>Variable</key>
+						<string>LiveShow_SetListCSV</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9858</integer>
+						<key>MacroActionType</key>
+						<string>SetVariableToText</string>
+						<key>Text</key>
+						<string>/Users/timstiles/Music/LiveShow/Data/set_song.csv</string>
+						<key>Variable</key>
+						<string>LiveShow_SetSongCSV</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9859</integer>
+						<key>MacroActionType</key>
+						<string>SetVariableToText</string>
+						<key>Text</key>
+						<string>/Users/timstiles/Music/LiveShow/Data/song_master.csv</string>
+						<key>Variable</key>
+						<string>LiveShow_SongMasterCSV</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9860</integer>
+						<key>MacroActionType</key>
+						<string>SetVariableToText</string>
+						<key>Text</key>
+						<string>/Users/timstiles/Music/GarageBand/%Variable%LiveShow_RequiredSetFileName%</string>
+						<key>Variable</key>
+						<string>GarageBand_Load_Set_File</string>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>796154744.00641096</real>
+				<key>ModificationDate</key>
+				<real>796155604.19651794</real>
+				<key>Name</key>
+				<string>LiveShow_Set_Vars</string>
+				<key>Triggers</key>
+				<array/>
+				<key>UID</key>
+				<string>A5B3A727-C0B5-4E04-B12B-84965E4F0633</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array/>
+				<key>CreationDate</key>
+				<real>796154185.78938305</real>
+				<key>ModificationDate</key>
+				<real>796154267.59554899</real>
+				<key>Name</key>
+				<string>LiveShow_Resolve_SetSong_And_SongMaster</string>
+				<key>Triggers</key>
+				<array/>
+				<key>UID</key>
+				<string>8DD3F44D-CB2B-4BC8-8A86-D6D679DE0B10</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array/>
+				<key>CreationDate</key>
+				<real>796154287.83744299</real>
+				<key>ModificationDate</key>
+				<real>796154344.18579996</real>
+				<key>Name</key>
+				<string>LiveShow_Resolve_Required_Set</string>
+				<key>Triggers</key>
+				<array/>
+				<key>UID</key>
+				<string>872FEFFF-15CD-49DC-BA56-9E72756F76FF</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>796249527.15984905</real>
+		<key>IsActive</key>
+		<false/>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9879</integer>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteAppleScript</string>
+						<key>NotifyOnFailure</key>
+						<false/>
+						<key>Path</key>
+						<string></string>
+						<key>StopOnFailure</key>
+						<false/>
+						<key>Text</key>
+						<string>use AppleScript version "2.4"
+use scripting additions
+
+on setKMVar(varName, varValue)
+	tell application "Keyboard Maestro Engine"
+		setvariable varName to (varValue as text)
+	end tell
+end setKMVar
+
+on getKMVar(varName)
+	tell application "Keyboard Maestro Engine"
+		return getvariable varName
+	end tell
+end getKMVar
+
+set setListID to my getKMVar("LiveShow_SetListID")
+set songMasterID to my getKMVar("LiveShow_SongMasterID")
+
+if setListID is "" or songMasterID is "" then
+	my setKMVar("LiveShow_ResolveStatus", "ERROR")
+	my setKMVar("LiveShow_ResolveMessage", "Missing set_list_id or song_master_id")
+	display dialog "LiveShow_Resolve_And_Load: missing set_list_id or song_master_id" buttons {"OK"} default button 1
+	return
+end if
+
+set dataFolder to "/Users/timstiles/Music/LiveShow/Data/"
+set setSongCSV to dataFolder &amp; "set_song.csv"
+set songMasterCSV to dataFolder &amp; "song_master.csv"
+set setListCSV to dataFolder &amp; "set_list.csv"
+
+set py to "
+import csv, sys
+
+set_song_csv, song_master_csv, set_list_csv, set_list_id, song_master_id = sys.argv[1:6]
+
+def norm(v):
+    return str(v).strip()
+
+set_song = {}
+with open(set_song_csv, newline='', encoding='utf-8-sig') as f:
+    for row in csv.DictReader(f):
+        if norm(row.get('set_list_id','')) == set_list_id and norm(row.get('song_master_id','')) == song_master_id:
+            set_song = row
+            break
+
+song_master = {}
+with open(song_master_csv, newline='', encoding='utf-8-sig') as f:
+    for row in csv.DictReader(f):
+        if norm(row.get('song_master_id','')) == song_master_id:
+            song_master = row
+            break
+
+set_list = {}
+with open(set_list_csv, newline='', encoding='utf-8-sig') as f:
+    for row in csv.DictReader(f):
+        if norm(row.get('set_list_id','')) == set_list_id:
+            set_list = row
+            break
+
+def g(src, key):
+    return norm(src.get(key,'')) if src else ''
+
+result = {
+ 'set_song_id': g(set_song,'set_song_id'),
+ 'start_time': g(set_song,'start_time'),
+ 'order_in_set': g(set_song,'order_in_set'),
+ 'override_lyrics_path': g(set_song,'override_lyrics_path'),
+ 'override_scroll_y': g(set_song,'override_scroll_y'),
+ 'override_cam_profile_id': g(set_song,'override_cam_profile_id'),
+ 'song_name': g(song_master,'song_name'),
+ 'artist': g(song_master,'artist'),
+ 'default_lyrics_path': g(song_master,'default_lyrics_path'),
+ 'default_scroll_y': g(song_master,'default_scroll_y'),
+ 'cam_profile_id': g(song_master,'cam_profile_id'),
+ 'set_name': g(set_list,'set_name'),
+ 'set_file_name': g(set_list,'set_file_name')
+}
+result['effective_lyrics_path'] = result['override_lyrics_path'] or result['default_lyrics_path']
+result['effective_scroll_y'] = result['override_scroll_y'] or result['default_scroll_y']
+result['effective_cam_profile_id'] = result['override_cam_profile_id'] or result['cam_profile_id']
+
+for k, v in result.items():
+    print(f'{k}={v}')
+"
+try
+	set parsedLines to do shell script "/usr/bin/python3 -c " &amp; quoted form of py &amp; space &amp; quoted form of setSongCSV &amp; space &amp; quoted form of songMasterCSV &amp; space &amp; quoted form of setListCSV &amp; space &amp; quoted form of setListID &amp; space &amp; quoted form of songMasterID
+on error errMsg
+	my setKMVar("LiveShow_ResolveStatus", "ERROR")
+	my setKMVar("LiveShow_ResolveMessage", "CSV lookup failed: " &amp; errMsg)
+	display dialog "CSV lookup failed: " &amp; errMsg buttons {"OK"} default button 1
+	return
+end try
+
+repeat with oneLine in paragraphs of parsedLines
+	if oneLine contains "=" then
+		set AppleScript's text item delimiters to "="
+		set k to text item 1 of oneLine
+		set v to (items 2 thru -1 of text items of oneLine) as text
+		set AppleScript's text item delimiters to ""
+		if k is "set_song_id" then my setKMVar("LiveShow_SetSongID", v)
+		if k is "start_time" then my setKMVar("LiveShow_StartTime", v)
+		if k is "order_in_set" then my setKMVar("LiveShow_OrderInSet", v)
+		if k is "override_lyrics_path" then my setKMVar("LiveShow_OverrideLyricsPath", v)
+		if k is "override_scroll_y" then my setKMVar("LiveShow_OverrideScrollY", v)
+		if k is "override_cam_profile_id" then my setKMVar("LiveShow_OverrideCamProfileID", v)
+		if k is "song_name" then my setKMVar("LiveShow_SongName", v)
+		if k is "artist" then my setKMVar("LiveShow_Artist", v)
+		if k is "default_lyrics_path" then my setKMVar("LiveShow_DefaultLyricsPath", v)
+		if k is "default_scroll_y" then my setKMVar("LiveShow_DefaultScrollY", v)
+		if k is "cam_profile_id" then my setKMVar("LiveShow_DefaultCamProfileID", v)
+		if k is "set_name" then my setKMVar("LiveShow_RequiredSetName", v)
+		if k is "set_file_name" then my setKMVar("LiveShow_RequiredSetFileName", v)
+		if k is "effective_lyrics_path" then my setKMVar("LiveShow_EffectiveLyricsPath", v)
+		if k is "effective_scroll_y" then my setKMVar("LiveShow_EffectiveScrollY", v)
+		if k is "effective_cam_profile_id" then my setKMVar("LiveShow_EffectiveCamProfileID", v)
+	end if
+end repeat
+
+if my getKMVar("LiveShow_SetSongID") is "" then
+	my setKMVar("LiveShow_ResolveStatus", "ERROR")
+	my setKMVar("LiveShow_ResolveMessage", "No matching set_song row")
+	display dialog "No matching set_song row for set_list_id=" &amp; setListID &amp; " song_master_id=" &amp; songMasterID buttons {"OK"} default button 1
+	return
+end if
+
+set requiredFile to my getKMVar("LiveShow_RequiredSetFileName")
+set currentFile to my getKMVar("LiveShow_CurrentSetFileName")
+
+if requiredFile is not "" and currentFile is not requiredFile then
+	tell application "Keyboard Maestro Engine"
+		do script "GarageBand_Load_Set_File" with parameter requiredFile
+	end tell
+	delay 5
+end if
+
+my setKMVar("LiveShow_ResolveStatus", "OK")
+my setKMVar("LiveShow_ResolveMessage", "Resolved successfully")
+
+set targetTime to my getKMVar("LiveShow_StartTime")
+if targetTime is not "" then
+	my setKMVar("LiveShow_TargetTime", targetTime)
+	try
+		tell application "Keyboard Maestro Engine"
+			do script "GarageBand Go To Time"
+		end tell
+	end try
+end if
+
+set lyricsPath to my getKMVar("LiveShow_EffectiveLyricsPath")
+if lyricsPath is not "" then
+	try
+		do shell script "open " &amp; quoted form of lyricsPath
+	end try
+end if
+
+my setKMVar("LiveShow_CommandStatus", "OK")
+my setKMVar("LiveShow_CommandMessage", "Song resolve/load complete")</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<false/>
+						<key>TrimResultsNew</key>
+						<false/>
+						<key>UseText</key>
+						<false/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>796167872.16717696</real>
+				<key>ModificationDate</key>
+				<real>796167872.16717696</real>
+				<key>Name</key>
+				<string>LiveShow_Resolve_And_Load</string>
+				<key>Triggers</key>
+				<array/>
+				<key>UID</key>
+				<string>57D9CE96-3AFE-4BA7-A30E-C5210E481343</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>LiveShow Imported Macros</string>
+		<key>ToggleMacroUID</key>
+		<string>DFD3A7F9-ADDB-4AED-A5C9-05C4870BFF5B</string>
+		<key>UID</key>
+		<string>21D00823-3B4A-4E1A-8249-1F86B346AA94</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array/>
+				<key>CreationDate</key>
+				<real>796154376.40890503</real>
+				<key>ModificationDate</key>
+				<real>796154440.96343398</real>
+				<key>Name</key>
+				<string>LiveShow_Jump_To_Resolved_Song</string>
+				<key>Triggers</key>
+				<array/>
+				<key>UID</key>
+				<string>26B0F01E-BDA1-47F5-BFCF-EDFFDBB017A8</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>796249527.15984905</real>
+		<key>IsActive</key>
+		<false/>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionColor</key>
+						<string>Orange</string>
+						<key>ActionUID</key>
+						<integer>10315</integer>
+						<key>MacroActionType</key>
+						<string>SetVariableToText</string>
+						<key>Text</key>
+						<string>%TriggerValue%</string>
+						<key>Variable</key>
+						<string>LiveShow_CommandJSON</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10316</integer>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteAppleScript</string>
+						<key>NotifyOnFailure</key>
+						<false/>
+						<key>Path</key>
+						<string></string>
+						<key>StopOnFailure</key>
+						<false/>
+						<key>Text</key>
+						<string>use AppleScript version "2.4"
+use framework "Foundation"
+use scripting additions
+
+on setKMVar(varName, varValue)
+	tell application "Keyboard Maestro Engine"
+		setvariable varName to (varValue as text)
+	end tell
+end setKMVar
+
+on getKMVar(varName)
+	tell application "Keyboard Maestro Engine"
+		return getvariable varName
+	end tell
+end getKMVar
+
+set rawJSON to "%TriggerValue%"
+my setKMVar("LiveShow_CommandJSON", rawJSON)
+my setKMVar("LiveShow_CommandStatus", "PARSING")
+my setKMVar("LiveShow_LastCommandInput", rawJSON)
+
+set py to "
+import json, sys
+raw = sys.argv[1]
+result = {
+ 'action':'',
+ 'source':'',
+ 'set_list_id':'',
+ 'song_master_id':'',
+ 'set_song_id':'',
+ 'time':'',
+ 'song_name':'',
+ 'artist':'',
+ 'band_file_name':'',
+ 'band_file_path':'',
+ 'needs_set_load':'',
+ 'parse_ok':'0',
+ 'parse_error':''
+}
+try:
+    cmd = json.loads(raw)
+    result['action'] = str(cmd.get('action','')).strip()
+    result['source'] = str(cmd.get('source','')).strip()
+    result['set_list_id'] = str(cmd.get('set_list_id','')).strip()
+    result['song_master_id'] = str(cmd.get('song_master_id','')).strip()
+    result['set_song_id'] = str(cmd.get('set_song_id','')).strip()
+    result['time'] = str(cmd.get('time','')).strip()
+    result['song_name'] = str(cmd.get('songName', cmd.get('song_name',''))).strip()
+    result['artist'] = str(cmd.get('artist','')).strip()
+    result['band_file_name'] = str(cmd.get('band_file_name','')).strip()
+    result['band_file_path'] = str(cmd.get('band_file_path','')).strip()
+    result['needs_set_load'] = str(cmd.get('needs_set_load','')).strip()
+    result['parse_ok'] = '1'
+except Exception as e:
+    result['parse_error'] = str(e)
+
+for k, v in result.items():
+    print(f'{k}={v}')
+"
+try
+	set parsedLines to do shell script "/usr/bin/python3 -c " &amp; quoted form of py &amp; space &amp; quoted form of rawJSON
+on error errMsg
+	my setKMVar("LiveShow_CommandStatus", "ERROR")
+	my setKMVar("LiveShow_CommandMessage", "JSON parse failed: " &amp; errMsg)
+	display dialog "LiveShow_Command parse failed: " &amp; errMsg buttons {"OK"} default button 1
+	return
+end try
+
+repeat with oneLine in paragraphs of parsedLines
+	if oneLine contains "=" then
+		set AppleScript's text item delimiters to "="
+		set k to text item 1 of oneLine
+		set v to (items 2 thru -1 of text items of oneLine) as text
+		set AppleScript's text item delimiters to ""
+		if k is "action" then my setKMVar("LiveShow_CommandAction", v)
+		if k is "source" then my setKMVar("LiveShow_CommandSource", v)
+		if k is "set_list_id" then my setKMVar("LiveShow_SetListID", v)
+		if k is "song_master_id" then my setKMVar("LiveShow_SongMasterID", v)
+		if k is "set_song_id" then my setKMVar("LiveShow_SetSongID", v)
+		if k is "time" then my setKMVar("LiveShow_TargetTime", v)
+		if k is "song_name" then my setKMVar("LiveShow_CommandSongName", v)
+		if k is "artist" then my setKMVar("LiveShow_CommandArtist", v)
+		if k is "band_file_name" then my setKMVar("LiveShow_CommandBandFileName", v)
+		if k is "band_file_path" then my setKMVar("LiveShow_CommandBandFilePath", v)
+		if k is "needs_set_load" then my setKMVar("LiveShow_CommandNeedsSetLoad", v)
+		if k is "parse_ok" then my setKMVar("LiveShow_CommandParseOK", v)
+		if k is "parse_error" then my setKMVar("LiveShow_CommandParseError", v)
+	end if
+end repeat
+
+my setKMVar("LiveShow_LastCommandAt", do shell script "date '+%Y-%m-%d %H:%M:%S'")
+
+set actionName to my getKMVar("LiveShow_CommandAction")
+if actionName is "" then
+	my setKMVar("LiveShow_CommandStatus", "ERROR")
+	my setKMVar("LiveShow_CommandMessage", "Missing action")
+	display dialog "LiveShow_Command: missing action" buttons {"OK"} default button 1
+	return
+end if
+
+if actionName is "jumpToSong" then
+	my setKMVar("LiveShow_CommandStatus", "ROUTING")
+	tell application "Keyboard Maestro Engine"
+		do script "LiveShow_Resolve_And_Load"
+	end tell
+else if actionName is "loadSetFile" then
+	tell application "Keyboard Maestro Engine"
+		do script "GarageBand_Load_Set_File" with parameter (my getKMVar("LiveShow_CommandBandFileName"))
+	end tell
+else
+	my setKMVar("LiveShow_CommandStatus", "ERROR")
+	my setKMVar("LiveShow_CommandMessage", "Unknown action: " &amp; actionName)
+	display dialog "Unknown LiveShow action: " &amp; actionName buttons {"OK"} default button 1
+end if</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>796397123.18870604</real>
+				<key>ModificationDate</key>
+				<real>796397649.25567997</real>
+				<key>Name</key>
+				<string>LiveShow_Command</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>MacroTriggerType</key>
+						<string>PublicWeb</string>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>7D7B73C4-6E5D-482E-B921-57CFB05F6F9C</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>LiveShow Imported Macros</string>
+		<key>ToggleMacroUID</key>
+		<string>DFD3A7F9-ADDB-4AED-A5C9-05C4870BFF5B</string>
+		<key>UID</key>
+		<string>21D00823-3B4A-4E1A-8249-1F86B346AA94</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10726</integer>
+						<key>AllWindows</key>
+						<true/>
+						<key>AlreadyActivatedActionType</key>
+						<string>Normal</string>
+						<key>Application</key>
+						<dict>
+							<key>BundleIdentifier</key>
+							<string>net.sourceforge.skim-app.skim</string>
+							<key>Name</key>
+							<string>Skim</string>
+							<key>NewFile</key>
+							<string>/Applications/Skim.app</string>
+						</dict>
+						<key>MacroActionType</key>
+						<string>ActivateApplication</string>
+						<key>ReopenWindows</key>
+						<false/>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10727</integer>
+						<key>MacroActionType</key>
+						<string>Pause</string>
+						<key>Time</key>
+						<string>.4</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10729</integer>
+						<key>KeyCode</key>
+						<integer>0</integer>
+						<key>MacroActionType</key>
+						<string>SimulateKeystroke</string>
+						<key>Modifiers</key>
+						<integer>2304</integer>
+						<key>ReleaseAll</key>
+						<false/>
+						<key>TargetApplication</key>
+						<dict/>
+						<key>TargetingType</key>
+						<string>Front</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10730</integer>
+						<key>KeyCode</key>
+						<integer>3</integer>
+						<key>MacroActionType</key>
+						<string>SimulateKeystroke</string>
+						<key>Modifiers</key>
+						<integer>2304</integer>
+						<key>ReleaseAll</key>
+						<false/>
+						<key>TargetApplication</key>
+						<dict/>
+						<key>TargetingType</key>
+						<string>Front</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10731</integer>
+						<key>IsActive</key>
+						<false/>
+						<key>KeyCode</key>
+						<integer>3</integer>
+						<key>MacroActionType</key>
+						<string>SimulateKeystroke</string>
+						<key>Modifiers</key>
+						<integer>131072</integer>
+						<key>ReleaseAll</key>
+						<false/>
+						<key>TargetApplication</key>
+						<dict/>
+						<key>TargetingType</key>
+						<string>Front</string>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>796535002.19106102</real>
+				<key>ModificationDate</key>
+				<real>796536133.66443598</real>
+				<key>Name</key>
+				<string>KM_STAGE_MODE</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>MacroTriggerType</key>
+						<string>PublicWeb</string>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>E707370B-159C-4F0C-8E1F-149434ECC5CF</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array/>
+				<key>CreationDate</key>
+				<real>796154560.09802198</real>
+				<key>ModificationDate</key>
+				<real>796154567.05917203</real>
+				<key>Name</key>
+				<string>GarageBand_Stop</string>
+				<key>Triggers</key>
+				<array/>
+				<key>UID</key>
+				<string>F43DBC42-2004-408D-B5BC-3857A0F098F8</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10326</integer>
+						<key>AllWindows</key>
+						<true/>
+						<key>AlreadyActivatedActionType</key>
+						<string>Normal</string>
+						<key>Application</key>
+						<dict>
+							<key>BundleIdentifier</key>
+							<string>com.apple.garageband10</string>
+							<key>Name</key>
+							<string>GarageBand</string>
+							<key>NewFile</key>
+							<string>/Applications/GarageBand.app</string>
+						</dict>
+						<key>MacroActionType</key>
+						<string>ActivateApplication</string>
+						<key>ReopenWindows</key>
+						<false/>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10319</integer>
+						<key>DisplayKind</key>
+						<string>Variable</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>IsActive</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScript</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>localStorage.getItem('tstiles_currentFile')</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseModernSyntax</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+						<key>Variable</key>
+						<string>CurrentBandFile</string>
+						<key>WebBrowser</key>
+						<string>Front Browser</string>
+					</dict>
+					<dict>
+						<key>Action</key>
+						<string>MoveAndClick</string>
+						<key>ActionUID</key>
+						<integer>10331</integer>
+						<key>Button</key>
+						<integer>0</integer>
+						<key>ClickCount</key>
+						<integer>1</integer>
+						<key>DisplayMatches</key>
+						<false/>
+						<key>DragHorizontalPosition</key>
+						<string>0</string>
+						<key>DragVerticalPosition</key>
+						<string>0</string>
+						<key>Fuzz</key>
+						<integer>15</integer>
+						<key>HorizontalPositionExpression</key>
+						<string>0</string>
+						<key>MacroActionType</key>
+						<string>MouseMoveAndClick</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+						<key>MouseDrag</key>
+						<string>None</string>
+						<key>Relative</key>
+						<string>Window</string>
+						<key>RelativeCorner</key>
+						<string>TopLeft</string>
+						<key>RestoreMouseLocation</key>
+						<false/>
+						<key>VerticalPositionExpression</key>
+						<string>0</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10320</integer>
+						<key>IsDefaultApplication</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>Open1File</string>
+						<key>Path</key>
+						<string>/Users/timstiles/Music/GarageBand/%Variable%CurrentBandFile%</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10322</integer>
+						<key>MacroActionType</key>
+						<string>Pause</string>
+						<key>Time</key>
+						<string>1.5</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Action</key>
+						<string>MoveAndClick</string>
+						<key>ActionUID</key>
+						<integer>10330</integer>
+						<key>Button</key>
+						<integer>0</integer>
+						<key>ClickCount</key>
+						<integer>1</integer>
+						<key>DisplayMatches</key>
+						<false/>
+						<key>DragHorizontalPosition</key>
+						<string>0</string>
+						<key>DragVerticalPosition</key>
+						<string>0</string>
+						<key>Fuzz</key>
+						<integer>15</integer>
+						<key>HorizontalPositionExpression</key>
+						<string>150</string>
+						<key>MacroActionType</key>
+						<string>MouseMoveAndClick</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+						<key>MouseDrag</key>
+						<string>None</string>
+						<key>Relative</key>
+						<string>Window</string>
+						<key>RelativeCorner</key>
+						<string>TopLeft</string>
+						<key>RestoreMouseLocation</key>
+						<false/>
+						<key>VerticalPositionExpression</key>
+						<string>190</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10324</integer>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>IsActive</key>
+						<false/>
+						<key>IsDisclosed</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>ExecuteAppleScript</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>tell application "GarageBand" to activate
+tell application "System Events"
+    tell process "GarageBand"
+        -- Click the first track header (Vocal track)
+        click (first row of table 1 of scroll area 1 of window 1)
+    end tell
+end tell</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10325</integer>
+						<key>KeyCode</key>
+						<integer>36</integer>
+						<key>MacroActionType</key>
+						<string>SimulateKeystroke</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+						<key>ReleaseAll</key>
+						<false/>
+						<key>TargetApplication</key>
+						<dict/>
+						<key>TargetingType</key>
+						<string>Front</string>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>796428669.84052002</real>
+				<key>ModificationDate</key>
+				<real>796431396.29110098</real>
+				<key>Name</key>
+				<string>GarageBand_Setup</string>
+				<key>Triggers</key>
+				<array/>
+				<key>UID</key>
+				<string>AEC7399B-701F-4BB1-8539-A5CF2D8C903C</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array/>
+				<key>CreationDate</key>
+				<real>796154572.068367</real>
+				<key>ModificationDate</key>
+				<real>796154580.15465999</real>
+				<key>Name</key>
+				<string>GarageBand_Record</string>
+				<key>Triggers</key>
+				<array/>
+				<key>UID</key>
+				<string>ECA49026-98D1-4A25-B2F1-6582970DAFA8</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10725</integer>
+						<key>DisplayKind</key>
+						<string>Window</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>IsActive</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>ExecuteShellScript</string>
+						<key>Path</key>
+						<string></string>
+						<key>Source</key>
+						<string>Nothing</string>
+						<key>Text</key>
+						<string>/usr/bin/open -a "Skim" "%TriggerValue%"</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Action</key>
+						<string>DisplayWindow</string>
+						<key>ActionUID</key>
+						<integer>10733</integer>
+						<key>MacroActionType</key>
+						<string>InsertText</string>
+						<key>StyledText</key>
+						<data>
+						cnRmZAAAAAADAAAAAgAAAAcAAABU
+						WFQucnRmAQAAAC6bAQAAKwAAAAEA
+						AACTAQAAe1xydGYxXGFuc2lcYW5z
+						aWNwZzEyNTJcY29jb2FydGYyODY4
+						Clxjb2NvYXRleHRzY2FsaW5nMFxj
+						b2NvYXBsYXRmb3JtMHtcZm9udHRi
+						bFxmMFxmc3dpc3NcZmNoYXJzZXQw
+						IEhlbHZldGljYTt9CntcY29sb3J0
+						Ymw7XHJlZDI1NVxncmVlbjI1NVxi
+						bHVlMjU1O1xyZWQwXGdyZWVuMFxi
+						bHVlMDt9CntcKlxleHBhbmRlZGNv
+						bG9ydGJsOztcY3NzcmdiXGMwXGMw
+						XGMwXGM4NDcwNlxjbmFtZSBjb250
+						cm9sVGV4dENvbG9yO30KXHBhcmRc
+						dHg1NjBcdHgxMTIwXHR4MTY4MFx0
+						eDIyNDBcdHgyODAwXHR4MzM2MFx0
+						eDM5MjBcdHg0NDgwXHR4NTA0MFx0
+						eDU2MDBcdHg2MTYwXHR4NjcyMFxw
+						YXJkaXJuYXR1cmFsXHBhcnRpZ2h0
+						ZW5mYWN0b3IwCgpcZjBcZnMyNiBc
+						Y2YyIFRyaWdnZXIgPSAiJVRyaWdn
+						ZXJWYWx1ZSUifQEAAAAjAAAAAQAA
+						AAcAAABUWFQucnRmEAAAALD2yWm2
+						AQAAAAAAAAAAAAA=
+						</data>
+						<key>Text</key>
+						<string>Trigger = "%TriggerValue%"</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10732</integer>
+						<key>Application</key>
+						<dict>
+							<key>BundleIdentifier</key>
+							<string>net.sourceforge.skim-app.skim</string>
+							<key>Name</key>
+							<string>Skim</string>
+							<key>NewFile</key>
+							<string>/Applications/Skim.app</string>
+						</dict>
+						<key>IsActive</key>
+						<false/>
+						<key>IsDefaultApplication</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>Open1File</string>
+						<key>Path</key>
+						<string>"%TriggerValue%"</string>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>796534994.25359797</real>
+				<key>ModificationDate</key>
+				<real>796536369.88574898</real>
+				<key>Name</key>
+				<string>KM_OPEN_PDF</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>MacroTriggerType</key>
+						<string>PublicWeb</string>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>6CD96108-01DE-4284-9912-0F46C0FDCBD9</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array/>
+				<key>CreationDate</key>
+				<real>796154549.08926499</real>
+				<key>ModificationDate</key>
+				<real>796154555.08913803</real>
+				<key>Name</key>
+				<string>GarageBand_Play</string>
+				<key>Triggers</key>
+				<array/>
+				<key>UID</key>
+				<string>65EF7C42-0A47-41FF-A97F-78316D34DDEE</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>796249527.15984905</real>
+		<key>IsActive</key>
+		<false/>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10318</integer>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteAppleScript</string>
+						<key>NotifyOnFailure</key>
+						<false/>
+						<key>Path</key>
+						<string></string>
+						<key>StopOnFailure</key>
+						<false/>
+						<key>Text</key>
+						<string>use AppleScript version "2.4"
+use scripting additions
+
+on setKMVar(varName, varValue)
+	tell application "Keyboard Maestro Engine"
+		setvariable varName to (varValue as text)
+	end tell
+end setKMVar
+
+set bandFileName to "%TriggerValue%"
+if bandFileName is "" then
+	display dialog "GarageBand_Load_Set_File: missing TriggerValue" buttons {"OK"} default button 1
+	return
+end if
+
+my setKMVar("LiveShow_RequiredSetFileName", bandFileName)
+my setKMVar("LiveShow_IsSetLoading", "1")
+
+set fullPath to "/Users/timstiles/Music/GarageBand/" &amp; bandFileName
+my setKMVar("LiveShow_RequiredSetFullPath", fullPath)
+
+tell application "System Events"
+	if not (exists disk item fullPath) then
+		my setKMVar("LiveShow_IsSetLoading", "0")
+		display dialog "GarageBand file not found:" &amp; return &amp; fullPath buttons {"OK"} default button 1
+		return
+	end if
+end tell
+
+do shell script "open " &amp; quoted form of fullPath
+tell application "GarageBand" to activate
+delay 5
+
+if bandFileName is "Set 1 Welcome.band" then
+	my setKMVar("LiveShow_CurrentSetListID", "1")
+	my setKMVar("LiveShow_CurrentSetName", "Set1")
+else if bandFileName is "Set 2 Deep Cuts.band" then
+	my setKMVar("LiveShow_CurrentSetListID", "2")
+	my setKMVar("LiveShow_CurrentSetName", "Set2")
+else if bandFileName is "Set 3 Soul &amp; Groove.band" then
+	my setKMVar("LiveShow_CurrentSetListID", "3")
+	my setKMVar("LiveShow_CurrentSetName", "Set3")
+else if bandFileName is "Set 4 Send Off.band" then
+	my setKMVar("LiveShow_CurrentSetListID", "4")
+	my setKMVar("LiveShow_CurrentSetName", "Set4")
+end if
+
+my setKMVar("LiveShow_CurrentSetFileName", bandFileName)
+my setKMVar("LiveShow_LastLoadedSetAt", do shell script "date '+%Y-%m-%d %H:%M:%S'")
+my setKMVar("LiveShow_IsSetLoading", "0")
+display notification "Loaded " &amp; bandFileName with title "Keyboard Maestro"</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>796397123.18870604</real>
+				<key>ModificationDate</key>
+				<real>796397123.18870604</real>
+				<key>Name</key>
+				<string>GarageBand_Load_Set_File</string>
+				<key>Triggers</key>
+				<array/>
+				<key>UID</key>
+				<string>0A21E506-F580-4305-86CE-19BFCB12939B</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>LiveShow Imported Macros</string>
+		<key>ToggleMacroUID</key>
+		<string>DFD3A7F9-ADDB-4AED-A5C9-05C4870BFF5B</string>
+		<key>UID</key>
+		<string>21D00823-3B4A-4E1A-8249-1F86B346AA94</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>796003072.83266878</real>
+		<key>IsActive</key>
+		<false/>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>8657</integer>
+						<key>MacroActionType</key>
+						<string>Comment</string>
+						<key>StyledText</key>
+						<data>
+						cnRmZAAAAAADAAAAAgAAAAcAAABU
+						WFQucnRmAQAAAC48AgAAKwAAAAEA
+						AAA0AgAAe1xydGYxXGFuc2lcYW5z
+						aWNwZzEyNTJcY29jb2FydGYyODY4
+						Clxjb2NvYXRleHRzY2FsaW5nMFxj
+						b2NvYXBsYXRmb3JtMHtcZm9udHRi
+						bFxmMFxmc3dpc3NcZmNoYXJzZXQw
+						IEhlbHZldGljYTt9CntcY29sb3J0
+						Ymw7XHJlZDI1NVxncmVlbjI1NVxi
+						bHVlMjU1O30Ke1wqXGV4cGFuZGVk
+						Y29sb3J0Ymw7O30KXHBhcmRcdHg1
+						NjBcdHgxMTIwXHR4MTY4MFx0eDIy
+						NDBcdHgyODAwXHR4MzM2MFx0eDM5
+						MjBcdHg0NDgwXHR4NTA0MFx0eDU2
+						MDBcdHg2MTYwXHR4NjcyMFxwYXJk
+						aXJuYXR1cmFsXHBhcnRpZ2h0ZW5m
+						YWN0b3IwCgpcZjBcZnMyNCBcY2Yw
+						IFVzZSB0aGlzIHdpdGggMiBkaXNw
+						bGF5cy4gS2VlcCBHYXJhZ2VCYW5k
+						IG9uIHRoZSBwcmltYXJ5IGRpc3Bs
+						YXkgZm9yIE9DUi4gUHV0IGEgbm9y
+						bWFsIFNraW0gd2luZG93IG9uIHRo
+						ZSBzZWNvbmQgZGlzcGxheSwgdGhl
+						biBydW4gdGhpcyBtYWNyby4gSXQg
+						bWFrZXMgU2tpbSBuYXRpdmUgZnVs
+						bC1zY3JlZW4gb24gdGhlIHNlY29u
+						ZCBkaXNwbGF5IGFuZCBsZWF2ZXMg
+						R2FyYWdlQmFuZCBhdmFpbGFibGUg
+						b24gdGhlIHByaW1hcnkgZGlzcGxh
+						eS59AQAAACMAAAABAAAABwAAAFRY
+						VC5ydGYQAAAAW+rBabYBAAAAAAAA
+						AAAAAA==
+						</data>
+						<key>Title</key>
+						<string>Untitled</string>
+					</dict>
+					<dict>
+						<key>ActionName</key>
+						<string>Arrange Dual-Display Stage Layout</string>
+						<key>ActionUID</key>
+						<integer>8658</integer>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteShellScript</string>
+						<key>NotifyOnFailure</key>
+						<false/>
+						<key>Path</key>
+						<string></string>
+						<key>Source</key>
+						<string>Nothing</string>
+						<key>StopOnFailure</key>
+						<false/>
+						<key>Text</key>
+						<string>#!/bin/zsh -f
+/usr/bin/osascript &lt;&lt;'OSA'
+tell application "GarageBand" to activate
+delay 0.4
+tell application "Skim" to activate
+delay 0.6
+
+tell application "System Events"
+    tell process "Skim"
+        try
+            set value of attribute "AXFullScreen" of window 1 to false
+        end try
+    end tell
+end tell
+delay 0.6
+
+tell application "Skim" to activate
+delay 0.4
+tell application "System Events"
+    tell process "Skim"
+        try
+            set value of attribute "AXFullScreen" of window 1 to true
+        on error
+            try
+                keystroke "f" using {control down, command down}
+            end try
+        end try
+    end tell
+end tell
+OSA
+
+echo "Dual-display layout applied: GarageBand stays on the primary display, and Skim is set to native full-screen on the second display."
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>2752621820.4967241</real>
+				<key>ModificationDate</key>
+				<real>2752621820.4967241</real>
+				<key>Name</key>
+				<string>Arrange Dual-Display Stage Layout</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>23</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>2304</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>53B565B8-4341-4528-B212-71A3598FDDE0</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Tim Live Show – Skim Stage Mode (v6 Dual Display)</string>
+		<key>ToggleMacroUID</key>
+		<string>BA753E6F-7126-48DC-88BC-7DF098DCA06C</string>
+		<key>UID</key>
+		<string>4FC60D06-D82A-402C-85B8-BE26341B8A50</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>796003072.83266878</real>
+		<key>IsActive</key>
+		<false/>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>8645</integer>
+						<key>MacroActionType</key>
+						<string>Comment</string>
+						<key>StyledText</key>
+						<data>
+						cnRmZAAAAAADAAAAAgAAAAcAAABU
+						WFQucnRmAQAAAC4hAgAAKwAAAAEA
+						AAAZAgAAe1xydGYxXGFuc2lcYW5z
+						aWNwZzEyNTJcY29jb2FydGYyODY4
+						Clxjb2NvYXRleHRzY2FsaW5nMFxj
+						b2NvYXBsYXRmb3JtMHtcZm9udHRi
+						bFxmMFxmc3dpc3NcZmNoYXJzZXQw
+						IEhlbHZldGljYTt9CntcY29sb3J0
+						Ymw7XHJlZDI1NVxncmVlbjI1NVxi
+						bHVlMjU1O30Ke1wqXGV4cGFuZGVk
+						Y29sb3J0Ymw7O30KXHBhcmRcdHg1
+						NjBcdHgxMTIwXHR4MTY4MFx0eDIy
+						NDBcdHgyODAwXHR4MzM2MFx0eDM5
+						MjBcdHg0NDgwXHR4NTA0MFx0eDU2
+						MDBcdHg2MTYwXHR4NjcyMFxwYXJk
+						aXJuYXR1cmFsXHBhcnRpZ2h0ZW5m
+						YWN0b3IwCgpcZjBcZnMyNCBcY2Yw
+						IFVzZSB0aGlzIG9uIGEgc2luZ2xl
+						IGRpc3BsYXkuIEl0IGtlZXBzIEdh
+						cmFnZUJhbmQgdmlzaWJsZSBmb3Ig
+						T0NSIHdoaWxlIGxlYXZpbmcgU2tp
+						bSBsYXJnZSBvbiB0aGUgcmlnaHQu
+						IFRoaXMgaXMgdGhlIGJlc3Qgb25l
+						LXNjcmVlbiBtb2RlOyB0cnVlIGZ1
+						bGwtc2NyZWVuIFByZXNlbnRhdGlv
+						biBhbmQgT0NSIG9mIEdhcmFnZUJh
+						bmQgY2Fubm90IGNvZXhpc3Qgb24g
+						YSBzaW5nbGUgZGlzcGxheS59AQAA
+						ACMAAAABAAAABwAAAFRYVC5ydGYQ
+						AAAAiArCabYBAAAAAAAAAAAAAA==
+						</data>
+						<key>Title</key>
+						<string>Untitled</string>
+					</dict>
+					<dict>
+						<key>ActionName</key>
+						<string>Arrange Single-Screen OCR Layout</string>
+						<key>ActionUID</key>
+						<integer>8646</integer>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteShellScript</string>
+						<key>NotifyOnFailure</key>
+						<false/>
+						<key>Path</key>
+						<string></string>
+						<key>Source</key>
+						<string>Nothing</string>
+						<key>StopOnFailure</key>
+						<false/>
+						<key>Text</key>
+						<string>#!/bin/zsh -f
+/usr/bin/osascript &lt;&lt;'OSA'
+set splitRatio to 0.28
+set topRatio to 0.34
+
+tell application "Finder"
+    set b to bounds of window of desktop
+end tell
+set screenLeft to item 1 of b
+set screenTop to item 2 of b
+set screenRight to item 3 of b
+set screenBottom to item 4 of b
+set screenWidth to screenRight - screenLeft
+set screenHeight to screenBottom - screenTop
+set gbWidth to (screenWidth * splitRatio) as integer
+set gbHeight to (screenHeight * topRatio) as integer
+set skimLeft to screenLeft + gbWidth
+set skimWidth to screenWidth - gbWidth
+
+tell application "GarageBand" to activate
+delay 0.3
+tell application "Skim" to activate
+delay 0.3
+
+tell application "System Events"
+    tell process "GarageBand"
+        try
+            set position of window 1 to {screenLeft, screenTop}
+            set size of window 1 to {gbWidth, gbHeight}
+        end try
+    end tell
+    tell process "Skim"
+        try
+            key code 53
+        end try
+        delay 0.2
+        try
+            set position of window 1 to {skimLeft, screenTop}
+            set size of window 1 to {skimWidth, screenHeight}
+        end try
+    end tell
+end tell
+OSA
+
+echo "Single-screen OCR layout applied: GarageBand visible on the left, Skim large on the right."
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>2752621820.4967241</real>
+				<key>ModificationDate</key>
+				<real>2752621820.4967241</real>
+				<key>Name</key>
+				<string>Arrange Single-Screen OCR Layout</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>23</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>2304</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>436DC61B-0283-476F-AA42-D889468C0A46</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Tim Live Show – Skim Stage Mode (v5)</string>
+		<key>ToggleMacroUID</key>
+		<string>601FFBF7-5BD1-4811-BA19-606D84874A63</string>
+		<key>UID</key>
+		<string>369545B5-43B5-409C-9AEB-2A7177A8DA61</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>796249527.15984905</real>
+		<key>IsActive</key>
+		<false/>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10317</integer>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteAppleScript</string>
+						<key>NotifyOnFailure</key>
+						<false/>
+						<key>Path</key>
+						<string></string>
+						<key>StopOnFailure</key>
+						<false/>
+						<key>Text</key>
+						<string>use AppleScript version "2.4"
+use scripting additions
+
+on setKMVar(varName, varValue)
+	tell application "Keyboard Maestro Engine"
+		setvariable varName to (varValue as text)
+	end tell
+end setKMVar
+
+on getKMVar(varName)
+	tell application "Keyboard Maestro Engine"
+		return getvariable varName
+	end tell
+end getKMVar
+
+set setListID to my getKMVar("LiveShow_SetListID")
+set songMasterID to my getKMVar("LiveShow_SongMasterID")
+
+if setListID is "" or songMasterID is "" then
+	my setKMVar("LiveShow_ResolveStatus", "ERROR")
+	my setKMVar("LiveShow_ResolveMessage", "Missing set_list_id or song_master_id")
+	display dialog "LiveShow_Resolve_And_Load: missing set_list_id or song_master_id" buttons {"OK"} default button 1
+	return
+end if
+
+set dataFolder to "/Users/timstiles/Music/LiveShow/Data/"
+set setSongCSV to dataFolder &amp; "set_song.csv"
+set songMasterCSV to dataFolder &amp; "song_master.csv"
+set setListCSV to dataFolder &amp; "set_list.csv"
+
+set py to "
+import csv, sys
+
+set_song_csv, song_master_csv, set_list_csv, set_list_id, song_master_id = sys.argv[1:6]
+
+def norm(v):
+    return str(v).strip()
+
+set_song = {}
+with open(set_song_csv, newline='', encoding='utf-8-sig') as f:
+    for row in csv.DictReader(f):
+        if norm(row.get('set_list_id','')) == set_list_id and norm(row.get('song_master_id','')) == song_master_id:
+            set_song = row
+            break
+
+song_master = {}
+with open(song_master_csv, newline='', encoding='utf-8-sig') as f:
+    for row in csv.DictReader(f):
+        if norm(row.get('song_master_id','')) == song_master_id:
+            song_master = row
+            break
+
+set_list = {}
+with open(set_list_csv, newline='', encoding='utf-8-sig') as f:
+    for row in csv.DictReader(f):
+        if norm(row.get('set_list_id','')) == set_list_id:
+            set_list = row
+            break
+
+def g(src, key):
+    return norm(src.get(key,'')) if src else ''
+
+result = {
+ 'set_song_id': g(set_song,'set_song_id'),
+ 'start_time': g(set_song,'start_time'),
+ 'order_in_set': g(set_song,'order_in_set'),
+ 'override_lyrics_path': g(set_song,'override_lyrics_path'),
+ 'override_scroll_y': g(set_song,'override_scroll_y'),
+ 'override_cam_profile_id': g(set_song,'override_cam_profile_id'),
+ 'song_name': g(song_master,'song_name'),
+ 'artist': g(song_master,'artist'),
+ 'default_lyrics_path': g(song_master,'default_lyrics_path'),
+ 'default_scroll_y': g(song_master,'default_scroll_y'),
+ 'cam_profile_id': g(song_master,'cam_profile_id'),
+ 'set_name': g(set_list,'set_name'),
+ 'set_file_name': g(set_list,'set_file_name')
+}
+result['effective_lyrics_path'] = result['override_lyrics_path'] or result['default_lyrics_path']
+result['effective_scroll_y'] = result['override_scroll_y'] or result['default_scroll_y']
+result['effective_cam_profile_id'] = result['override_cam_profile_id'] or result['cam_profile_id']
+
+for k, v in result.items():
+    print(f'{k}={v}')
+"
+try
+	set parsedLines to do shell script "/usr/bin/python3 -c " &amp; quoted form of py &amp; space &amp; quoted form of setSongCSV &amp; space &amp; quoted form of songMasterCSV &amp; space &amp; quoted form of setListCSV &amp; space &amp; quoted form of setListID &amp; space &amp; quoted form of songMasterID
+on error errMsg
+	my setKMVar("LiveShow_ResolveStatus", "ERROR")
+	my setKMVar("LiveShow_ResolveMessage", "CSV lookup failed: " &amp; errMsg)
+	display dialog "CSV lookup failed: " &amp; errMsg buttons {"OK"} default button 1
+	return
+end try
+
+repeat with oneLine in paragraphs of parsedLines
+	if oneLine contains "=" then
+		set AppleScript's text item delimiters to "="
+		set k to text item 1 of oneLine
+		set v to (items 2 thru -1 of text items of oneLine) as text
+		set AppleScript's text item delimiters to ""
+		if k is "set_song_id" then my setKMVar("LiveShow_SetSongID", v)
+		if k is "start_time" then my setKMVar("LiveShow_StartTime", v)
+		if k is "order_in_set" then my setKMVar("LiveShow_OrderInSet", v)
+		if k is "override_lyrics_path" then my setKMVar("LiveShow_OverrideLyricsPath", v)
+		if k is "override_scroll_y" then my setKMVar("LiveShow_OverrideScrollY", v)
+		if k is "override_cam_profile_id" then my setKMVar("LiveShow_OverrideCamProfileID", v)
+		if k is "song_name" then my setKMVar("LiveShow_SongName", v)
+		if k is "artist" then my setKMVar("LiveShow_Artist", v)
+		if k is "default_lyrics_path" then my setKMVar("LiveShow_DefaultLyricsPath", v)
+		if k is "default_scroll_y" then my setKMVar("LiveShow_DefaultScrollY", v)
+		if k is "cam_profile_id" then my setKMVar("LiveShow_DefaultCamProfileID", v)
+		if k is "set_name" then my setKMVar("LiveShow_RequiredSetName", v)
+		if k is "set_file_name" then my setKMVar("LiveShow_RequiredSetFileName", v)
+		if k is "effective_lyrics_path" then my setKMVar("LiveShow_EffectiveLyricsPath", v)
+		if k is "effective_scroll_y" then my setKMVar("LiveShow_EffectiveScrollY", v)
+		if k is "effective_cam_profile_id" then my setKMVar("LiveShow_EffectiveCamProfileID", v)
+	end if
+end repeat
+
+if my getKMVar("LiveShow_SetSongID") is "" then
+	my setKMVar("LiveShow_ResolveStatus", "ERROR")
+	my setKMVar("LiveShow_ResolveMessage", "No matching set_song row")
+	display dialog "No matching set_song row for set_list_id=" &amp; setListID &amp; " song_master_id=" &amp; songMasterID buttons {"OK"} default button 1
+	return
+end if
+
+set requiredFile to my getKMVar("LiveShow_RequiredSetFileName")
+set currentFile to my getKMVar("LiveShow_CurrentSetFileName")
+
+if requiredFile is not "" and currentFile is not requiredFile then
+	tell application "Keyboard Maestro Engine"
+		do script "GarageBand_Load_Set_File" with parameter requiredFile
+	end tell
+	delay 5
+end if
+
+my setKMVar("LiveShow_ResolveStatus", "OK")
+my setKMVar("LiveShow_ResolveMessage", "Resolved successfully")
+
+set targetTime to my getKMVar("LiveShow_StartTime")
+if targetTime is not "" then
+	my setKMVar("LiveShow_TargetTime", targetTime)
+	try
+		tell application "Keyboard Maestro Engine"
+			do script "GarageBand Go To Time"
+		end tell
+	end try
+end if
+
+set lyricsPath to my getKMVar("LiveShow_EffectiveLyricsPath")
+if lyricsPath is not "" then
+	try
+		do shell script "open " &amp; quoted form of lyricsPath
+	end try
+end if
+
+my setKMVar("LiveShow_CommandStatus", "OK")
+my setKMVar("LiveShow_CommandMessage", "Song resolve/load complete")</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>796397123.18870604</real>
+				<key>ModificationDate</key>
+				<real>796397123.18870604</real>
+				<key>Name</key>
+				<string>LiveShow_Resolve_And_Load</string>
+				<key>Triggers</key>
+				<array/>
+				<key>UID</key>
+				<string>527D0C8C-B0CB-4C8D-8E45-8005AC72D70F</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>LiveShow Imported Macros</string>
+		<key>ToggleMacroUID</key>
+		<string>DFD3A7F9-ADDB-4AED-A5C9-05C4870BFF5B</string>
+		<key>UID</key>
+		<string>21D00823-3B4A-4E1A-8249-1F86B346AA94</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>10724</integer>
+						<key>AllWindows</key>
+						<true/>
+						<key>AlreadyActivatedActionType</key>
+						<string>Normal</string>
+						<key>Application</key>
+						<dict>
+							<key>BundleIdentifier</key>
+							<string>net.sourceforge.skim-app.skim</string>
+							<key>Name</key>
+							<string>Skim</string>
+							<key>NewFile</key>
+							<string>/Applications/Skim.app</string>
+						</dict>
+						<key>MacroActionType</key>
+						<string>ActivateApplication</string>
+						<key>ReopenWindows</key>
+						<false/>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>796534975.26575005</real>
+				<key>ModificationDate</key>
+				<real>796535460.39657104</real>
+				<key>Name</key>
+				<string>KM_PREPARE_SKIM</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>MacroTriggerType</key>
+						<string>PublicWeb</string>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>574C3AC4-CE46-4B9B-980D-E1746C5052DB</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>5430</integer>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScript</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>localStorage.setItem('tstiles_voiceSession', '%TriggerValue%'.split('|')[0]);
+localStorage.setItem('tstiles_voiceResult', '%TriggerValue%'.split('|')[1]);</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseModernSyntax</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+						<key>WebBrowser</key>
+						<string>Google Chrome</string>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>795914638.10927606</real>
+				<key>ModificationDate</key>
+				<real>795914919.75811398</real>
+				<key>Name</key>
+				<string>Alpha Voice Result</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>MacroTriggerType</key>
+						<string>PublicWeb</string>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>C1A15E6E-C860-43ED-85DD-9B1CBBECED2D</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>6233</integer>
+						<key>AllWindows</key>
+						<true/>
+						<key>AlreadyActivatedActionType</key>
+						<string>Normal</string>
+						<key>Application</key>
+						<dict>
+							<key>BundleIdentifier</key>
+							<string>com.apple.garageband10</string>
+							<key>Name</key>
+							<string>GarageBand</string>
+							<key>NewFile</key>
+							<string>/Applications/GarageBand.app</string>
+						</dict>
+						<key>MacroActionType</key>
+						<string>ActivateApplication</string>
+						<key>ReopenWindows</key>
+						<false/>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>5843</integer>
+						<key>MacroActionType</key>
+						<string>Pause</string>
+						<key>Time</key>
+						<string>1.5</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>5838</integer>
+						<key>DisplayKind</key>
+						<string>Clipboard</string>
+						<key>ImageScreenArea</key>
+						<dict>
+							<key>HeightExpression</key>
+							<string>45</string>
+							<key>LeftExpression</key>
+							<string>833</string>
+							<key>ScreenAreaType</key>
+							<string>Area</string>
+							<key>TopExpression</key>
+							<string>58</string>
+							<key>WidthExpression</key>
+							<string>242</string>
+						</dict>
+						<key>ImageSource</key>
+						<string>Screen</string>
+						<key>Language</key>
+						<string>Languages/eng</string>
+						<key>MacroActionType</key>
+						<string>OCRImage</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>7833</integer>
+						<key>MacroActionType</key>
+						<string>SetVariableToText</string>
+						<key>Text</key>
+						<string>%SystemClipboard%</string>
+						<key>Variable</key>
+						<string>GB_CurrentTimeRaw</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>7840</integer>
+						<key>IsActive</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>SetVariableToText</string>
+						<key>Text</key>
+						<string>298.969</string>
+						<key>Variable</key>
+						<string>GB_CurrentSeconds</string>
+					</dict>
+					<dict>
+						<key>Action</key>
+						<string>TrimWhitespace</string>
+						<key>ActionUID</key>
+						<integer>7839</integer>
+						<key>MacroActionType</key>
+						<string>Filter</string>
+						<key>Source</key>
+						<string>Variable</string>
+						<key>Variable</key>
+						<string>GB_CurrentTimeRaw</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9048</integer>
+						<key>DisplayKind</key>
+						<string>Variable</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteShellScript</string>
+						<key>Path</key>
+						<string></string>
+						<key>Source</key>
+						<string>Text</string>
+						<key>SourceText</key>
+						<string>%Variable%GB_CurrentTimeRaw%</string>
+						<key>Text</key>
+						<string>input="$(cat)"
+input="$(printf "%s" "$input" | tr -d '\r\n' | xargs)"
+if [[ "$input" =~ ^([0-9]+):([0-9]+)\.([0-9]+)$ ]]; then
+  min="${BASH_REMATCH[1]}"
+  sec="${BASH_REMATCH[2]}"
+  ms="${BASH_REMATCH[3]}"
+  awk "BEGIN { printf \"%.3f\", ($min*60)+$sec+($ms/1000) }"
+elif [[ "$input" =~ ^([0-9]+):([0-9]+)$ ]]; then
+  min="${BASH_REMATCH[1]}"
+  sec="${BASH_REMATCH[2]}"
+  awk "BEGIN { printf \"%.3f\", ($min*60)+$sec }"
+else
+  exit 1
+fi</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+						<key>Variable</key>
+						<string>GB_CurrentSeconds</string>
+					</dict>
+					<dict>
+						<key>Action</key>
+						<string>TrimWhitespace</string>
+						<key>ActionUID</key>
+						<integer>9049</integer>
+						<key>MacroActionType</key>
+						<string>Filter</string>
+						<key>Source</key>
+						<string>Variable</string>
+						<key>Variable</key>
+						<string>GB_CurrentSeconds</string>
+					</dict>
+					<dict>
+						<key>Action</key>
+						<string>DisplayWindow</string>
+						<key>ActionUID</key>
+						<integer>9050</integer>
+						<key>IsActive</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>InsertText</string>
+						<key>StyledText</key>
+						<data>
+						cnRmZAAAAAADAAAAAgAAAAcAAABU
+						WFQucnRmAQAAAC7rAQAAKwAAAAEA
+						AADjAQAAe1xydGYxXGFuc2lcYW5z
+						aWNwZzEyNTJcY29jb2FydGYyODY4
+						Clxjb2NvYXRleHRzY2FsaW5nMFxj
+						b2NvYXBsYXRmb3JtMHtcZm9udHRi
+						bFxmMFxmc3dpc3NcZmNoYXJzZXQw
+						IEhlbHZldGljYTt9CntcY29sb3J0
+						Ymw7XHJlZDI1NVxncmVlbjI1NVxi
+						bHVlMjU1O1xyZWQwXGdyZWVuMFxi
+						bHVlMDt9CntcKlxleHBhbmRlZGNv
+						bG9ydGJsOztcY3NzcmdiXGMwXGMw
+						XGMwXGM4NDcwNlxjbmFtZSBjb250
+						cm9sVGV4dENvbG9yO30KXHBhcmRc
+						dHg1NjBcdHgxMTIwXHR4MTY4MFx0
+						eDIyNDBcdHgyODAwXHR4MzM2MFx0
+						eDM5MjBcdHg0NDgwXHR4NTA0MFx0
+						eDU2MDBcdHg2MTYwXHR4NjcyMFxw
+						YXJkaXJuYXR1cmFsXHBhcnRpZ2h0
+						ZW5mYWN0b3IwCgpcZjBcZnMyNiBc
+						Y2YyIEdCX0N1cnJlbnRUaW1lUmF3
+						ID0gW1slVmFyaWFibGUlR0JfQ3Vy
+						cmVudFRpbWVSYXclXV1cCkdCX0N1
+						cnJlbnRTZWNvbmRzID0gW1slVmFy
+						aWFibGUlR0JfQ3VycmVudFNlY29u
+						ZHMlXV19AQAAACMAAAABAAAABwAA
+						AFRYVC5ydGYQAAAA9vrBabYBAAAA
+						AAAAAAAAAA==
+						</data>
+						<key>Text</key>
+						<string>GB_CurrentTimeRaw = [[%Variable%GB_CurrentTimeRaw%]]
+GB_CurrentSeconds = [[%Variable%GB_CurrentSeconds%]]</string>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>795969437.77087498</real>
+				<key>ModificationDate</key>
+				<real>796017734.64530098</real>
+				<key>Name</key>
+				<string>GarageBand Find Position</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>3</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>768</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>50803E2D-758F-425C-9E44-EB9DF23835B7</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>4631</integer>
+						<key>AllWindows</key>
+						<true/>
+						<key>AlreadyActivatedActionType</key>
+						<string>Normal</string>
+						<key>Application</key>
+						<dict>
+							<key>BundleIdentifier</key>
+							<string>com.apple.garageband10</string>
+							<key>Name</key>
+							<string>GarageBand</string>
+							<key>NewFile</key>
+							<string>/Applications/GarageBand.app</string>
+						</dict>
+						<key>MacroActionType</key>
+						<string>ActivateApplication</string>
+						<key>ReopenWindows</key>
+						<false/>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>4632</integer>
+						<key>MacroActionType</key>
+						<string>Pause</string>
+						<key>Time</key>
+						<string>1</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9459</integer>
+						<key>KeyCode</key>
+						<integer>49</integer>
+						<key>MacroActionType</key>
+						<string>SimulateKeystroke</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+						<key>ReleaseAll</key>
+						<false/>
+						<key>TargetApplication</key>
+						<dict/>
+						<key>TargetingType</key>
+						<string>Front</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9465</integer>
+						<key>IsActive</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>Pause</string>
+						<key>Time</key>
+						<string>1.5</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Action</key>
+						<string>MoveAndClick</string>
+						<key>ActionUID</key>
+						<integer>4633</integer>
+						<key>Button</key>
+						<integer>0</integer>
+						<key>ClickCount</key>
+						<integer>2</integer>
+						<key>DisplayMatches</key>
+						<false/>
+						<key>DragHorizontalPosition</key>
+						<string>0</string>
+						<key>DragVerticalPosition</key>
+						<string>0</string>
+						<key>Fuzz</key>
+						<integer>15</integer>
+						<key>HorizontalPositionExpression</key>
+						<string>580</string>
+						<key>MacroActionType</key>
+						<string>MouseMoveAndClick</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+						<key>MouseDrag</key>
+						<string>None</string>
+						<key>Relative</key>
+						<string>Window</string>
+						<key>RelativeCorner</key>
+						<string>TopLeft</string>
+						<key>RestoreMouseLocation</key>
+						<false/>
+						<key>VerticalPositionExpression</key>
+						<string>70</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9463</integer>
+						<key>IsActive</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>Pause</string>
+						<key>Time</key>
+						<string>5</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Action</key>
+						<string>DisplayWindow</string>
+						<key>ActionUID</key>
+						<integer>9467</integer>
+						<key>IsActive</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>InsertText</string>
+						<key>StyledText</key>
+						<data>
+						cnRmZAAAAAADAAAAAgAAAAcAAABU
+						WFQucnRmAQAAAC6PAQAAKwAAAAEA
+						AACHAQAAe1xydGYxXGFuc2lcYW5z
+						aWNwZzEyNTJcY29jb2FydGYyODY4
+						Clxjb2NvYXRleHRzY2FsaW5nMFxj
+						b2NvYXBsYXRmb3JtMHtcZm9udHRi
+						bFxmMFxmc3dpc3NcZmNoYXJzZXQw
+						IEhlbHZldGljYTt9CntcY29sb3J0
+						Ymw7XHJlZDI1NVxncmVlbjI1NVxi
+						bHVlMjU1O1xyZWQwXGdyZWVuMFxi
+						bHVlMDt9CntcKlxleHBhbmRlZGNv
+						bG9ydGJsOztcY3NzcmdiXGMwXGMw
+						XGMwXGM4NDcwNlxjbmFtZSBjb250
+						cm9sVGV4dENvbG9yO30KXHBhcmRc
+						dHg1NjBcdHgxMTIwXHR4MTY4MFx0
+						eDIyNDBcdHgyODAwXHR4MzM2MFx0
+						eDM5MjBcdHg0NDgwXHR4NTA0MFx0
+						eDU2MDBcdHg2MTYwXHR4NjcyMFxw
+						YXJkaXJuYXR1cmFsXHBhcnRpZ2h0
+						ZW5mYWN0b3IwCgpcZjBcZnMyNiBc
+						Y2YyICVUcmlnZ2VyVmFsdWUlfQEA
+						AAAjAAAAAQAAAAcAAABUWFQucnRm
+						EAAAAJq7wmm2AQAAAAAAAAAAAAA=
+						</data>
+						<key>Text</key>
+						<string>%TriggerValue%</string>
+					</dict>
+					<dict>
+						<key>Action</key>
+						<string>ByTyping</string>
+						<key>ActionUID</key>
+						<integer>4635</integer>
+						<key>MacroActionType</key>
+						<string>InsertText</string>
+						<key>TargetApplication</key>
+						<dict/>
+						<key>TargetingType</key>
+						<string>Front</string>
+						<key>Text</key>
+						<string>%TriggerValue%</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>4636</integer>
+						<key>KeyCode</key>
+						<integer>36</integer>
+						<key>MacroActionType</key>
+						<string>SimulateKeystroke</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+						<key>ReleaseAll</key>
+						<false/>
+						<key>TargetApplication</key>
+						<dict/>
+						<key>TargetingType</key>
+						<string>Front</string>
+					</dict>
+					<dict>
+						<key>Action</key>
+						<string>DisplayWindow</string>
+						<key>ActionUID</key>
+						<integer>9466</integer>
+						<key>IsActive</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>InsertText</string>
+						<key>StyledText</key>
+						<data>
+						cnRmZAAAAAADAAAAAgAAAAcAAABU
+						WFQucnRmAQAAAC6dAQAAKwAAAAEA
+						AACVAQAAe1xydGYxXGFuc2lcYW5z
+						aWNwZzEyNTJcY29jb2FydGYyODY4
+						Clxjb2NvYXRleHRzY2FsaW5nMFxj
+						b2NvYXBsYXRmb3JtMHtcZm9udHRi
+						bFxmMFxmc3dpc3NcZmNoYXJzZXQw
+						IEhlbHZldGljYTt9CntcY29sb3J0
+						Ymw7XHJlZDI1NVxncmVlbjI1NVxi
+						bHVlMjU1O1xyZWQwXGdyZWVuMFxi
+						bHVlMDt9CntcKlxleHBhbmRlZGNv
+						bG9ydGJsOztcY3NzcmdiXGMwXGMw
+						XGMwXGM4NDcwNlxjbmFtZSBjb250
+						cm9sVGV4dENvbG9yO30KXHBhcmRc
+						dHg1NjBcdHgxMTIwXHR4MTY4MFx0
+						eDIyNDBcdHgyODAwXHR4MzM2MFx0
+						eDM5MjBcdHg0NDgwXHR4NTA0MFx0
+						eDU2MDBcdHg2MTYwXHR4NjcyMFxw
+						YXJkaXJuYXR1cmFsXHBhcnRpZ2h0
+						ZW5mYWN0b3IwCgpcZjBcZnMyNiBc
+						Y2YyIERpZCBpdCB3b3JrPyAgJVRy
+						aWdnZXJWYWx1ZSV9AQAAACMAAAAB
+						AAAABwAAAFRYVC5ydGYQAAAAvb3C
+						abYBAAAAAAAAAAAAAA==
+						</data>
+						<key>Text</key>
+						<string>Did it work?  %TriggerValue%</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>4638</integer>
+						<key>IsActive</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>Pause</string>
+						<key>Time</key>
+						<string>2</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>4637</integer>
+						<key>KeyCode</key>
+						<integer>126</integer>
+						<key>MacroActionType</key>
+						<string>SimulateKeystroke</string>
+						<key>Modifiers</key>
+						<integer>196608</integer>
+						<key>ReleaseAll</key>
+						<false/>
+						<key>TargetApplication</key>
+						<dict/>
+						<key>TargetingType</key>
+						<string>Front</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>5442</integer>
+						<key>KeyCode</key>
+						<integer>126</integer>
+						<key>MacroActionType</key>
+						<string>SimulateKeystroke</string>
+						<key>Modifiers</key>
+						<integer>196608</integer>
+						<key>ReleaseAll</key>
+						<false/>
+						<key>TargetApplication</key>
+						<dict/>
+						<key>TargetingType</key>
+						<string>Front</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>5443</integer>
+						<key>KeyCode</key>
+						<integer>126</integer>
+						<key>MacroActionType</key>
+						<string>SimulateKeystroke</string>
+						<key>Modifiers</key>
+						<integer>196608</integer>
+						<key>ReleaseAll</key>
+						<false/>
+						<key>TargetApplication</key>
+						<dict/>
+						<key>TargetingType</key>
+						<string>Front</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>5444</integer>
+						<key>IsActive</key>
+						<false/>
+						<key>KeyCode</key>
+						<integer>49</integer>
+						<key>MacroActionType</key>
+						<string>SimulateKeystroke</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+						<key>ReleaseAll</key>
+						<false/>
+						<key>TargetApplication</key>
+						<dict/>
+						<key>TargetingType</key>
+						<string>Front</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9457</integer>
+						<key>MacroActionType</key>
+						<string>Pause</string>
+						<key>Time</key>
+						<string>1.5</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9456</integer>
+						<key>KeyCode</key>
+						<integer>15</integer>
+						<key>MacroActionType</key>
+						<string>SimulateKeystroke</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+						<key>ReleaseAll</key>
+						<false/>
+						<key>TargetApplication</key>
+						<dict/>
+						<key>TargetingType</key>
+						<string>Front</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9464</integer>
+						<key>MacroActionType</key>
+						<string>Pause</string>
+						<key>Time</key>
+						<string>1.5</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>5445</integer>
+						<key>AllWindows</key>
+						<true/>
+						<key>AlreadyActivatedActionType</key>
+						<string>Normal</string>
+						<key>Application</key>
+						<dict>
+							<key>BundleIdentifier</key>
+							<string>com.apple.Safari</string>
+							<key>Name</key>
+							<string>Safari</string>
+							<key>NewFile</key>
+							<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
+						</dict>
+						<key>MacroActionType</key>
+						<string>ActivateApplication</string>
+						<key>ReopenWindows</key>
+						<false/>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>795892356.32994199</real>
+				<key>ModificationDate</key>
+				<real>796399766.50384796</real>
+				<key>Name</key>
+				<string>GarageBand Go To Time</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>MacroTriggerType</key>
+						<string>PublicWeb</string>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>FCE13B05-4E20-4CE2-9F4D-F69557ADDE15</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>766146433.90541995</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>5438</integer>
+						<key>MacroActionType</key>
+						<string>Pause</string>
+						<key>Time</key>
+						<string>1.5</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>5437</integer>
+						<key>KeyCode</key>
+						<integer>17</integer>
+						<key>MacroActionType</key>
+						<string>SimulateKeystroke</string>
+						<key>Modifiers</key>
+						<integer>768</integer>
+						<key>ReleaseAll</key>
+						<false/>
+						<key>TargetApplication</key>
+						<dict/>
+						<key>TargetingType</key>
+						<string>Front</string>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>795913074.86961901</real>
+				<key>ModificationDate</key>
+				<real>795917227.399225</real>
+				<key>Name</key>
+				<string>Alpha Voice Listen</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>MacroTriggerType</key>
+						<string>PublicWeb</string>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>E0175F6E-57F0-4CB1-A712-5DD3F54CAE7C</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Global Macro Group</string>
+		<key>ToggleMacroUID</key>
+		<string>E69D1F0D-0806-4C2D-879F-015D1CF2FFC5</string>
+		<key>UID</key>
+		<string>804D32AF-0B39-439F-8EF3-493A833B14CA</string>
+	</dict>
+</array>
+</plist>

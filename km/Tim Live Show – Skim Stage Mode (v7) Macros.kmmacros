@@ -1,0 +1,1001 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>796003072.83266878</real>
+		<key>IsActive</key>
+		<false/>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionName</key>
+						<string>Create stop signal for running stage-mode loop</string>
+						<key>ActionUID</key>
+						<integer>9059</integer>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteShellScript</string>
+						<key>NotifyOnFailure</key>
+						<false/>
+						<key>Path</key>
+						<string></string>
+						<key>Source</key>
+						<string>Nothing</string>
+						<key>StopOnFailure</key>
+						<false/>
+						<key>Text</key>
+						<string>#!/bin/zsh -f
+touch /tmp/tim_live_show_stage_mode.stop
+/usr/bin/osascript &lt;&lt;OSA
+tell application "Keyboard Maestro Engine"
+    try
+        setvariable "LiveShow_Running" to "0"
+    end try
+end tell
+OSA
+echo "Stage Mode / GarageBand Find Position polling stop signal sent."
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>796003072.83266878</real>
+				<key>ModificationDate</key>
+				<real>2752621820.4967222</real>
+				<key>Name</key>
+				<string>STOP Live Show Stage Mode</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>19</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>2304</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>BDA3D981-5114-439D-BF04-8828B475B29D</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Tim Live Show – Skim Stage Mode (v7)</string>
+		<key>ToggleMacroUID</key>
+		<string>361A6B72-8F8C-44D0-A234-3AAE11D9DD5A</string>
+		<key>UID</key>
+		<string>ACD7DF6F-2FFB-44E2-B524-BD9520DFE7BB</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>796003072.83266878</real>
+		<key>IsActive</key>
+		<false/>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9055</integer>
+						<key>MacroActionType</key>
+						<string>Comment</string>
+						<key>StyledText</key>
+						<data>
+						cnRmZAAAAAADAAAAAgAAAAcAAABU
+						WFQucnRmAQAAAC7VAQAAKwAAAAEA
+						AADNAQAAe1xydGYxXGFuc2lcYW5z
+						aWNwZzEyNTJcY29jb2FydGYyODY4
+						Clxjb2NvYXRleHRzY2FsaW5nMFxj
+						b2NvYXBsYXRmb3JtMHtcZm9udHRi
+						bFxmMFxmc3dpc3NcZmNoYXJzZXQw
+						IEhlbHZldGljYTt9CntcY29sb3J0
+						Ymw7XHJlZDI1NVxncmVlbjI1NVxi
+						bHVlMjU1O30Ke1wqXGV4cGFuZGVk
+						Y29sb3J0Ymw7O30KXHBhcmRcdHg1
+						NjBcdHgxMTIwXHR4MTY4MFx0eDIy
+						NDBcdHgyODAwXHR4MzM2MFx0eDM5
+						MjBcdHg0NDgwXHR4NTA0MFx0eDU2
+						MDBcdHg2MTYwXHR4NjcyMFxwYXJk
+						aXJuYXR1cmFsXHBhcnRpZ2h0ZW5m
+						YWN0b3IwCgpcZjBcZnMyNCBcY2Yw
+						IFY3IHVzZXMgR0JfQ3VycmVudFNl
+						Y29uZHMgZGlyZWN0bHkgZm9yIHNv
+						bmcgbWF0Y2hpbmcsIHdpdGggZmFs
+						bGJhY2sgdG8gR0JfQ3VycmVudFRp
+						bWVSYXcgaWYgbmVlZGVkLiBJdCBh
+						bHNvIGFkZHMgbW9yZSByb2J1c3Qg
+						Q1NWIGFuZCBQREYtcGF0aCBjbGVh
+						bnVwLn0BAAAAIwAAAAEAAAAHAAAA
+						VFhULnJ0ZhAAAACICsJptgEAAAAA
+						AAAAAAAA
+						</data>
+						<key>Title</key>
+						<string>Read Me First</string>
+					</dict>
+					<dict>
+						<key>ActionName</key>
+						<string>Mark stage mode as running</string>
+						<key>ActionUID</key>
+						<integer>9056</integer>
+						<key>MacroActionType</key>
+						<string>SetVariableToText</string>
+						<key>Text</key>
+						<string>1</string>
+						<key>Variable</key>
+						<string>LiveShow_Running</string>
+					</dict>
+					<dict>
+						<key>ActionName</key>
+						<string>Default CSV path</string>
+						<key>ActionUID</key>
+						<integer>9057</integer>
+						<key>MacroActionType</key>
+						<string>SetVariableToText</string>
+						<key>Text</key>
+						<string>/Users/timstiles/Music/LiveShow/Set1.csv</string>
+						<key>Variable</key>
+						<string>LiveShow_CSVPath</string>
+					</dict>
+					<dict>
+						<key>ActionName</key>
+						<string>Poll GB_CurrentTimeRaw, resolve current song from CSV, and open lyrics in Skim</string>
+						<key>ActionUID</key>
+						<integer>9058</integer>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteShellScript</string>
+						<key>NotifyOnFailure</key>
+						<false/>
+						<key>Path</key>
+						<string></string>
+						<key>Source</key>
+						<string>Nothing</string>
+						<key>StopOnFailure</key>
+						<false/>
+						<key>Text</key>
+						<string>#!/bin/zsh -f
+PATH=/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin
+STOP_FILE="/tmp/tim_live_show_stage_mode.stop"
+STATE_FILE="/tmp/tim_live_show_stage_mode.lastsong"
+rm -f "$STOP_FILE"
+
+km_get() {
+/usr/bin/osascript -e 'tell application "Keyboard Maestro Engine" to getvariable "'$1'"'
+}
+
+km_set() {
+/usr/bin/osascript -e 'tell application "Keyboard Maestro Engine" to setvariable "'$1'" to "'$2'"'
+}
+
+run_find_position() {
+/usr/bin/osascript &lt;&lt;'OSA'
+tell application "Keyboard Maestro Engine"
+    do script "GarageBand Find Position"
+end tell
+OSA
+}
+
+prepare_skim() {
+/usr/bin/osascript &lt;&lt;'OSA'
+tell application "Skim"
+    activate
+    try
+        tell front document to close saving no
+    end try
+end tell
+OSA
+}
+
+run_stage_mode() {
+/usr/bin/osascript &lt;&lt;'OSA'
+tell application "Skim" to activate
+delay 0.4
+tell application "System Events"
+    tell process "Skim"
+        try
+            click menu item "Enter Full Screen" of menu "View" of menu bar item "View" of menu bar 1
+        end try
+    end tell
+    delay 0.5
+    keystroke "a" using {command down, option down}
+end tell
+OSA
+}
+
+find_song_json() {
+python3 - "$1" "$2" &lt;&lt;'ENDPY'
+import csv, io, json, re, sys, unicodedata
+from pathlib import Path
+
+cur_raw = (sys.argv[1] or "").strip()
+csv_path = (sys.argv[2] or "").strip() or "/Users/timstiles/Music/LiveShow/Set1.csv"
+
+SMART = str.maketrans({
+    "\u2018": "'", "\u2019": "'", "\u201B": "'",
+    "\u201C": '"', "\u201D": '"',
+    "\u00A0": ' ',
+})
+
+def clean_text(s: str) -&gt; str:
+    s = unicodedata.normalize("NFKC", s or "")
+    s = s.translate(SMART)
+    return s.strip().strip("\ufeff").strip("\"'")
+
+def parse_time(s: str) -&gt; float:
+    s = clean_text(s)
+    if not s:
+        return -1.0
+    if re.fullmatch(r"\d+(?:\.\d+)?", s):
+        return float(s)
+    s = s.replace(",", ".")
+    if re.fullmatch(r"\d+:\d{2}\.\d{1,3}", s):
+        m, sec = s.split(":")
+        return int(m) * 60 + float(sec)
+    parts = s.split(":")
+    if len(parts) == 4:
+        h, m, sec, frac = parts
+        return int(h) * 3600 + int(m) * 60 + int(sec) + float("0." + frac)
+    if len(parts) == 3:
+        h, m, sec = parts
+        return int(h) * 3600 + int(m) * 60 + float(sec)
+    if len(parts) == 2:
+        m, sec = parts
+        return int(m) * 60 + float(sec)
+    raise ValueError(f"Unrecognized time: {s}")
+
+def normalize_path(p: str) -&gt; str:
+    return clean_text(p).replace("\\ ", " ").replace("\\'", "'")
+
+def resolve_path(path: str, song: str) -&gt; str:
+    candidates = []
+    if path:
+        candidates.append(path)
+        candidates.append(path.replace("\u2019", "'").replace("\u2018", "'"))
+    fallback = f"/Users/timstiles/Music/LiveShow/Lyrics/{clean_text(song)}.pdf"
+    candidates.append(fallback)
+    candidates.append(fallback.replace("\u2019", "'").replace("\u2018", "'"))
+    seen = set()
+    for cand in candidates:
+        cand = normalize_path(cand)
+        if not cand or cand in seen:
+            continue
+        seen.add(cand)
+        if Path(cand).exists():
+            return cand
+    return normalize_path(path or fallback)
+
+p = Path(csv_path)
+if not p.exists():
+    print(json.dumps({"ok": False, "reason": f"CSV not found: {csv_path}"}))
+    raise SystemExit
+
+current = parse_time(cur_raw)
+raw_text = p.read_text(encoding="utf-8-sig", errors="replace")
+try:
+    dialect = csv.Sniffer().sniff(raw_text[:4096], delimiters=",\t;")
+except Exception:
+    dialect = csv.excel
+reader = csv.DictReader(io.StringIO(raw_text), dialect=dialect)
+if reader.fieldnames:
+    reader.fieldnames = [clean_text(h) for h in reader.fieldnames]
+
+rows = []
+for row in reader:
+    row = {clean_text(k): clean_text(v) for k, v in row.items() if k is not None}
+    start_raw = row.get("StartTime", "")
+    song = row.get("SongName", "")
+    path = row.get("LyricsPath", "")
+    scroll = row.get("ScrollY", "")
+    if not start_raw or not song:
+        continue
+    try:
+        start = parse_time(start_raw)
+    except Exception:
+        continue
+    rows.append({"start": start, "song": song, "path": resolve_path(path, song), "scroll": scroll})
+
+rows.sort(key=lambda r: r["start"])
+current_song = None
+for i, row in enumerate(rows):
+    next_start = rows[i + 1]["start"] if i + 1 &lt; len(rows) else float("inf")
+    if row["start"] &lt;= current &lt; next_start:
+        current_song = row
+        break
+
+if current_song is None:
+    print(json.dumps({
+        "ok": False,
+        "reason": f"No matching song row for current_seconds={current:.3f}",
+        "current_seconds": round(current, 3),
+        "csv_path": csv_path,
+        "row_count": len(rows),
+    }))
+else:
+    print(json.dumps({
+        "ok": True,
+        "current_seconds": round(current, 3),
+        "song": current_song["song"],
+        "path": current_song["path"],
+        "scroll": current_song.get("scroll", ""),
+        "csv_path": csv_path,
+    }))
+ENDPY
+}
+
+while true; do
+  [[ -e "$STOP_FILE" ]] &amp;&amp; break
+
+  run_find_position &gt;/dev/null 2&gt;&amp;1
+  sleep 0.25
+
+  CURRENT_SECONDS="$(km_get "GB_CurrentSeconds" | tr -d '\r')"
+  [[ -z "$CURRENT_SECONDS" ]] &amp;&amp; CURRENT_SECONDS="$(km_get "GB_CurrentTimeRaw" | tr -d '\r')"
+  CSV_PATH="$(km_get "LiveShow_CSVPath" | tr -d '\r')"
+  [[ -z "$CSV_PATH" ]] &amp;&amp; CSV_PATH="/Users/timstiles/Music/LiveShow/Set1.csv"
+
+  RESULT="$(find_song_json "$CURRENT_SECONDS" "$CSV_PATH")"
+  OK="$(printf '%s' "$RESULT" | python3 -c 'import sys,json; d=json.load(sys.stdin); print("1" if d.get("ok") else "0")')"
+  if [[ "$OK" == "1" ]]; then
+    CURRENT_SECONDS_OUT="$(printf '%s' "$RESULT" | python3 -c 'import sys,json; print(json.load(sys.stdin).get("current_seconds",""))')"
+    SONG="$(printf '%s' "$RESULT" | python3 -c 'import sys,json; print(json.load(sys.stdin).get("song",""))')"
+    PDF_PATH="$(printf '%s' "$RESULT" | python3 -c 'import sys,json; print(json.load(sys.stdin).get("path",""))')"
+    km_set "GB_CurrentSeconds" "$CURRENT_SECONDS_OUT"
+    km_set "LiveShow_CurrentSong" "$SONG"
+    km_set "LiveShow_CurrentLyricsPath" "$PDF_PATH"
+    km_set "LiveShow_LastError" ""
+
+    LAST_SONG=""
+    [[ -f "$STATE_FILE" ]] &amp;&amp; LAST_SONG="$(cat "$STATE_FILE")"
+    if [[ -n "$SONG" &amp;&amp; "$SONG" != "$LAST_SONG" ]]; then
+      if [[ -f "$PDF_PATH" ]]; then
+        prepare_skim &gt;/dev/null 2&gt;&amp;1
+        sleep 0.2
+        /usr/bin/open -a "Skim" "$PDF_PATH"
+        echo -n "$SONG" &gt; "$STATE_FILE"
+        sleep 1.0
+        run_stage_mode &gt;/dev/null 2&gt;&amp;1
+      else
+        km_set "LiveShow_LastError" "PDF not found: $PDF_PATH"
+      fi
+    fi
+  else
+    ERR="$(printf '%s' "$RESULT" | python3 -c 'import sys,json; print(json.load(sys.stdin).get("reason","No match"))')"
+    km_set "LiveShow_CurrentSong" ""
+    km_set "LiveShow_CurrentLyricsPath" ""
+    km_set "LiveShow_LastError" "$ERR"
+  fi
+
+  sleep 5
+done
+
+km_set "LiveShow_Running" "0"
+exit 0
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>796003072.83266878</real>
+				<key>ModificationDate</key>
+				<real>2752621820.4967165</real>
+				<key>Name</key>
+				<string>START Live Show Stage Mode (v7 - seconds based)</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>18</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>2304</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>690BDE8E-4BDA-4E6E-B4C8-C5FA32E99563</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Tim Live Show – Skim Stage Mode (v7)</string>
+		<key>ToggleMacroUID</key>
+		<string>361A6B72-8F8C-44D0-A234-3AAE11D9DD5A</string>
+		<key>UID</key>
+		<string>ACD7DF6F-2FFB-44E2-B524-BD9520DFE7BB</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>796003072.83266878</real>
+		<key>IsActive</key>
+		<false/>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9063</integer>
+						<key>MacroActionType</key>
+						<string>Comment</string>
+						<key>StyledText</key>
+						<data>
+						cnRmZAAAAAADAAAAAgAAAAcAAABU
+						WFQucnRmAQAAAC6XAQAAKwAAAAEA
+						AACPAQAAe1xydGYxXGFuc2lcYW5z
+						aWNwZzEyNTJcY29jb2FydGYyODY4
+						Clxjb2NvYXRleHRzY2FsaW5nMFxj
+						b2NvYXBsYXRmb3JtMHtcZm9udHRi
+						bFxmMFxmc3dpc3NcZmNoYXJzZXQw
+						IEhlbHZldGljYTt9CntcY29sb3J0
+						Ymw7XHJlZDI1NVxncmVlbjI1NVxi
+						bHVlMjU1O30Ke1wqXGV4cGFuZGVk
+						Y29sb3J0Ymw7O30KXHBhcmRcdHg1
+						NjBcdHgxMTIwXHR4MTY4MFx0eDIy
+						NDBcdHgyODAwXHR4MzM2MFx0eDM5
+						MjBcdHg0NDgwXHR4NTA0MFx0eDU2
+						MDBcdHg2MTYwXHR4NjcyMFxwYXJk
+						aXJuYXR1cmFsXHBhcnRpZ2h0ZW5m
+						YWN0b3IwCgpcZjBcZnMyNCBcY2Yw
+						IFN0b3BzIHRoZSByZXBlYXRpbmcg
+						cG9sbCB0aGF0IGNhbGxzIHlvdXIg
+						R2FyYWdlQmFuZCBGaW5kIFBvc2l0
+						aW9uIG1hY3JvIGV2ZXJ5IDUgc2Vj
+						b25kcy59AQAAACMAAAABAAAABwAA
+						AFRYVC5ydGYQAAAAiArCabYBAAAA
+						AAAAAAAAAA==
+						</data>
+						<key>Title</key>
+						<string>Untitled</string>
+					</dict>
+					<dict>
+						<key>ActionName</key>
+						<string>STOP GarageBand Find Position Polling</string>
+						<key>ActionUID</key>
+						<integer>9064</integer>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteShellScript</string>
+						<key>NotifyOnFailure</key>
+						<false/>
+						<key>Path</key>
+						<string></string>
+						<key>Source</key>
+						<string>Nothing</string>
+						<key>StopOnFailure</key>
+						<false/>
+						<key>Text</key>
+						<string>#!/bin/zsh -f
+touch /tmp/tim_live_show_stage_mode.stop
+/usr/bin/osascript &lt;&lt;OSA
+tell application "Keyboard Maestro Engine"
+    try
+        setvariable "LiveShow_Running" to "0"
+    end try
+end tell
+OSA
+echo "GarageBand Find Position polling stop signal sent."
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>2752621820.4967241</real>
+				<key>ModificationDate</key>
+				<real>2752621820.4967241</real>
+				<key>Name</key>
+				<string>STOP GarageBand Find Position Polling</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>22</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>2304</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>C6EF9C15-BEE4-4284-BC13-39CE960E4CA1</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Tim Live Show – Skim Stage Mode (v7)</string>
+		<key>ToggleMacroUID</key>
+		<string>361A6B72-8F8C-44D0-A234-3AAE11D9DD5A</string>
+		<key>UID</key>
+		<string>ACD7DF6F-2FFB-44E2-B524-BD9520DFE7BB</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>796003072.83266878</real>
+		<key>IsActive</key>
+		<false/>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionName</key>
+						<string>Clear temp state and reset tracking variables</string>
+						<key>ActionUID</key>
+						<integer>9060</integer>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteShellScript</string>
+						<key>NotifyOnFailure</key>
+						<false/>
+						<key>Path</key>
+						<string></string>
+						<key>Source</key>
+						<string>Nothing</string>
+						<key>StopOnFailure</key>
+						<false/>
+						<key>Text</key>
+						<string>#!/bin/zsh -f
+rm -f /tmp/tim_live_show_stage_mode.stop /tmp/tim_live_show_stage_mode.lastsong
+/usr/bin/osascript &lt;&lt;OSA
+tell application "Keyboard Maestro Engine"
+    try
+        setvariable "LiveShow_Running" to "0"
+        setvariable "LiveShow_CurrentSong" to ""
+        setvariable "LiveShow_CurrentLyricsPath" to ""
+        setvariable "LiveShow_LastError" to ""
+        setvariable "GB_CurrentSeconds" to ""
+    end try
+end tell
+OSA
+echo "Live Show state reset."
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>796003072.83266878</real>
+				<key>ModificationDate</key>
+				<real>796003072.83266878</real>
+				<key>Name</key>
+				<string>RESET Live Show State</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>20</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>2304</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>ECC5CD3B-E827-4706-AFC3-D8B33F8118A9</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Tim Live Show – Skim Stage Mode (v7)</string>
+		<key>ToggleMacroUID</key>
+		<string>361A6B72-8F8C-44D0-A234-3AAE11D9DD5A</string>
+		<key>UID</key>
+		<string>ACD7DF6F-2FFB-44E2-B524-BD9520DFE7BB</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>796003072.83266878</real>
+		<key>IsActive</key>
+		<false/>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9061</integer>
+						<key>MacroActionType</key>
+						<string>Comment</string>
+						<key>StyledText</key>
+						<data>
+						cnRmZAAAAAADAAAAAgAAAAcAAABU
+						WFQucnRmAQAAAC62AQAAKwAAAAEA
+						AACuAQAAe1xydGYxXGFuc2lcYW5z
+						aWNwZzEyNTJcY29jb2FydGYyODY4
+						Clxjb2NvYXRleHRzY2FsaW5nMFxj
+						b2NvYXBsYXRmb3JtMHtcZm9udHRi
+						bFxmMFxmc3dpc3NcZmNoYXJzZXQw
+						IEhlbHZldGljYTt9CntcY29sb3J0
+						Ymw7XHJlZDI1NVxncmVlbjI1NVxi
+						bHVlMjU1O30Ke1wqXGV4cGFuZGVk
+						Y29sb3J0Ymw7O30KXHBhcmRcdHg1
+						NjBcdHgxMTIwXHR4MTY4MFx0eDIy
+						NDBcdHgyODAwXHR4MzM2MFx0eDM5
+						MjBcdHg0NDgwXHR4NTA0MFx0eDU2
+						MDBcdHg2MTYwXHR4NjcyMFxwYXJk
+						aXJuYXR1cmFsXHBhcnRpZ2h0ZW5m
+						YWN0b3IwCgpcZjBcZnMyNCBcY2Yw
+						IFJ1biB0aGlzIG9uY2Ugd2hpbGUg
+						eW91ciBHYXJhZ2VCYW5kIHBvc2l0
+						aW9uIG1hY3JvIGlzIHVwZGF0aW5n
+						IEdCX0N1cnJlbnRUaW1lUmF3LiBJ
+						dCBwcmludHMgdGhlIHJlc29sdmVk
+						IHNvbmcgYW5kIHBhdGgufQEAAAAj
+						AAAAAQAAAAcAAABUWFQucnRmEAAA
+						AIgKwmm2AQAAAAAAAAAAAAA=
+						</data>
+						<key>Title</key>
+						<string>Debug helper</string>
+					</dict>
+					<dict>
+						<key>ActionName</key>
+						<string>Resolve current song once from GB_CurrentTimeRaw + CSV</string>
+						<key>ActionUID</key>
+						<integer>9062</integer>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteShellScript</string>
+						<key>NotifyOnFailure</key>
+						<false/>
+						<key>Path</key>
+						<string></string>
+						<key>Source</key>
+						<string>Nothing</string>
+						<key>StopOnFailure</key>
+						<false/>
+						<key>Text</key>
+						<string>#!/bin/zsh -f
+PATH=/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin
+CURRENT_SECONDS="$(/usr/bin/osascript -e 'tell application "Keyboard Maestro Engine" to getvariable "GB_CurrentSeconds"')"
+RAW="$(/usr/bin/osascript -e 'tell application "Keyboard Maestro Engine" to getvariable "GB_CurrentTimeRaw"')"
+CSV_PATH="$(/usr/bin/osascript -e 'tell application "Keyboard Maestro Engine" to getvariable "LiveShow_CSVPath"')"
+[[ -z "$CSV_PATH" ]] &amp;&amp; CSV_PATH="/Users/timstiles/Music/LiveShow/Set1.csv"
+[[ -z "$CURRENT_SECONDS" ]] &amp;&amp; CURRENT_SECONDS="$RAW"
+
+python3 - "$CURRENT_SECONDS" "$CSV_PATH" "$RAW" &lt;&lt;'PY'
+import csv, io, re, sys, unicodedata
+from pathlib import Path
+cur_raw, csv_path, raw = sys.argv[1].strip(), sys.argv[2].strip(), sys.argv[3].strip()
+SMART = str.maketrans({"\u2018":"'","\u2019":"'","\u201B":"'","\u201C":'"',"\u201D":'"',"\u00A0":' '})
+def clean(s):
+    return unicodedata.normalize("NFKC", s or "").translate(SMART).strip().strip("\ufeff").strip("\"'")
+def parse_time(s):
+    s=clean(s).replace(",", ".")
+    if re.fullmatch(r"\d+(?:\.\d+)?", s): return float(s)
+    if re.fullmatch(r"\d+:\d{2}\.\d{1,3}", s):
+        m,sec=s.split(":"); return int(m)*60+float(sec)
+    parts=s.split(":")
+    if len(parts)==4:
+        h,m,sec,frac=parts; return int(h)*3600+int(m)*60+int(sec)+float("0."+frac)
+    if len(parts)==3:
+        h,m,sec=parts; return int(h)*3600+int(m)*60+float(sec)
+    if len(parts)==2:
+        m,sec=parts; return int(m)*60+float(sec)
+    return float(s)
+text=Path(csv_path).read_text(encoding="utf-8-sig", errors="replace")
+try:
+    dialect=csv.Sniffer().sniff(text[:4096], delimiters=",\t;")
+except Exception:
+    dialect=csv.excel
+reader=csv.DictReader(io.StringIO(text), dialect=dialect)
+if reader.fieldnames:
+    reader.fieldnames=[clean(h) for h in reader.fieldnames]
+cur=parse_time(cur_raw)
+rows=[]
+for row in reader:
+    row={clean(k):clean(v) for k,v in row.items() if k is not None}
+    t=row.get("StartTime","")
+    if not t: continue
+    rows.append((parse_time(t), row.get("SongName",""), row.get("LyricsPath","")))
+rows.sort()
+song=""; path=""
+for i,(start,name,pdf) in enumerate(rows):
+    nxt=rows[i+1][0] if i+1&lt;len(rows) else 10**12
+    if start &lt;= cur &lt; nxt:
+        song=name; path=pdf; break
+print(f"GB_CurrentTimeRaw=[[{raw}]]\nGB_CurrentSeconds=[[{cur_raw}]]\nCSV=[[{csv_path}]]\nSong=[[{song}]]\nPath=[[{path}]]")
+PY
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>796003072.83266878</real>
+				<key>ModificationDate</key>
+				<real>796003072.83266878</real>
+				<key>Name</key>
+				<string>DEBUG Process Current Song Once (v7)</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>21</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>2304</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>EE08A41F-EE41-43CA-8D6B-33C283AC592D</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Tim Live Show – Skim Stage Mode (v7)</string>
+		<key>ToggleMacroUID</key>
+		<string>361A6B72-8F8C-44D0-A234-3AAE11D9DD5A</string>
+		<key>UID</key>
+		<string>ACD7DF6F-2FFB-44E2-B524-BD9520DFE7BB</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>796003072.83266878</real>
+		<key>IsActive</key>
+		<false/>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>9065</integer>
+						<key>MacroActionType</key>
+						<string>Comment</string>
+						<key>StyledText</key>
+						<data>
+						cnRmZAAAAAADAAAAAgAAAAcAAABU
+						WFQucnRmAQAAAC4hAgAAKwAAAAEA
+						AAAZAgAAe1xydGYxXGFuc2lcYW5z
+						aWNwZzEyNTJcY29jb2FydGYyODY4
+						Clxjb2NvYXRleHRzY2FsaW5nMFxj
+						b2NvYXBsYXRmb3JtMHtcZm9udHRi
+						bFxmMFxmc3dpc3NcZmNoYXJzZXQw
+						IEhlbHZldGljYTt9CntcY29sb3J0
+						Ymw7XHJlZDI1NVxncmVlbjI1NVxi
+						bHVlMjU1O30Ke1wqXGV4cGFuZGVk
+						Y29sb3J0Ymw7O30KXHBhcmRcdHg1
+						NjBcdHgxMTIwXHR4MTY4MFx0eDIy
+						NDBcdHgyODAwXHR4MzM2MFx0eDM5
+						MjBcdHg0NDgwXHR4NTA0MFx0eDU2
+						MDBcdHg2MTYwXHR4NjcyMFxwYXJk
+						aXJuYXR1cmFsXHBhcnRpZ2h0ZW5m
+						YWN0b3IwCgpcZjBcZnMyNCBcY2Yw
+						IFVzZSB0aGlzIG9uIGEgc2luZ2xl
+						IGRpc3BsYXkuIEl0IGtlZXBzIEdh
+						cmFnZUJhbmQgdmlzaWJsZSBmb3Ig
+						T0NSIHdoaWxlIGxlYXZpbmcgU2tp
+						bSBsYXJnZSBvbiB0aGUgcmlnaHQu
+						IFRoaXMgaXMgdGhlIGJlc3Qgb25l
+						LXNjcmVlbiBtb2RlOyB0cnVlIGZ1
+						bGwtc2NyZWVuIFByZXNlbnRhdGlv
+						biBhbmQgT0NSIG9mIEdhcmFnZUJh
+						bmQgY2Fubm90IGNvZXhpc3Qgb24g
+						YSBzaW5nbGUgZGlzcGxheS59AQAA
+						ACMAAAABAAAABwAAAFRYVC5ydGYQ
+						AAAAiArCabYBAAAAAAAAAAAAAA==
+						</data>
+						<key>Title</key>
+						<string>Untitled</string>
+					</dict>
+					<dict>
+						<key>ActionName</key>
+						<string>Arrange Single-Screen OCR Layout</string>
+						<key>ActionUID</key>
+						<integer>9066</integer>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteShellScript</string>
+						<key>NotifyOnFailure</key>
+						<false/>
+						<key>Path</key>
+						<string></string>
+						<key>Source</key>
+						<string>Nothing</string>
+						<key>StopOnFailure</key>
+						<false/>
+						<key>Text</key>
+						<string>#!/bin/zsh -f
+/usr/bin/osascript &lt;&lt;'OSA'
+set splitRatio to 0.28
+set topRatio to 0.34
+
+tell application "Finder"
+    set b to bounds of window of desktop
+end tell
+set screenLeft to item 1 of b
+set screenTop to item 2 of b
+set screenRight to item 3 of b
+set screenBottom to item 4 of b
+set screenWidth to screenRight - screenLeft
+set screenHeight to screenBottom - screenTop
+set gbWidth to (screenWidth * splitRatio) as integer
+set gbHeight to (screenHeight * topRatio) as integer
+set skimLeft to screenLeft + gbWidth
+set skimWidth to screenWidth - gbWidth
+
+tell application "GarageBand" to activate
+delay 0.3
+tell application "Skim" to activate
+delay 0.3
+
+tell application "System Events"
+    tell process "GarageBand"
+        try
+            set position of window 1 to {screenLeft, screenTop}
+            set size of window 1 to {gbWidth, gbHeight}
+        end try
+    end tell
+    tell process "Skim"
+        try
+            key code 53
+        end try
+        delay 0.2
+        try
+            set position of window 1 to {skimLeft, screenTop}
+            set size of window 1 to {skimWidth, screenHeight}
+        end try
+    end tell
+end tell
+OSA
+
+echo "Single-screen OCR layout applied: GarageBand visible on the left, Skim large on the right."
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>2752621820.4967241</real>
+				<key>ModificationDate</key>
+				<real>2752621820.4967241</real>
+				<key>Name</key>
+				<string>Arrange Single-Screen OCR Layout</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>23</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>2304</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>3CFF3B70-3613-4430-89D5-9E32CDE13933</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Tim Live Show – Skim Stage Mode (v7)</string>
+		<key>ToggleMacroUID</key>
+		<string>361A6B72-8F8C-44D0-A234-3AAE11D9DD5A</string>
+		<key>UID</key>
+		<string>ACD7DF6F-2FFB-44E2-B524-BD9520DFE7BB</string>
+	</dict>
+</array>
+</plist>

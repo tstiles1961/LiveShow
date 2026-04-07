@@ -599,9 +599,17 @@
     .t-btn { min-width: 56px; padding: 8px 10px; font-size: 0.9rem; }
     .t-btn .t-icon { font-size: 1.1rem; }
   }
+
+  /* Top-right vertical dots menu */
+  #topMenu{position:fixed;top:10px;right:12px;z-index:9999}
+  #menuButton{font-size:16px;cursor:pointer;color:white;padding:4px 8px;user-select:none;line-height:1;border-radius:6px;background:rgba(8,10,14,.45)}
+  #menuDropdown{display:none;position:absolute;right:0;margin-top:6px;background:#1c1c1c;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,.4);overflow:hidden;min-width:110px}
+  .menuItem{padding:10px 18px;color:white;font-size:14px;white-space:nowrap;cursor:pointer}
+  .menuItem:hover{background:#333}
 </style>
 </head>
 <body>
+<div id="topMenu"><div id="menuButton">⋮</div><div id="menuDropdown"><div class="menuItem" onclick="runSetup()">Setup</div><div class="menuItem" onclick="goAdmin()">Admin</div></div></div>
 
 <!-- ══════════════ HERO ══════════════ -->
 <div class="hero">
@@ -694,11 +702,7 @@
 
 <!-- ══════════════ TRANSPORT CONTROLS ══════════════ -->
 <div class="transport-bar">
-  <button class="t-btn t-setup"  onclick="transport('setup')">
-    <span class="t-icon">⚙️</span>
-    <span class="t-label">Setup</span>
-  </button>
-  <button class="t-btn t-start"  onclick="transport('start')">
+<button class="t-btn t-start"  onclick="transport('start')">
     <span class="t-icon">⏮</span>
     <span class="t-label">Goto Start</span>
   </button>
@@ -726,7 +730,7 @@
   <a class="nav-btn"        href="file:///Users/timstiles/Music/Show%20Controller/set2-deepcuts-controller.html">Set 2<span>Deep Cuts</span></a>
   <a class="nav-btn"        href="file:///Users/timstiles/Music/Show%20Controller/set3-soul-controller.html">Set 3<span>Soul &amp; Groove</span></a>
   <a class="nav-btn"        href="file:///Users/timstiles/Music/Show%20Controller/set4-sendoff-controller.html">Set 4<span>Send-Off</span></a>
-  <a class="nav-btn nav-alpha" href="file:///Users/timstiles/Music/Show%20Controller/all-controller.html">Alpha<span>A–Z</span></a>
+  <a class="nav-btn nav-alpha" href="file:///Users/timstiles/Music/Show%20Controller/alpha-controller.html">All<span>A–Z</span></a>
 </nav>
 
 <!-- ══════════════ MAIN CONTENT ══════════════ -->
@@ -762,7 +766,7 @@
 
 <script>
 // ── Hardcoded KM UUIDs ────────────────────────────────────────────────────────
-const KM_BASE    = "kmtrigger://macro=";
+const KM_BASE    = "http://localhost:4490/action.html?macro=";
 const KM_GOTO    = "FCE13B05-4E20-4CE2-9F4D-F69557ADDE15"; // Go To Time
 
 // Transport macros — create these in KM and paste UUIDs here
@@ -810,8 +814,9 @@ function transport(action) {
     return;
   }
 
-  window.location.href = KM_BASE + encodeURIComponent(uuid);
-  showToast(`${action.toUpperCase()} →  sent`);
+  fetch(KM_BASE + encodeURIComponent(uuid), { mode: 'no-cors' })
+    .then(() => showToast(`${action.toUpperCase()} →  sent`))
+    .catch(() => showToast('⚠  KM not reachable'));
 }
 
 // ── Song GO ───────────────────────────────────────────────────────────────────
@@ -859,10 +864,17 @@ function goToSong(index) {
   setTimeout(() => document.querySelectorAll('.song-card')[index].classList.remove('flash'), 600);
 
   setStatus('Sending…', '#f5c842');
-  window.location.href = KM_BASE + encodeURIComponent(KM_GOTO) + '&value=' + encodeURIComponent(song.time);
-  showToast(`▶  ${song.name}  →  ${song.time.split('.')[0]}`);
-  setStatus('Sent ✓', '#00e676');
-  setTimeout(() => setStatus('Ready', null), 1800);
+  fetch(KM_BASE + encodeURIComponent(KM_GOTO) + '&value=' + encodeURIComponent(song.time), { mode: 'no-cors' })
+    .then(() => {
+      showToast(`▶  ${song.name}  →  ${song.time}`);
+      setStatus('Sent ✓', '#00e676');
+      setTimeout(() => setStatus('Ready', null), 1800);
+    })
+    .catch(() => {
+      showToast('⚠  Cannot reach Keyboard Maestro');
+      setStatus('Error', '#e74c3c');
+      setTimeout(() => setStatus('Ready', null), 3000);
+    });
 }
 
 function setStatus(text, color) {
@@ -899,6 +911,25 @@ renderGrid();
 // Tell Alpha page which set is currently active
 localStorage.setItem('tstiles_currentSet', 'Set1');
 localStorage.setItem('tstiles_currentFile', 'Set 1 Welcome.band');
+
+function runSetup(){ window.location.href = "kmtrigger://macro=Setup"; }
+function goAdmin(){ window.location.href = "admin-controller.html"; }
+(function initTopMenu(){
+  const btn=document.getElementById("menuButton"), dd=document.getElementById("menuDropdown");
+  if(!btn||!dd) return;
+  btn.addEventListener("click", (e)=>{ e.stopPropagation(); dd.style.display = dd.style.display === "block" ? "none" : "block"; });
+  document.addEventListener("click", ()=>{ dd.style.display = "none"; });
+})();
+
+function updateStageOverlay(data){
+  try{
+    localStorage.setItem("LiveShow_Overlay", JSON.stringify(data || {}));
+  }catch(err){
+    console.warn("Stage overlay update failed", err);
+  }
+}
+
 </script>
+<!-- STAGE OVERLAY: open stage_overlay.html in a second browser window/tab on the same localhost server for the transparent panel to appear. -->
 </body>
 </html>

@@ -23,12 +23,14 @@
     --go-bg:       #b8860b;
     --go-hover:    #d4a017;
     --active-glow: rgba(245,200,66,0.13);
-    --s1: #1a4a7a; --s2: #4a1a6b; --s3: #1a5c30; --s4: #7a3a1a;
+    /* Set badge colors */
+    --s1: #1a4a7a;
+    --s2: #4a1a6b;
+    --s3: #1a5c30;
+    --s4: #7a3a1a;
+    /* Lyrics accent */
     --lyric-blue:  #6ab0ff;
     --lyric-teal:  #4ecdc4;
-    --hand-amber:  #ffb830;
-    --rec-red:     #ff4444;
-    --saved-green: #00e676;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,23 +38,42 @@
   body { background: var(--bg-deep); color: var(--text-main); font-family: 'DM Mono', monospace; min-height: 100vh; overflow-x: hidden; }
 
   /* ── Hero ── */
-  .hero { position: relative; width: 100%; height: 240px; overflow: hidden; background: radial-gradient(ellipse 60% 70% at 50% 55%, #001c2c 0%, #000e18 45%, #060408 100%); }
-  .hero-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-48%); width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(78,205,196,0.15) 0%, rgba(106,176,255,0.06) 45%, transparent 70%); animation: glowPulse 3s ease-in-out infinite alternate; pointer-events: none; }
+  .hero {
+    position: relative; width: 100%; height: 240px; overflow: hidden;
+    background: radial-gradient(ellipse 60% 70% at 50% 55%, #001c2c 0%, #000e18 45%, #060408 100%);
+  }
+  .hero-glow {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-48%); width: 320px; height: 320px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(78,205,196,0.15) 0%, rgba(106,176,255,0.06) 45%, transparent 70%);
+    animation: glowPulse 3s ease-in-out infinite alternate; pointer-events: none;
+  }
   @keyframes glowPulse { 0%{opacity:.7;transform:translate(-50%,-48%) scale(1)} 100%{opacity:1;transform:translate(-50%,-48%) scale(1.12)} }
   .hero svg.scene { position: absolute; top:0; left:0; width:100%; height:100%; }
   .staff-wrap { animation: staffScroll 22s linear infinite; }
   @keyframes staffScroll { from{transform:translateX(0)} to{transform:translateX(-960px)} }
-  .fn1{animation:fn1a 7s ease-in-out infinite alternate} .fn2{animation:fn2a 9s ease-in-out infinite alternate} .fn4{animation:fn4a 11s ease-in-out infinite alternate} .fn5{animation:fn5a 8s ease-in-out 1s infinite alternate}
+  .fn1{animation:fn1a 7s ease-in-out infinite alternate}
+  .fn2{animation:fn2a 9s ease-in-out infinite alternate}
+  .fn4{animation:fn4a 11s ease-in-out infinite alternate}
+  .fn5{animation:fn5a 8s ease-in-out 1s infinite alternate}
   @keyframes fn1a{0%{transform:translate(0,0) rotate(-8deg);opacity:.4}100%{transform:translate(-6px,-14px) rotate(6deg);opacity:.85}}
   @keyframes fn2a{0%{transform:translate(0,0) rotate(4deg);opacity:.3}100%{transform:translate(8px,-10px) rotate(-6deg);opacity:.7}}
   @keyframes fn4a{0%{transform:translate(0,0) rotate(6deg);opacity:.35}100%{transform:translate(6px,-12px) rotate(-4deg);opacity:.75}}
   @keyframes fn5a{0%{transform:translate(0,0) rotate(-5deg);opacity:.4}100%{transform:translate(-8px,-16px) rotate(7deg);opacity:.8}}
+
+  /* Floating lyric lines in hero */
   .lyric-line { position: absolute; font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: .18em; text-transform: uppercase; opacity: 0; color: rgba(78,205,196,0.45); white-space: nowrap; pointer-events: none; }
   .lyric-line.l1 { top: 30px; left: 8%; animation: lyricDrift 14s ease-in-out 0s infinite alternate; }
   .lyric-line.l2 { top: 55px; left: 62%; animation: lyricDrift 17s ease-in-out 2s infinite alternate; }
   .lyric-line.l3 { bottom: 38px; left: 20%; animation: lyricDrift 12s ease-in-out 4s infinite alternate; }
   .lyric-line.l4 { bottom: 22px; right: 12%; animation: lyricDrift 19s ease-in-out 1s infinite alternate; }
-  @keyframes lyricDrift { 0%{opacity:0;transform:translateX(-8px)} 15%{opacity:.55} 85%{opacity:.55} 100%{opacity:0;transform:translateX(8px)} }
+  @keyframes lyricDrift {
+    0%   { opacity:0;    transform: translateX(-8px); }
+    15%  { opacity:.55; }
+    85%  { opacity:.55; }
+    100% { opacity:0;    transform: translateX(8px); }
+  }
+
   .clef-shimmer { animation: clefShimmer 4s ease-in-out infinite alternate; filter: drop-shadow(0 0 12px rgba(78,205,196,0.7)); }
   @keyframes clefShimmer { 0%{filter:drop-shadow(0 0 10px rgba(78,205,196,0.6))} 100%{filter:drop-shadow(0 0 24px rgba(106,220,210,0.95))} }
   .hero-brand { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:10; pointer-events:none; text-align:center; padding:0 16px; }
@@ -64,7 +85,7 @@
 
   /* ── Set Nav ── */
   .set-nav { display:flex; background:#06080c; border-bottom:3px solid var(--gold); box-shadow:0 4px 20px rgba(0,0,0,.6); }
-  .nav-btn { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:11px 8px; text-decoration:none; font-family:'Bebas Neue',sans-serif; font-size:1.25rem; letter-spacing:.15em; color:var(--text-dim); border-right:1px solid rgba(245,200,66,.12); transition:background .15s,color .15s; line-height:1; gap:3px; }
+  .nav-btn { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:11px 8px; text-decoration:none; font-family:'Bebas Neue',sans-serif; font-size:1.25rem; letter-spacing:.15em; color:var(--text-dim); border-right:1px solid rgba(245,200,66,.12); transition:background .15s,color .15s; line-height:1; gap:3px; position:relative; }
   .nav-btn:last-child { border-right:none; }
   .nav-btn span { font-family:'Cinzel',serif; font-size:.52rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--text-dim); opacity:.65; transition:color .15s,opacity .15s; }
   .nav-btn:hover { background:rgba(245,200,66,.07); color:var(--gold); }
@@ -86,92 +107,94 @@
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.45} }
   .now-playing { font-family:'Cinzel',serif; font-size:.88rem; font-weight:700; color:var(--lyric-teal); letter-spacing:.06em; text-align:right; max-width:340px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-shadow:0 0 12px rgba(78,205,196,.5); }
 
-  /* ── Info panel ── */
-  .info-panel { background:rgba(78,205,196,.04); border:2px solid rgba(78,205,196,.2); border-radius:10px; padding:12px 16px; margin-bottom:11px; display:flex; align-items:flex-start; gap:14px; flex-wrap:wrap; }
-  .info-icon { font-size:1.2rem; padding-top:2px; }
-  .info-text { font-family:'DM Mono',monospace; font-size:.75rem; color:var(--text-dim); line-height:1.7; flex:1; }
-  .info-text strong { color:var(--lyric-teal); }
-  .info-text .amber { color:var(--hand-amber); }
-  .info-text .red { color:var(--rec-red); }
-
   /* ── Search bar ── */
   .filter-bar { display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap; align-items:center; }
-  .search-input { flex:1; min-width:200px; background:var(--bg-card); border:2px solid var(--border-gold); border-radius:8px; padding:10px 16px; color:var(--white); font-family:'DM Mono',monospace; font-size:.9rem; outline:none; transition:border-color .2s; }
+  .search-input {
+    flex:1; min-width:200px;
+    background:var(--bg-card); border:2px solid var(--border-gold); border-radius:8px;
+    padding:10px 16px; color:var(--white); font-family:'DM Mono',monospace; font-size:.9rem;
+    outline:none; transition:border-color .2s;
+  }
   .search-input:focus { border-color:var(--lyric-teal); }
   .search-input::placeholder { color:var(--text-dim); }
-  .filter-btn { background:var(--bg-card); border:2px solid var(--border-gold); border-radius:8px; color:var(--text-dim); font-family:'Oswald',sans-serif; font-size:.8rem; font-weight:600; letter-spacing:.12em; padding:10px 16px; cursor:pointer; transition:all .15s; text-transform:uppercase; }
+  .filter-btn {
+    background:var(--bg-card); border:2px solid var(--border-gold); border-radius:8px;
+    color:var(--text-dim); font-family:'Oswald',sans-serif; font-size:.8rem; font-weight:600;
+    letter-spacing:.12em; padding:10px 16px; cursor:pointer; transition:all .15s; text-transform:uppercase;
+  }
   .filter-btn:hover { border-color:var(--gold); color:var(--gold); }
 
   /* ── Song cards ── */
   .song-grid { display:grid; grid-template-columns:1fr; gap:6px; }
-  .song-card { background:var(--bg-card); border:2px solid var(--border-gold); border-radius:9px; display:flex; flex-direction:column; overflow:hidden; position:relative; transition:border-color .15s,background .15s; }
-  .song-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:transparent; transition:background .2s; z-index:1; }
-  .song-card:hover { border-color:var(--lyric-teal); background:var(--bg-hover); }
+
+  .song-card {
+    background:var(--bg-card); border:2px solid var(--border-gold); border-radius:9px;
+    display:flex; align-items:stretch; overflow:hidden; position:relative;
+    min-height:60px; transition:border-color .15s,background .15s,transform .15s;
+  }
+  .song-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:transparent; transition:background .2s; }
+  .song-card:hover { border-color:var(--lyric-teal); background:var(--bg-hover); transform:translateX(3px); }
   .song-card.active { border-color:var(--lyric-teal); background:rgba(78,205,196,.06); box-shadow:0 0 16px rgba(78,205,196,.1); }
   .song-card.active::before { background:var(--lyric-teal); }
 
-  /* Card top row */
-  .card-top { display:flex; align-items:stretch; min-height:58px; }
+  /* Order number column */
   .order-num { width:50px; display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:var(--gold-dark); border-right:2px solid var(--border-gold); flex-shrink:0; letter-spacing:.05em; transition:color .2s; }
   .song-card.active .order-num { color:var(--lyric-teal); text-shadow:0 0 8px rgba(78,205,196,.5); }
-  .song-info { flex:1; display:flex; flex-direction:column; justify-content:center; gap:2px; padding:8px 14px; min-width:0; }
-  .song-name { font-family:'Oswald',sans-serif; font-size:clamp(.98rem,2.2vw,1.1rem); font-weight:600; letter-spacing:.05em; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:var(--white); line-height:1.2; }
+
+  .song-info { flex:1; display:flex; flex-direction:column; justify-content:center; gap:3px; padding:8px 16px; min-width:0; }
+  .song-name { font-family:'Oswald',sans-serif; font-size:clamp(.98rem,2.2vw,1.1rem); font-weight:600; letter-spacing:.05em; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:var(--white); transition:color .2s; line-height:1.2; }
   .song-card.active .song-name { color:var(--lyric-teal); }
-  .song-path { font-family:'DM Mono',monospace; font-size:.65rem; color:var(--text-dim); opacity:.5; letter-spacing:.04em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .song-card.active .song-path { opacity:.7; color:#9dd8d5; }
+  .song-path { font-family:'DM Mono',monospace; font-size:.68rem; color:var(--text-dim); opacity:.55; letter-spacing:.04em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .song-card.active .song-path { opacity:.75; color:#9dd8d5; }
+
+  /* Controls column: zoom + position */
+  .controls-col { display:flex; align-items:center; gap:0; border-left:2px solid var(--border-gold); flex-shrink:0; }
+
+  /* Zoom panel */
+  .zoom-panel { display:flex; flex-direction:column; align-items:center; gap:1px; padding:6px 12px; border-right:1px solid var(--border-gold); min-width:80px; }
+  .ctrl-label { font-family:'Oswald',sans-serif; font-size:.55rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--text-dim); margin-bottom:2px; }
+  .ctrl-stepper { display:flex; align-items:center; gap:4px; }
+  .step-btn { background:rgba(245,200,66,.1); border:1px solid var(--border-gold); border-radius:4px; color:var(--gold); font-family:'Bebas Neue',sans-serif; font-size:.9rem; width:22px; height:22px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background .12s; line-height:1; flex-shrink:0; }
+  .step-btn:hover { background:rgba(245,200,66,.25); }
+  .step-btn:active { background:rgba(245,200,66,.4); }
+  .ctrl-value { font-family:'Bebas Neue',sans-serif; font-size:1rem; color:var(--white); letter-spacing:.06em; min-width:28px; text-align:center; }
+
+  /* Position panel */
+  .pos-panel { display:flex; flex-direction:column; align-items:center; gap:1px; padding:6px 12px; border-right:1px solid var(--border-gold); min-width:80px; }
+  .pos-panel .ctrl-value { color:var(--lyric-blue); }
+
+  /* Set/Order badge */
+  .set-badge {
+    font-family:'Oswald',sans-serif; font-size:.65rem; font-weight:700; letter-spacing:.12em;
+    flex-shrink:0; padding:0 10px; border-left:2px solid var(--border-gold);
+    display:flex; align-items:center; height:100%; text-transform:uppercase; white-space:nowrap;
+  }
+  .set-badge-s1 { color:#6ab0ff; }
+  .set-badge-s2 { color:#c59eff; }
+  .set-badge-s3 { color:#80ffb0; }
+  .set-badge-s4 { color:#ffb870; }
 
   /* GO button */
-  .go-btn { background:linear-gradient(160deg,#0e3a5a,#07212e); border:none; border-left:2px solid rgba(0,0,0,.4); color:var(--lyric-teal); font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:.18em; padding:0 22px; cursor:pointer; flex-shrink:0; transition:background .15s,color .15s; text-shadow:0 0 12px rgba(78,205,196,.4); }
+  .go-btn { background:linear-gradient(160deg,#0e3a5a,#07212e); border:none; border-left:2px solid rgba(0,0,0,.4); color:var(--lyric-teal); font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:.18em; padding:0 22px; cursor:pointer; height:100%; flex-shrink:0; transition:background .15s,color .15s; text-shadow:0 0 12px rgba(78,205,196,.4); }
   .go-btn:hover { background:linear-gradient(160deg,#1a5a7a,#0a3040); }
   .go-btn:active { background:#063040; }
-  .song-card.active .go-btn { background:var(--lyric-teal); color:#02181a; text-shadow:none; }
-  .go-btn.loading { background:#0a2030; color:#4ecdc4; cursor:wait; font-size:.8rem; letter-spacing:.04em; padding:0 12px; }
-
-  /* ── Toolbar row (only visible when card is active) ── */
-  .card-toolbar { display:none; align-items:center; border-top:1px solid rgba(245,200,66,.18); background:rgba(0,0,0,.3); min-height:44px; }
-  .song-card.active .card-toolbar { display:flex; }
-
-  .tb-btn { display:flex; align-items:center; gap:6px; height:44px; padding:0 16px; border:none; border-right:1px solid rgba(245,200,66,.15); background:transparent; cursor:pointer; font-family:'Oswald',sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; transition:background .15s,color .15s; white-space:nowrap; flex-shrink:0; }
-  .tb-btn:last-child { border-right:none; }
-  .tb-icon { font-size:1rem; line-height:1; }
-
-  /* Scroll Tool — amber */
-  .tb-scroll { color:var(--hand-amber); }
-  .tb-scroll:hover { background:rgba(255,184,48,.12); }
-  .tb-scroll:active { background:rgba(255,184,48,.22); }
-  .tb-scroll.tool-on { background:rgba(255,184,48,.15); box-shadow:inset 0 -2px 0 var(--hand-amber); animation:toolGlow 1.5s ease-in-out infinite alternate; }
-  @keyframes toolGlow { 0%{background:rgba(255,184,48,.1)} 100%{background:rgba(255,184,48,.22)} }
-
-  /* Record — red */
-  .tb-record { color:var(--rec-red); }
-  .tb-record:hover { background:rgba(255,68,68,.12); }
-  .tb-record:active { background:rgba(255,68,68,.22); }
-  .tb-record.recording { background:rgba(255,68,68,.15); box-shadow:inset 0 -2px 0 var(--rec-red); animation:recBlink .7s ease-in-out infinite alternate; }
-  @keyframes recBlink { 0%{opacity:.6} 100%{opacity:1} }
-
-  /* Saved position display (fills remaining space) */
-  .tb-pos { flex:1; display:flex; align-items:center; gap:10px; padding:0 14px; min-width:0; }
-  .tb-pos-lbl { font-family:'Oswald',sans-serif; font-size:.58rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--text-dim); opacity:.6; flex-shrink:0; }
-  .tb-pos-val { font-family:'DM Mono',monospace; font-size:.7rem; color:var(--saved-green); letter-spacing:.05em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .tb-pos-val.none { color:var(--text-dim); opacity:.4; font-style:italic; }
-
-  /* Clear button at far right of toolbar */
-  .tb-clear { color:#ff6b6b; opacity:.45; padding:0 12px; font-size:.65rem; }
-  .tb-clear:hover { opacity:1; background:rgba(255,107,107,.1); }
-
-  /* Set badge inside toolbar */
-  .tb-set { font-family:'Oswald',sans-serif; font-size:.65rem; font-weight:700; letter-spacing:.12em; padding:0 12px; height:44px; display:flex; align-items:center; border-left:1px solid rgba(245,200,66,.15); flex-shrink:0; text-transform:uppercase; }
-  .tb-set-s1{color:#6ab0ff} .tb-set-s2{color:#c59eff} .tb-set-s3{color:#80ffb0} .tb-set-s4{color:#ffb870}
+  .song-card.active .go-btn { background:var(--lyric-teal); color:#02181a; text-shadow:none; font-weight:900; }
+  .go-btn.loading { background:#1a4a7a; color:#6ab0ff; cursor:wait; letter-spacing:.06em; font-size:1rem; }
 
   @keyframes flash { 0%{background:rgba(78,205,196,.2)} 100%{background:var(--bg-card)} }
   .song-card.flash { animation:flash .5s ease-out forwards; }
 
-  /* ── Cued bar ── */
-  .cued-bar { background:var(--bg-card); border:3px solid var(--lyric-teal); border-radius:12px; padding:14px 20px; margin-top:12px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; box-shadow:0 0 28px rgba(78,205,196,.1); }
-  .cued-label { font-family:'Oswald',sans-serif; font-size:.7rem; font-weight:600; letter-spacing:.3em; text-transform:uppercase; color:var(--text-dim); flex-shrink:0; }
-  .cued-path { font-family:'DM Mono',monospace; font-size:.78rem; color:var(--lyric-teal); letter-spacing:.04em; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; }
-  .cued-pos { font-family:'DM Mono',monospace; font-size:.72rem; color:var(--saved-green); white-space:nowrap; flex-shrink:0; }
-  .cued-npos { font-family:'Oswald',sans-serif; font-size:.72rem; color:var(--text-dim); opacity:.5; white-space:nowrap; flex-shrink:0; letter-spacing:.1em; }
+  /* ── Cued bar (like playhead bar) ── */
+  .cued-bar { background:var(--bg-card); border:3px solid var(--lyric-teal); border-radius:12px; padding:14px 20px; margin-top:12px; display:flex; align-items:center; gap:18px; flex-wrap:wrap; box-shadow:0 0 28px rgba(78,205,196,.1); }
+  .cued-label { font-family:'Oswald',sans-serif; font-size:.7rem; font-weight:600; letter-spacing:.3em; text-transform:uppercase; color:var(--text-dim); }
+  .cued-path { font-family:'DM Mono',monospace; font-size:.78rem; color:var(--lyric-teal); letter-spacing:.04em; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .cued-meta { font-family:'Oswald',sans-serif; font-size:.8rem; color:var(--gold); letter-spacing:.08em; white-space:nowrap; flex-shrink:0; }
+
+  /* ── Zoom/Position info panel ── */
+  .info-panel { background:rgba(78,205,196,.04); border:2px solid rgba(78,205,196,.2); border-radius:10px; padding:12px 16px; margin-bottom:11px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .info-icon { font-size:1.2rem; }
+  .info-text { font-family:'DM Mono',monospace; font-size:.75rem; color:var(--text-dim); line-height:1.6; flex:1; }
+  .info-text strong { color:var(--lyric-teal); }
 
   /* ── Empty state ── */
   .empty-state { text-align:center; padding:60px 20px; color:var(--text-dim); font-family:'Cinzel',serif; font-size:.9rem; letter-spacing:.15em; }
@@ -182,14 +205,14 @@
   .toast { position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(80px); background:#0e0c00; border:3px solid var(--lyric-teal); border-radius:8px; padding:11px 26px; font-family:'Oswald',sans-serif; font-size:.95rem; font-weight:600; letter-spacing:.12em; color:var(--lyric-teal); z-index:1000; transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .3s; opacity:0; white-space:nowrap; text-transform:uppercase; box-shadow:0 4px 24px rgba(0,0,0,.7); }
   .toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
 
-  @media(max-width:640px) {
+  @media(max-width:600px) {
     .go-btn { padding:0 14px; font-size:1.2rem; }
+    .zoom-panel, .pos-panel { padding:6px 8px; min-width:64px; }
     .hero { height:190px; }
     .song-path { display:none; }
-    .tb-btn { padding:0 10px; font-size:.62rem; }
-    .tb-pos { display:none; }
   }
 
+  /* Top-right vertical dots menu */
   #topMenu{position:fixed;top:10px;right:12px;z-index:9999}
   #menuButton{font-size:16px;cursor:pointer;color:white;padding:4px 8px;user-select:none;line-height:1;border-radius:6px;background:rgba(8,10,14,.45)}
   #menuDropdown{display:none;position:absolute;right:0;margin-top:6px;background:#1c1c1c;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,.4);overflow:hidden;min-width:110px}
@@ -203,10 +226,12 @@
 <!-- ══════ HERO ══════ -->
 <div class="hero">
   <div class="hero-glow"></div>
+  <!-- Floating lyric lines -->
   <div class="lyric-line l1">♩ I ain't worried 'bout it ♩</div>
   <div class="lyric-line l2">♪ human nature ♪</div>
   <div class="lyric-line l3">♩ fly me to the moon ♩</div>
   <div class="lyric-line l4">♪ georgy porgy puddin' pie ♪</div>
+
   <svg class="scene" viewBox="0 0 1000 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <radialGradient id="clefGrad" cx="50%" cy="45%" r="50%"><stop offset="0%" stop-color="#a0f0e8"/><stop offset="35%" stop-color="#4ecdc4"/><stop offset="70%" stop-color="#1a8a84"/><stop offset="100%" stop-color="#0a4040"/></radialGradient>
@@ -228,6 +253,19 @@
       <path d="M 0,-85 C 8,-85 18,-77 20,-63 C 22,-49 18,-36 10,-24 C 22,-16 32,-3 32,14 C 32,38 18,56 0,62 C -4,64 -8,65 -12,65 C -28,65 -40,54 -40,38 C -40,22 -28,12 -14,12 C -4,12 4,18 8,26 C 10,22 12,16 12,10 C 12,-2 6,-12 -2,-18 C -12,-8 -18,6 -18,22 C -18,46 -4,64 0,62 C 18,56 30,40 30,16 C 30,-4 18,-18 4,-26 C 14,-38 20,-54 18,-67 C 16,-79 8,-85 0,-85 Z" fill="url(#clefGrad)" filter="url(#glow)"/>
       <path d="M 0,62 C 2,70 4,82 2,92 C 0,102 -6,110 -12,112 C -18,114 -22,110 -20,104 C -18,98 -10,96 -6,100" fill="none" stroke="url(#clefGrad)" stroke-width="7" stroke-linecap="round" filter="url(#glow)"/>
     </g>
+    <!-- Tiny PDF icon floating left -->
+    <g opacity="0.12" transform="translate(60,80)">
+      <rect x="0" y="0" width="30" height="38" rx="3" fill="#4ecdc4"/>
+      <rect x="5" y="8" width="20" height="2" rx="1" fill="#080a0e"/>
+      <rect x="5" y="14" width="20" height="2" rx="1" fill="#080a0e"/>
+      <rect x="5" y="20" width="14" height="2" rx="1" fill="#080a0e"/>
+    </g>
+    <g opacity="0.1" transform="translate(900,80)">
+      <rect x="0" y="0" width="30" height="38" rx="3" fill="#4ecdc4"/>
+      <rect x="5" y="8" width="20" height="2" rx="1" fill="#080a0e"/>
+      <rect x="5" y="14" width="20" height="2" rx="1" fill="#080a0e"/>
+      <rect x="5" y="20" width="14" height="2" rx="1" fill="#080a0e"/>
+    </g>
   </svg>
   <div class="hero-brand">
     <div class="brand-name">T Stiles</div>
@@ -236,7 +274,7 @@
       <svg class="ribbon-svg" viewBox="0 0 460 36" xmlns="http://www.w3.org/2000/svg">
         <defs><linearGradient id="ribGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0e6b68"/><stop offset="50%" stop-color="#0a4a48"/><stop offset="100%" stop-color="#062c2a"/></linearGradient></defs>
         <path d="M 18 0 L 442 0 L 460 18 L 442 36 L 18 36 L 0 18 Z" fill="url(#ribGrad)"/>
-        <text class="ribbon-text-el" x="230" y="19">Open · Scroll Tool · Record Position</text>
+        <text class="ribbon-text-el" x="230" y="19">Open PDF · Zoom · Position</text>
       </svg>
     </div>
   </div>
@@ -263,15 +301,17 @@
     <div class="now-playing" id="nowPlayingHeader">— Select Lyrics —</div>
   </div>
 
+  <!-- Info panel -->
   <div class="info-panel">
     <div class="info-icon">📄</div>
     <div class="info-text">
-      <strong>GO</strong> opens the PDF → Full Screen → Presentation Mode, then auto-applies any saved position.<br>
-      <span class="amber">☛ Scroll Tool</span> switches Skim to the hand/pan tool (⌘2) — click and drag to move the PDF in any direction.<br>
-      <span class="red">⏺ Record</span> captures the current zoom &amp; position from Skim and saves it — applied automatically on every future load.
+      Tap <strong>GO</strong> to run the full 3-step open sequence:
+      <strong>Prepare Skim</strong> → <strong>Open PDF</strong> → <strong>Stage Mode</strong> (full screen + ⌘⌥A).
+      Adjust <strong>Zoom</strong> and <strong>Scroll Y</strong> per song — values persist between sessions.
     </div>
   </div>
 
+  <!-- Search bar -->
   <div class="filter-bar">
     <input class="search-input" type="text" id="searchInput" placeholder="Search lyrics…" oninput="applyFilters()">
     <button class="filter-btn" onclick="clearSearch()">✕ Clear</button>
@@ -279,11 +319,11 @@
 
   <div id="songList"></div>
 
+  <!-- Cued bar -->
   <div class="cued-bar">
-    <div class="cued-label">Cued</div>
+    <div class="cued-label">Cued PDF</div>
     <div class="cued-path" id="cuedPath">No file selected</div>
-    <div class="cued-pos" id="cuedPos" style="display:none"></div>
-    <div class="cued-npos" id="cuedNPos">—</div>
+    <div class="cued-meta" id="cuedMeta">—</div>
   </div>
 
   <div class="footer">
@@ -294,111 +334,137 @@
 <div class="toast" id="toast"></div>
 
 <script>
-// ═══════════════════════════════════════════════════════════════════════════════
-// KM MACRO UUIDs  (all pre-filled — just import the .kmmacros file)
-// ═══════════════════════════════════════════════════════════════════════════════
-const KM_BASE        = "http://localhost:4490/action.html?macro=";
-const KM_PREPARE     = "38381411-C415-491D-88D5-66865A37102C"; // Lyrics: Prepare Skim
-const KM_OPEN        = "6B384F37-DF0C-444B-808C-3631C76E02BB"; // Lyrics: Open PDF in Skim
-const KM_STAGE       = "86635450-8394-4EE5-B629-54C7A5641438"; // Lyrics: Skim Stage Mode
-const KM_SCROLL_TOOL = "F955D9AC-DC89-4ACC-AB67-CCCF81530B20"; // Lyrics: Scroll Tool (⌘2)
-const KM_RECORD      = "552E3AE9-77F2-475F-B269-A41FFC3B896A"; // Lyrics: Record Position
-const KM_APPLY       = "4886BD75-DB39-412F-822A-67B79A75BA82"; // Lyrics: Apply Position
+// ── KM Config ─────────────────────────────────────────────────────────────────
+// These mirror the three steps in the shell script's PDF-open sequence:
+//
+//   Step 1 — prepare_skim()   → activate Skim, close front doc without saving
+//   Step 2 — open PDF         → `open -a "Skim" "$PDF_PATH"`
+//   Step 3 — run_stage_mode() → Enter Full Screen, then ⌘⌥A (Presentation Mode)
+//
+// Create one KM macro per step and paste its UUID below.
+// Each macro receives the PDF path as its trigger value (%TriggerValue%).
+//
+// Step 2 macro example actions:
+//   • Shell Script: /usr/bin/open -a "Skim" "%TriggerValue%"
+//
+// Step 3 macro example actions (fires ~1.2 s after Step 2):
+//   • AppleScript: tell application "Skim" to activate
+//   • Pause: 0.4 s
+//   • AppleScript: click menu item "Enter Full Screen" of menu "View" …
+//   • Pause: 0.5 s
+//   • Type Keystroke: ⌘⌥A
 
-// KM variable the Record macro writes to — page polls this endpoint to get the result
-const KM_VAR_URL = "http://localhost:4490/variable/LiveShow_SkimPosition";
+const KM_BASE          = "http://localhost:4490/kmtrigger://macro=";
+//const KM_BASE          = "http://localhost:4490/action.html?macro=";
+const KM_PREPARE_SKIM  = "574C3AC4-CE46-4B9B-980D-E1746C5052DB";  // Step 1: close current doc
+const KM_OPEN_PDF      = "6CD96108-01DE-4284-9912-0F46C0FDCBD9";      // Step 2: open -a Skim <path>
+const KM_STAGE_MODE    = "E707370B-159C-4F0C-8E1F-149434ECC5CF";    // Step 3: full screen + ⌘⌥A
 
-// Timing in ms
-const T_AFTER_PREPARE = 200;   // before open (matches shell script sleep 0.2)
-const T_AFTER_OPEN    = 1000;  // before stage mode (matches shell script sleep 1.0)
-const T_BEFORE_APPLY  = 1500;  // after stage mode, before applying position
-                                // (Skim needs to finish rendering the zoomed page)
+// Delays that mirror the shell script's sleep calls (milliseconds)
+const DELAY_AFTER_PREPARE = 200;   // sleep 0.2 before open
+const DELAY_AFTER_OPEN    = 1000;  // sleep 1.0 before stage mode
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// SONG DATA
-// ═══════════════════════════════════════════════════════════════════════════════
-const SONGS_RAW = [
-  { id:23, name:"I Ain't Worried",    path:"/Users/timstiles/Music/LiveShow/Lyrics/I Ain't Worried.pdf",    set:1, order:1 },
-  { id:22, name:"Human Nature",       path:"/Users/timstiles/Music/LiveShow/Lyrics/Human Nature.pdf",       set:1, order:2 },
-  { id:15, name:"Georgy Porgy",       path:"/Users/timstiles/Music/LiveShow/Lyrics/Georgy Porgy.pdf",       set:1, order:3 },
-  { id:18, name:"Hello Its Me",       path:"/Users/timstiles/Music/LiveShow/Lyrics/Hello Its Me.pdf",       set:1, order:4 },
-  { id:14, name:"Fly Me To The Moon", path:"/Users/timstiles/Music/LiveShow/Lyrics/Fly Me To The Moon.pdf", set:1, order:5 },
+// ── Song data from ShowWaterfrontLyrics.csv ───────────────────────────────────
+// Columns: ID, StartTime, SongName, LyricsPath, Zoom, ScrollY, Set, Order
+// Zoom and ScrollY match the CSV column names used by the shell script
+const LYRICS_DATA = [
+  { id:23, startTime:"00:16:36.805", name:"I Ain't Worried",    path:"/Users/timstiles/Music/LiveShow/Lyrics/I Ain't Worried.pdf",    zoom:0, scrollY:0, set:1, order:1 },
+  { id:22, startTime:"00:04:42.911", name:"Human Nature",       path:"/Users/timstiles/Music/LiveShow/Lyrics/Human Nature.pdf",       zoom:0, scrollY:0, set:1, order:2 },
+  { id:15, startTime:"00:08:49.744", name:"Georgy Porgy",       path:"/Users/timstiles/Music/LiveShow/Lyrics/Georgy Porgy.pdf",       zoom:0, scrollY:0, set:1, order:3 },
+  { id:18, startTime:"00:03:03.453", name:"Hello Its Me",       path:"/Users/timstiles/Music/LiveShow/Lyrics/Hello Its Me.pdf",       zoom:0, scrollY:0, set:1, order:4 },
+  { id:14, startTime:"00:59:47.118", name:"Fly Me To The Moon", path:"/Users/timstiles/Music/LiveShow/Lyrics/Fly Me To The Moon.pdf", zoom:0, scrollY:0, set:1, order:5 },
 ];
-const SONGS = [...SONGS_RAW].sort((a, b) => a.order - b.order);
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// POSITION STORAGE
-// Saves: { zoom (Skim multiplier, e.g. 2.5),
-//          scrollV (vertical scroll bar 0.0–1.0),
-//          scrollH (horizontal scroll bar 0.0–1.0) }
-// ═══════════════════════════════════════════════════════════════════════════════
-const posKey  = id => `tstiles_pos_${id}`;
-const getPos  = id => { try { const r = localStorage.getItem(posKey(id)); return r ? JSON.parse(r) : null; } catch(e) { return null; } };
-const savePos = (id, pos) => localStorage.setItem(posKey(id), JSON.stringify(pos));
-const delPos  = id => localStorage.removeItem(posKey(id));
+// Sort by Order
+const SONGS = [...LYRICS_DATA].sort((a, b) => a.order - b.order);
 
-function fmtPos(pos) {
-  if (!pos) return null;
-  const z = (pos.zoom * 100).toFixed(0);
-  const h = (pos.scrollH * 100).toFixed(0);
-  const v = (pos.scrollV * 100).toFixed(0);
-  return `Zoom ${z}%  H ${h}%  V ${v}%`;
+// ── Per-song state: zoom + scrollY persist in localStorage ────────────────────
+function storageKey(id) { return `tstiles_lyrics_${id}`; }
+
+function getSongState(song) {
+  try {
+    const raw = localStorage.getItem(storageKey(song.id));
+    if (raw) {
+      const saved = JSON.parse(raw);
+      return { zoom: saved.zoom ?? song.zoom, scrollY: saved.scrollY ?? song.scrollY };
+    }
+  } catch(e) {}
+  return { zoom: song.zoom, scrollY: song.scrollY };
 }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// APP STATE
-// ═══════════════════════════════════════════════════════════════════════════════
+function saveSongState(song, zoom, scrollY) {
+  try {
+    localStorage.setItem(storageKey(song.id), JSON.stringify({ zoom, scrollY }));
+  } catch(e) {}
+}
+
+// ── App state ─────────────────────────────────────────────────────────────────
 let activeSong = null;
 let searchTerm = '';
-let recordTimer = null;
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// RENDER
-// ═══════════════════════════════════════════════════════════════════════════════
-function applyFilters() { searchTerm = document.getElementById('searchInput').value.toLowerCase().trim(); renderList(); }
-function clearSearch()  { document.getElementById('searchInput').value = ''; searchTerm = ''; renderList(); }
+// ── Render ────────────────────────────────────────────────────────────────────
+function applyFilters() {
+  searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+  renderList();
+}
+
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  searchTerm = '';
+  renderList();
+}
 
 function renderList() {
   const container = document.getElementById('songList');
   container.innerHTML = '';
-  const filtered = SONGS.filter(s => !searchTerm || s.name.toLowerCase().includes(searchTerm));
-  if (!filtered.length) { container.innerHTML = '<div class="empty-state">No lyrics match your search</div>'; return; }
+
+  const filtered = SONGS.filter(s =>
+    !searchTerm || s.name.toLowerCase().includes(searchTerm)
+  );
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="empty-state">No lyrics match your search</div>';
+    return;
+  }
 
   const grid = document.createElement('div');
   grid.className = 'song-grid';
 
   filtered.forEach(song => {
+    const state    = getSongState(song);
     const isActive = activeSong && activeSong.id === song.id;
-    const pos      = getPos(song.id);
-    const posLabel = fmtPos(pos);
+    const setClass = `set-badge-s${song.set}`;
 
     const card = document.createElement('div');
     card.className = 'song-card' + (isActive ? ' active' : '');
     card.dataset.id = song.id;
 
     card.innerHTML = `
-      <div class="card-top">
-        <div class="order-num">${song.order}</div>
-        <div class="song-info">
-          <div class="song-name">${esc(song.name)}</div>
-          <div class="song-path">${esc(song.path)}</div>
-        </div>
-        <button class="go-btn" id="gobtn-${song.id}" onclick="openPDF(${song.id})">GO</button>
+      <div class="order-num">${song.order}</div>
+      <div class="song-info">
+        <div class="song-name">${esc(song.name)}</div>
+        <div class="song-path">${esc(song.path)}</div>
       </div>
-      <div class="card-toolbar">
-        <button class="tb-btn tb-scroll" id="scroll-btn-${song.id}" onclick="activateScrollTool(${song.id})">
-          <span class="tb-icon">☛</span> Scroll Tool
-        </button>
-        <button class="tb-btn tb-record" id="rec-btn-${song.id}" onclick="recordPosition(${song.id})">
-          <span class="tb-icon">⏺</span> Record
-        </button>
-        <div class="tb-pos">
-          <span class="tb-pos-lbl">Saved</span>
-          <span class="tb-pos-val ${posLabel ? '' : 'none'}" id="tpos-${song.id}">${posLabel || '— tap Record to save —'}</span>
+      <div class="controls-col">
+        <div class="zoom-panel">
+          <div class="ctrl-label">Zoom</div>
+          <div class="ctrl-stepper">
+            <button class="step-btn" onclick="adjustValue(${song.id},'zoom',-1)" title="Zoom out">−</button>
+            <div class="ctrl-value" id="zoom-val-${song.id}">${state.zoom}</div>
+            <button class="step-btn" onclick="adjustValue(${song.id},'zoom',+1)" title="Zoom in">+</button>
+          </div>
         </div>
-        <span class="tb-set tb-set-s${song.set}">Set ${song.set}</span>
-        ${posLabel ? `<button class="tb-btn tb-clear" onclick="clearPosition(${song.id})" title="Clear saved position">✕ Clear</button>` : ''}
+        <div class="pos-panel">
+          <div class="ctrl-label">Scroll Y</div>
+          <div class="ctrl-stepper">
+            <button class="step-btn" onclick="adjustValue(${song.id},'scrollY',-1)" title="Scroll up">↑</button>
+            <div class="ctrl-value" id="scroll-val-${song.id}">${state.scrollY}</div>
+            <button class="step-btn" onclick="adjustValue(${song.id},'scrollY',+1)" title="Scroll down">↓</button>
+          </div>
+        </div>
+        <div class="set-badge ${setClass}">Set ${song.set}</div>
       </div>
+      <button class="go-btn" id="gobtn-${song.id}" onclick="openPDF(${song.id})">GO</button>
     `;
     grid.appendChild(card);
   });
@@ -406,161 +472,107 @@ function renderList() {
   container.appendChild(grid);
 }
 
-function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// GO — full open sequence
-// ═══════════════════════════════════════════════════════════════════════════════
+// ── Adjust zoom or scrollY ────────────────────────────────────────────────────
+function adjustValue(id, field, delta) {
+  const song = SONGS.find(s => s.id === id);
+  if (!song) return;
+  const state = getSongState(song);
+  state[field] += delta;
+  saveSongState(song, state.zoom, state.scrollY);
+
+  const zEl = document.getElementById(`zoom-val-${id}`);
+  const sEl = document.getElementById(`scroll-val-${id}`);
+  if (zEl) zEl.textContent = state.zoom;
+  if (sEl) sEl.textContent = state.scrollY;
+
+  if (activeSong && activeSong.id === id) updateCuedBar(song, state);
+}
+
+// ── Open PDF — mirrors shell script sequence ──────────────────────────────────
+//
+//   1. prepare_skim  → KM_PREPARE_SKIM  (activates Skim, closes front doc)
+//   2. sleep 0.2     → DELAY_AFTER_PREPARE ms
+//   3. open PDF      → KM_OPEN_PDF  (open -a Skim <path>)
+//   4. sleep 1.0     → DELAY_AFTER_OPEN ms
+//   5. stage mode    → KM_STAGE_MODE (full screen + ⌘⌥A)
+//
 function openPDF(id) {
   const song = SONGS.find(s => s.id === id);
   if (!song) return;
 
-  activeSong = song;
+  const state = getSongState(song);
+  activeSong  = song;
+
   renderList();
-  updateCuedBar(song);
+  updateCuedBar(song, state);
   document.getElementById('nowPlayingHeader').textContent = song.name;
 
-  const goEl = () => document.getElementById(`gobtn-${id}`);
+  const goBtn = document.getElementById(`gobtn-${id}`);
+  const setGo = (label, cls) => {
+    if (!goBtn) return;
+    goBtn.textContent = label;
+    goBtn.classList.toggle('loading', cls === 'loading');
+  };
+
   const card = document.querySelector(`.song-card[data-id="${id}"]`);
   if (card) { card.classList.add('flash'); setTimeout(() => card.classList.remove('flash'), 500); }
 
-  goEl().textContent = '…';
-  goEl().classList.add('loading');
+  const anyMissing = [KM_PREPARE_SKIM, KM_OPEN_PDF, KM_STAGE_MODE].some(u => u.includes('PASTE-HERE'));
+  if (anyMissing) {
+    showToast(`⚠  Paste KM UUIDs for Prepare / Open / Stage  →  ${song.path.split('/').pop()}`);
+    return;
+  }
+
+  const encodedPath = encodeURIComponent(song.path);
+
+  // ── Step 1: Prepare Skim ──────────────────────────────────────────────────
+  setGo('…', 'loading');
   setStatus('Preparing Skim…', '#4ecdc4');
 
-  kmFetch(KM_PREPARE, song.path)
-    .then(() => { setStatus('Opening PDF…', '#4ecdc4'); return wait(T_AFTER_PREPARE).then(() => kmFetch(KM_OPEN, song.path)); })
-    .then(() => { setStatus('Entering stage mode…', '#4ecdc4'); return wait(T_AFTER_OPEN).then(() => kmFetch(KM_STAGE, song.path)); })
+  kmFetch(KM_PREPARE_SKIM, song.path)
     .then(() => {
-      const pos = getPos(id);
-      if (pos) {
-        setStatus('Applying position…', '#ffb830');
-        return wait(T_BEFORE_APPLY).then(() => kmFetch(KM_APPLY, JSON.stringify(pos)))
-          .then(() => { showToast(`📄  ${song.name}  — position applied`); setStatus('Live ✓', '#00e676'); });
-      } else {
-        showToast(`📄  ${song.name}  — open`);
-        setStatus('Live ✓', '#00e676');
-      }
+      // ── Step 2: Delay 0.2 s → Open PDF ──────────────────────────────────
+      setStatus('Opening PDF…', '#4ecdc4');
+      return delay(DELAY_AFTER_PREPARE).then(() => kmFetch(KM_OPEN_PDF, song.path));
     })
-    .then(() => { goEl().textContent = 'GO'; goEl().classList.remove('loading'); setTimeout(() => setStatus('Ready', null), 2500); })
+    .then(() => {
+      // ── Step 3: Delay 1.0 s → Stage Mode ─────────────────────────────────
+      setStatus('Entering stage mode…', '#4ecdc4');
+      return delay(DELAY_AFTER_OPEN).then(() => kmFetch(KM_STAGE_MODE, song.path));
+    })
+    .then(() => {
+      showToast(`📄  ${song.name}  — stage ready`);
+      setStatus('Live ✓', '#00e676');
+      setGo('GO', '');
+      setTimeout(() => setStatus('Ready', null), 2500);
+    })
     .catch(err => {
       showToast(`⚠  ${err.message || 'KM not reachable'}`);
       setStatus('Error', '#e74c3c');
-      goEl().textContent = 'GO'; goEl().classList.remove('loading');
+      setGo('GO', '');
       setTimeout(() => setStatus('Ready', null), 3000);
     });
 }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// SCROLL TOOL — activates Skim's hand/pan tool via ⌘2
-// ═══════════════════════════════════════════════════════════════════════════════
-function activateScrollTool(id) {
-  const btn = document.getElementById(`scroll-btn-${id}`);
-  document.querySelectorAll('.tb-scroll.tool-on').forEach(b => b.classList.remove('tool-on'));
-  btn.classList.add('tool-on');
-  setStatus('☛ Scroll Tool → Skim', '#ffb830');
-
-  kmFetch(KM_SCROLL_TOOL)
-    .then(() => {
-      showToast('☛  Drag to position — then tap ⏺ Record');
-      setTimeout(() => { btn.classList.remove('tool-on'); setStatus('Ready', null); }, 10000);
-    })
-    .catch(() => { btn.classList.remove('tool-on'); showToast('⚠  KM not reachable'); setStatus('Error', '#e74c3c'); setTimeout(() => setStatus('Ready', null), 3000); });
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// RECORD POSITION
-//
-// The KM macro (Lyrics: Record Position) runs an AppleScript that:
-//   1. Reads Skim's zoom factor from the front document
-//   2. Reads scroll bar 1 (vertical) and scroll bar 2 (horizontal) values via System Events
-//   3. Writes JSON { zoom, scrollV, scrollH } into the KM variable LiveShow_SkimPosition
-//
-// The page polls that variable's HTTP endpoint every 300 ms until the JSON arrives.
-// ═══════════════════════════════════════════════════════════════════════════════
-function recordPosition(id) {
-  const song = SONGS.find(s => s.id === id);
-  if (!song) return;
-  if (recordTimer) { clearInterval(recordTimer); recordTimer = null; }
-
-  const btn = document.getElementById(`rec-btn-${id}`);
-  btn.classList.add('recording');
-  setStatus('Recording…', '#ff4444');
-
-  kmFetch(KM_RECORD)
-    .then(() => {
-      const start = Date.now();
-      recordTimer = setInterval(() => {
-        fetch(KM_VAR_URL)
-          .then(r => r.text())
-          .then(text => {
-            text = (text || '').trim();
-            if (!text || text === '0' || text === '') return;
-            try {
-              const pos = JSON.parse(text);
-              if (typeof pos.zoom === 'number') {
-                clearInterval(recordTimer); recordTimer = null;
-                savePos(id, { zoom: pos.zoom, scrollV: pos.scrollV || 0, scrollH: pos.scrollH || 0 });
-                renderList();
-                updateCuedBar(song);
-                btn.classList.remove('recording');
-                setStatus('Saved ✓', '#00e676');
-                showToast(`⏺  Position saved — ${fmtPos(getPos(id))}`);
-                setTimeout(() => setStatus('Ready', null), 2500);
-              }
-            } catch(e) { /* not JSON yet, keep polling */ }
-          }).catch(() => {});
-
-        if (Date.now() - start > 7000) {
-          clearInterval(recordTimer); recordTimer = null;
-          btn.classList.remove('recording');
-          setStatus('Timed out', '#e74c3c');
-          showToast('⚠  Could not read position from Skim');
-          setTimeout(() => setStatus('Ready', null), 3000);
-        }
-      }, 300);
-    })
-    .catch(() => { btn.classList.remove('recording'); showToast('⚠  KM not reachable'); setStatus('Error', '#e74c3c'); setTimeout(() => setStatus('Ready', null), 3000); });
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// CLEAR POSITION
-// ═══════════════════════════════════════════════════════════════════════════════
-function clearPosition(id) {
-  delPos(id);
-  renderList();
-  if (activeSong && activeSong.id === id) updateCuedBar(activeSong);
-  showToast('Position cleared');
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// CUED BAR
-// ═══════════════════════════════════════════════════════════════════════════════
-function updateCuedBar(song) {
-  document.getElementById('cuedPath').textContent = song.path;
-  const pos = getPos(song.id);
-  const posEl = document.getElementById('cuedPos');
-  const nposEl = document.getElementById('cuedNPos');
-  if (pos) {
-    posEl.textContent = '● ' + fmtPos(pos);
-    posEl.style.display = '';
-    nposEl.style.display = 'none';
-  } else {
-    posEl.style.display = 'none';
-    nposEl.style.display = '';
-    nposEl.textContent = 'No position saved';
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// HELPERS
-// ═══════════════════════════════════════════════════════════════════════════════
+// ── Helpers ───────────────────────────────────────────────────────────────────
 function kmFetch(uuid, value) {
-  const url = KM_BASE + encodeURIComponent(uuid) + (value != null ? '&value=' + encodeURIComponent(value) : '');
+  const url = KM_BASE + encodeURIComponent(uuid) + (value ? '&value=' + encodeURIComponent(value) : '');
   return fetch(url, { mode: 'no-cors' });
+  // no-cors fetch always resolves — errors only fire on network failure
 }
 
-function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function updateCuedBar(song, state) {
+  document.getElementById('cuedPath').textContent = song.path;
+  document.getElementById('cuedMeta').textContent = `Zoom: ${state.zoom}  ·  Scroll Y: ${state.scrollY}`;
+}
 
 function setStatus(text, color) {
   document.getElementById('statusText').textContent = text;
@@ -578,16 +590,15 @@ function showToast(msg) {
   toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
 }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════════════════════════════════════════
+// ── Init ──────────────────────────────────────────────────────────────────────
 localStorage.setItem('tstiles_currentPage', 'lyrics');
 renderList();
 
-function runSetup() { window.location.href = "kmtrigger://macro=Setup"; }
-function goAdmin()  { window.location.href = "admin-controller.html"; }
-(function() {
-  const btn = document.getElementById("menuButton"), dd = document.getElementById("menuDropdown");
+function runSetup(){ window.location.href = "kmtrigger://macro=Setup"; }
+function goAdmin() { window.location.href = "admin-controller.html"; }
+(function initTopMenu(){
+  const btn = document.getElementById("menuButton");
+  const dd  = document.getElementById("menuDropdown");
   if (!btn || !dd) return;
   btn.addEventListener("click", e => { e.stopPropagation(); dd.style.display = dd.style.display === "block" ? "none" : "block"; });
   document.addEventListener("click", () => { dd.style.display = "none"; });

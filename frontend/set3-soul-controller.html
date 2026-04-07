@@ -46,9 +46,9 @@
   .song-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:transparent;transition:background .2s}
   .song-card:hover{border-color:var(--gold);background:var(--bg-hover);transform:translateX(3px)}.song-card.active{border-color:var(--gold);background:var(--active-glow);box-shadow:0 0 16px rgba(245,200,66,.1)}.song-card.active::before{background:var(--gold)}
   .track-num{width:50px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.35rem;color:var(--gold-dark);border-right:2px solid var(--border-gold);flex-shrink:0;letter-spacing:.05em;transition:color .2s}.song-card.active .track-num{color:var(--gold);text-shadow:0 0 8px var(--gold-glow)}
-  .song-info{flex:1;display:flex;flex-direction:column;justify-content:center;padding:6px 16px;min-width:0}
-  .song-name{font-family:'Oswald',sans-serif;font-size:clamp(.95rem,2.2vw,1.15rem);font-weight:600;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--white);transition:color .2s;line-height:1.2}.song-card.active .song-name{color:var(--gold-bright);text-shadow:0 0 10px var(--gold-glow)}
-  .song-artist{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--text-dim);letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;font-style:italic}.song-card.active .song-artist{color:var(--text-sub)}
+  .song-info{flex:1;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:14px;padding:6px 16px;min-width:0}
+  .song-name{font-family:'Oswald',sans-serif;font-size:clamp(.98rem,2.25vw,1.15rem);font-weight:600;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--white);transition:color .2s;line-height:1.2;flex:1;min-width:0}.song-card.active .song-name{font-family:'Oswald',sans-serif;font-size:clamp(.98rem,2.25vw,1.15rem);font-weight:600;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--white);transition:color .2s;line-height:1.2;flex:1;min-width:0}
+  .song-artist{font-family:'DM Mono',monospace;font-size:.86rem;color:#d7e7fb;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:0;font-style:italic;text-align:right;text-shadow:0 0 8px rgba(255,255,255,.12);flex-shrink:0;max-width:40%}.song-card.active .song-artist{font-family:'DM Mono',monospace;font-size:.86rem;color:#d7e7fb;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:0;font-style:italic;text-align:right;text-shadow:0 0 8px rgba(255,255,255,.12);flex-shrink:0;max-width:40%}
   .dur-badge{font-family:'DM Mono',monospace;font-size:.78rem;font-weight:500;flex-shrink:0;padding:0 14px;border-left:2px solid var(--border-gold);display:flex;align-items:center;height:100%;white-space:nowrap;color:#7aaa7a;letter-spacing:.05em}.song-card.active .dur-badge{color:#aaffaa}.go-btn{background:var(--go-bg);border:none;border-left:2px solid rgba(0,0,0,.4);color:var(--cream);font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.18em;padding:0 28px;cursor:pointer;height:100%;flex-shrink:0;transition:background .15s;text-shadow:1px 1px 3px rgba(0,0,0,.6)}.go-btn:hover{background:var(--go-hover)}.go-btn:active{background:#8b6508}.song-card.active .go-btn{background:var(--gold);color:#0a0800;text-shadow:none}
   @keyframes flash{0%{background:rgba(245,200,66,.28)}100%{background:var(--bg-card)}}.song-card.flash{animation:flash .5s ease-out forwards}
   .playhead-bar{background:var(--bg-card);border:3px solid var(--gold);border-radius:12px;padding:14px 20px;margin-top:12px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;box-shadow:0 0 28px rgba(245,200,66,.12)}
@@ -56,9 +56,17 @@
   .footer{margin-top:18px;padding-top:12px;border-top:1px solid var(--border-gold);text-align:center}.footer-text{font-family:'Cinzel',serif;font-size:.6rem;font-weight:600;color:var(--gold-dark);letter-spacing:.22em;text-transform:uppercase}
   .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:#0e0c00;border:3px solid var(--gold);border-radius:8px;padding:11px 26px;font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:600;letter-spacing:.12em;color:var(--gold);z-index:1000;transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .3s;opacity:0;white-space:nowrap;text-transform:uppercase;box-shadow:0 4px 24px rgba(0,0,0,.7)}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
   @media(max-width:600px){.playhead-song{display:none}.go-btn{padding:0 16px;font-size:1.3rem}.hero{height:190px}.t-btn{min-width:56px;padding:8px 10px;font-size:.9rem}}
+
+  /* Top-right vertical dots menu */
+  #topMenu{position:fixed;top:10px;right:12px;z-index:9999}
+  #menuButton{font-size:16px;cursor:pointer;color:white;padding:4px 8px;user-select:none;line-height:1;border-radius:6px;background:rgba(8,10,14,.45)}
+  #menuDropdown{display:none;position:absolute;right:0;margin-top:6px;background:#1c1c1c;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,.4);overflow:hidden;min-width:110px}
+  .menuItem{padding:10px 18px;color:white;font-size:14px;white-space:nowrap;cursor:pointer}
+  .menuItem:hover{background:#333}
 </style>
 </head>
 <body>
+<div id="topMenu"><div id="menuButton">⋮</div><div id="menuDropdown"><div class="menuItem" onclick="runSetup()">Setup</div><div class="menuItem" onclick="goAdmin()">Admin</div></div></div>
 <div class="hero">
   <div class="hero-glow"></div>
   <svg class="scene" viewBox="0 0 1000 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -87,8 +95,7 @@
 </div>
 
 <div class="transport-bar">
-  <button class="t-btn t-setup"  onclick="transport('setup')"><span class="t-icon">⚙️</span><span class="t-label">Setup</span></button>
-  <button class="t-btn t-start"  onclick="transport('start')"><span class="t-icon">⏮</span><span class="t-label">Goto Start</span></button>
+<button class="t-btn t-start"  onclick="transport('start')"><span class="t-icon">⏮</span><span class="t-label">Goto Start</span></button>
   <button class="t-btn t-stop"   onclick="transport('stop')"><span class="t-icon">⏹</span><span class="t-label">Stop</span></button>
   <button class="t-btn t-play"   onclick="transport('play')"><span class="t-icon">⏵</span><span class="t-label">Play</span></button>
   <button class="t-btn t-record" onclick="transport('record')"><span class="t-icon">⏺</span><span class="t-label">Record</span></button>
@@ -100,7 +107,7 @@
   <a class="nav-btn"        href="file:///Users/timstiles/Music/Show%20Controller/set2-deepcuts-controller.html">Set 2<span>Deep Cuts</span></a>
   <a class="nav-btn active" href="file:///Users/timstiles/Music/Show%20Controller/set3-soul-controller.html">Set 3<span>Soul &amp; Groove</span></a>
   <a class="nav-btn"        href="file:///Users/timstiles/Music/Show%20Controller/set4-sendoff-controller.html">Set 4<span>Send-Off</span></a>
-  <a class="nav-btn nav-alpha" href="file:///Users/timstiles/Music/Show%20Controller/all-controller.html">Alpha<span>A–Z</span></a>
+  <a class="nav-btn nav-alpha" href="file:///Users/timstiles/Music/Show%20Controller/alpha-controller.html">All<span>A–Z</span></a>
 </nav>
 
 <div class="container">
@@ -113,7 +120,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const KM_BASE="kmtrigger://macro=";
+const KM_BASE="http://localhost:4490/action.html?macro=";
 const KM_GOTO="FCE13B05-4E20-4CE2-9F4D-F69557ADDE15";
 const KM_TRANSPORT={setup:"SETUP-UUID-PASTE-HERE",start:"START-UUID-PASTE-HERE",stop:"STOP-UUID-PASTE-HERE",play:"PLAY-UUID-PASTE-HERE",record:"RECORD-UUID-PASTE-HERE",fade:"FADE-UUID-PASTE-HERE"};
 
@@ -137,11 +144,11 @@ const SONGS=[
   {name:"Imagine",                     artist:"John Lennon",       time:"1:09:50.034", dur:"3:22"},
 ];
 
-function transport(action){const btn=document.querySelector(`.t-${action}`);if(btn){btn.classList.add('fired');setTimeout(()=>btn.classList.remove('fired'),500);}const uuid=KM_TRANSPORT[action];if(!uuid||uuid.includes('PASTE-HERE')){showToast(`⚠  Set KM UUID for: ${action.toUpperCase()}`);return;}window.location.href = KM_BASE + encodeURIComponent(uuid); showToast(`${action.toUpperCase()} → sent`);}
+function transport(action){const btn=document.querySelector(`.t-${action}`);if(btn){btn.classList.add('fired');setTimeout(()=>btn.classList.remove('fired'),500);}const uuid=KM_TRANSPORT[action];if(!uuid||uuid.includes('PASTE-HERE')){showToast(`⚠  Set KM UUID for: ${action.toUpperCase()}`);return;}fetch(KM_BASE+encodeURIComponent(uuid),{mode:'no-cors'}).then(()=>showToast(`${action.toUpperCase()} → sent`)).catch(()=>showToast('⚠  KM not reachable'));}
 function splitTime(t){const dot=t.lastIndexOf('.');return{main:dot===-1?t:t.substring(0,dot),ms:''};}
 function renderGrid(){const grid=document.getElementById('songGrid');grid.innerHTML='';SONGS.forEach((song,i)=>{const{main,ms}=splitTime(song.time);const card=document.createElement('div');card.className='song-card';card.innerHTML=`<div class="track-num">${String(i+1).padStart(2,'0')}</div><div class="song-info"><div class="song-name">${esc(song.name)}</div><div class="song-artist">${esc(song.artist)}</div></div><div class="dur-badge">${esc(song.dur)}</div><button class="go-btn" onclick="goToSong(${i})" title="${esc(main+ms)}">GO</button>`;grid.appendChild(card);});}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function goToSong(index){document.querySelectorAll('.song-card').forEach((c,i)=>c.classList.toggle('active',i===index));const song=SONGS[index];const{main,ms}=splitTime(song.time);document.getElementById('playheadTime').innerHTML=`${esc(main)}<span class="ms">${esc(ms)}</span>`;document.getElementById('playheadSong').textContent=song.name;document.getElementById('nowPlayingHeader').textContent=song.name;document.querySelectorAll('.song-card')[index].classList.add('flash');setTimeout(()=>document.querySelectorAll('.song-card')[index].classList.remove('flash'),600);setStatus('Sending…','#f5c842');window.location.href = KM_BASE + encodeURIComponent(KM_GOTO) + '&value=' + encodeURIComponent(song.time); showToast(`▶  ${song.name}  →  ${song.time.split('.')[0]}`); setStatus('Sent ✓', '#00e676'); setTimeout(() => setStatus('Ready', null), 1800);}
+function goToSong(index){document.querySelectorAll('.song-card').forEach((c,i)=>c.classList.toggle('active',i===index));const song=SONGS[index];const{main,ms}=splitTime(song.time);document.getElementById('playheadTime').innerHTML=`${esc(main)}<span class="ms">${esc(ms)}</span>`;document.getElementById('playheadSong').textContent=song.name;document.getElementById('nowPlayingHeader').textContent=song.name;document.querySelectorAll('.song-card')[index].classList.add('flash');setTimeout(()=>document.querySelectorAll('.song-card')[index].classList.remove('flash'),600);setStatus('Sending…','#f5c842');fetch(KM_BASE+encodeURIComponent(KM_GOTO)+'&value='+encodeURIComponent(song.time),{mode:'no-cors'}).then(()=>{showToast(`▶  ${song.name}  →  ${song.time}`);setStatus('Sent ✓','#00e676');setTimeout(()=>setStatus('Ready',null),1800);}).catch(()=>{showToast('⚠  Cannot reach Keyboard Maestro');setStatus('Error','#e74c3c');setTimeout(()=>setStatus('Ready',null),3000);});}
 function setStatus(text,color){document.getElementById('statusText').textContent=text;const dot=document.getElementById('statusDot');dot.classList.remove('live');if(color){dot.style.background=color;dot.style.boxShadow=`0 0 10px ${color}`;}else{dot.style.background='';dot.style.boxShadow='';dot.classList.add('live');}}
 function exportJSON(){const blob=new Blob([JSON.stringify({project:'Set 3 Soul & Groove',songs:SONGS},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='set3-soul-songs.json';a.click();showToast('⬇  Exported JSON');}
 let toastTimer;function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),3000);}
@@ -149,6 +156,25 @@ document.addEventListener('keydown',e=>{if(!['INPUT','TEXTAREA'].includes(docume
 renderGrid();
 localStorage.setItem('tstiles_currentSet', 'Set3');
 localStorage.setItem('tstiles_currentFile', 'Set 3 Soul & Groove.band');
+
+function runSetup(){ window.location.href = "kmtrigger://macro=Setup"; }
+function goAdmin(){ window.location.href = "admin-controller.html"; }
+(function initTopMenu(){
+  const btn=document.getElementById("menuButton"), dd=document.getElementById("menuDropdown");
+  if(!btn||!dd) return;
+  btn.addEventListener("click", (e)=>{ e.stopPropagation(); dd.style.display = dd.style.display === "block" ? "none" : "block"; });
+  document.addEventListener("click", ()=>{ dd.style.display = "none"; });
+})();
+
+function updateStageOverlay(data){
+  try{
+    localStorage.setItem("LiveShow_Overlay", JSON.stringify(data || {}));
+  }catch(err){
+    console.warn("Stage overlay update failed", err);
+  }
+}
+
 </script>
+<!-- STAGE OVERLAY: open stage_overlay.html in a second browser window/tab on the same localhost server for the transparent panel to appear. -->
 </body>
 </html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>T Stiles — Mobile Remote Beta</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold:#f5c842; --gold-bright:#ffe680; --gold-dark:#b8860b; --gold-glow:rgba(245,168,0,.55);
+    --white:#fff; --bg-deep:#080a0e; --bg-card:#0e1118; --bg-hover:#161b26; --border-gold:rgba(245,200,66,.35);
+    --text-main:#fff; --text-dim:#aac4e0; --scene-indigo:#6d5dfc; --scene-violet:#8b5cf6; --scene-glow:rgba(139,92,246,.4);
+    --lyric-teal:#4ecdc4; --danger:#d9534f; --success:#00c875;
+    --s1:#1a4a7a; --s2:#4a1a6b; --s3:#1a5c30; --s4:#7a3a1a;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg-deep); color:var(--text-main); font-family:'DM Mono', monospace; }
+  .hero {
+    position:relative; min-height:160px; padding:24px 18px 18px;
+    background:radial-gradient(ellipse 70% 80% at 50% 30%, #171036 0%, #0c071b 46%, #060408 100%);
+    overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; inset:auto; width:240px; height:240px; left:50%; top:50%; transform:translate(-50%,-50%);
+    border-radius:50%; background:radial-gradient(circle, rgba(139,92,246,.18) 0%, rgba(109,93,252,.06) 45%, transparent 70%);
+    filter:blur(2px);
+  }
+  .brand { position:relative; z-index:1; text-align:center; }
+  .brand h1 { margin:0; font-family:'Cinzel Decorative',serif; color:var(--gold); font-size:clamp(1.8rem,9vw,2.8rem); text-shadow:0 0 24px rgba(255,200,50,.7),0 0 40px rgba(139,92,246,.28); }
+  .brand .sub { margin-top:4px; font-family:'Cinzel',serif; letter-spacing:.28em; font-size:.68rem; color:#d8c7ff; text-transform:uppercase; }
+  .top-strip { display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center; margin-top:16px; position:relative; z-index:1; }
+  .status-pill {
+    display:flex; align-items:center; gap:8px; background:rgba(14,17,24,.9); border:1px solid rgba(245,200,66,.25); border-radius:999px; padding:10px 14px;
+    min-height:42px;
+  }
+  .dot { width:10px; height:10px; border-radius:50%; background:#555; }
+  .dot.live { background:var(--success); box-shadow:0 0 10px rgba(0,200,117,.8); }
+  .top-btn {
+    border:none; border-radius:12px; background:linear-gradient(135deg,var(--scene-indigo),var(--scene-violet)); color:white;
+    font-family:'Oswald',sans-serif; letter-spacing:.12em; text-transform:uppercase; padding:11px 14px; font-size:.8rem;
+  }
+  .wrap { max-width:760px; margin:0 auto; padding:14px 14px 28px; }
+  .card { background:var(--bg-card); border:2px solid var(--border-gold); border-radius:16px; padding:14px; margin-bottom:12px; box-shadow:0 10px 28px rgba(0,0,0,.28); }
+  .card h2 { margin:0 0 10px; font-family:'Oswald',sans-serif; letter-spacing:.12em; text-transform:uppercase; font-size:1rem; color:var(--gold); }
+  .showline { display:flex; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,.06); }
+  .showline:last-child { border-bottom:none; }
+  .showline .v { color:#dbe7ff; text-align:right; }
+  .segment { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+  .segment.segment-5 { grid-template-columns:repeat(5,1fr); }
+  .pill-btn, .action-btn, .transport-btn {
+    border:none; border-radius:12px; min-height:48px; color:white; font-family:'Oswald',sans-serif; letter-spacing:.08em;
+    text-transform:uppercase; font-size:.84rem; padding:10px 8px;
+  }
+  .pill-btn { background:#131925; border:1px solid rgba(255,255,255,.08); }
+  .pill-btn.on { box-shadow:0 0 0 2px currentColor inset, 0 0 18px rgba(255,255,255,.08); }
+  .set1{color:#6ab0ff;} .set2{color:#c59eff;} .set3{color:#80ffb0;} .set4{color:#ffb870;}
+  .crowd-young{color:#ff8ad6;} .crowd-mixed{color:#6ab0ff;} .crowd-older{color:#ffd166;} .crowd-couples{color:#ff9e9e;} .crowd-auto{color:#4ecdc4;}
+  .transport { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+  .transport-btn.prev { background:linear-gradient(135deg,#243b53,#102a43); }
+  .transport-btn.play { background:linear-gradient(135deg,#1a7a38,#0a3c1c); }
+  .transport-btn.stop { background:linear-gradient(135deg,#8b2020,#4a0f0f); }
+  .transport-btn.next { background:linear-gradient(135deg,#5a2a8b,#2c1246); }
+  .action-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .action-btn { background:#131925; border:1px solid rgba(255,255,255,.08); }
+  .action-btn.primary { background:linear-gradient(135deg,var(--scene-indigo),var(--scene-violet)); }
+  .action-btn.teal { background:linear-gradient(135deg,#128277,#0f6159); }
+  .recommend { display:grid; gap:8px; }
+  .rec-row { background:#121826; border-radius:12px; padding:10px 12px; border:1px solid rgba(255,255,255,.06); }
+  .rec-row .label { font-family:'Oswald',sans-serif; color:#a9b7d0; letter-spacing:.12em; text-transform:uppercase; font-size:.72rem; }
+  .rec-row .song { font-size:1rem; color:#fff; margin-top:4px; }
+  .rec-row .note { color:#bdd0f2; font-size:.78rem; margin-top:4px; line-height:1.35; }
+  .mini { color:#99b2d4; font-size:.76rem; }
+  .footer { text-align:center; color:#8399b9; font-size:.72rem; padding-top:6px; }
+  @media (max-width:390px){ .segment{grid-template-columns:repeat(2,1fr);} .segment.segment-5{grid-template-columns:repeat(2,1fr);} .transport{grid-template-columns:repeat(2,1fr);} }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="brand">
+      <h1>REMOTE</h1>
+      <div class="sub">T Stiles Mobile Beta</div>
+    </div>
+    <div class="top-strip">
+      <div class="status-pill"><span id="dot" class="dot"></span><span id="statusText">Connecting…</span></div>
+      <button id="refreshBtn" class="top-btn">Refresh</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="card">
+      <h2>Show</h2>
+      <div class="showline"><span>Venue</span><span class="v" id="venueText">—</span></div>
+      <div class="showline"><span>Time</span><span class="v" id="timeText">—</span></div>
+      <div class="showline"><span>Set</span><span class="v" id="setText">—</span></div>
+      <div class="showline"><span>Now Playing</span><span class="v" id="songText">—</span></div>
+    </div>
+
+    <div class="card">
+      <h2>Set Select</h2>
+      <div class="segment">
+        <button class="pill-btn set1" data-set="Set1">Set 1</button>
+        <button class="pill-btn set2" data-set="Set2">Set 2</button>
+        <button class="pill-btn set3" data-set="Set3">Set 3</button>
+        <button class="pill-btn set4" data-set="Set4">Set 4</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Crowd Mode</h2>
+      <div class="segment segment-5">
+        <button class="pill-btn crowd-auto" data-crowd="auto">Auto</button>
+        <button class="pill-btn crowd-young" data-crowd="young">Young</button>
+        <button class="pill-btn crowd-mixed" data-crowd="mixed">Mixed</button>
+        <button class="pill-btn crowd-older" data-crowd="older">Older</button>
+        <button class="pill-btn crowd-couples" data-crowd="couples">Couples</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Transport</h2>
+      <div class="transport">
+        <button class="transport-btn prev" id="prevBtn">Prev</button>
+        <button class="transport-btn play" id="playBtn">Play</button>
+        <button class="transport-btn stop" id="stopBtn">Stop</button>
+        <button class="transport-btn next" id="nextBtn">Next</button>
+      </div>
+      <div class="action-grid" style="margin-top:8px;">
+        <button class="action-btn primary" id="autoAdvanceBtn">Auto Advance: ON</button>
+        <button class="action-btn teal" id="sceneRefreshBtn">Reload Scene Data</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Live Recommendation</h2>
+      <div class="mini" id="phaseText">Phase: —</div>
+      <div class="recommend" style="margin-top:10px;">
+        <div class="rec-row"><div class="label">Play Next</div><div class="song" id="recPrimarySong">—</div><div class="note" id="recPrimaryNote">—</div></div>
+        <div class="rec-row"><div class="label">Crowd Hook</div><div class="song" id="recHookSong">—</div><div class="note" id="recHookNote">—</div></div>
+        <div class="rec-row"><div class="label">Money Move</div><div class="song" id="recMoneySong">—</div><div class="note" id="recMoneyNote">—</div></div>
+      </div>
+    </div>
+
+    <div class="footer">Local-network beta · phone browser remote for Songs / Lyrics / Scene</div>
+  </div>
+
+<script>
+const API = {
+  state: '/api/state',
+  scene: '/api/scene',
+  action: '/api/action',
+};
+let sceneData = null;
+let remoteState = null;
+let online = false;
+
+const byId = id => document.getElementById(id);
+async function getJSON(url) {
+  const res = await fetch(url, {cache:'no-store'});
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return await res.json();
+}
+async function postJSON(url, data) {
+  const res = await fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return await res.json();
+}
+function setConnection(ok, text) {
+  online = ok;
+  byId('dot').classList.toggle('live', ok);
+  byId('statusText').textContent = text;
+}
+function currentSetSongs() {
+  const setName = remoteState?.current_set || 'Set1';
+  const setNum = Number((setName || '').replace('Set','')) || 1;
+  const sets = sceneData?.proposed_sets || [];
+  const found = sets.find(s => Number(s.set_order || s.set_num || 0) === setNum || String(s.set_name||'').toLowerCase().includes(String(setNum)));
+  return found?.songs || [];
+}
+function findCurrentSong() {
+  const songs = currentSetSongs();
+  return songs.find(s => String(s.song_id) === String(remoteState?.current_song_id)) || null;
+}
+function updateButtons() {
+  document.querySelectorAll('[data-set]').forEach(btn => btn.classList.toggle('on', btn.dataset.set === (remoteState?.current_set || 'Set1')));
+  document.querySelectorAll('[data-crowd]').forEach(btn => btn.classList.toggle('on', btn.dataset.crowd === (remoteState?.crowd_mode || 'auto')));
+  byId('autoAdvanceBtn').textContent = `Auto Advance: ${remoteState?.auto_advance ? 'ON' : 'OFF'}`;
+}
+function renderRecommendations() {
+  const phaseKey = remoteState?.phase_key || 'fallback';
+  const crowd = remoteState?.crowd_mode || sceneData?.recommendation_defaults?.crowd_mode || 'mixed';
+  const map = sceneData?.recommendation_map || {};
+  const recs = (map[phaseKey] && (map[phaseKey][crowd] || map[phaseKey].mixed)) || (map.fallback && (map.fallback[crowd] || map.fallback.mixed)) || [];
+  byId('phaseText').textContent = `Phase: ${phaseKey} · Crowd: ${crowd}`;
+  const slots = [recs[0], recs[1], recs[2]];
+  [['recPrimarySong','recPrimaryNote'],['recHookSong','recHookNote'],['recMoneySong','recMoneyNote']].forEach((ids, i) => {
+    byId(ids[0]).textContent = slots[i]?.song || '—';
+    byId(ids[1]).textContent = slots[i]?.note || 'No recommendation yet.';
+  });
+}
+function renderAll() {
+  const song = findCurrentSong();
+  byId('venueText').textContent = sceneData?.venue_name || sceneData?.location_name || '—';
+  byId('timeText').textContent = sceneData?.event_window || sceneData?.show_time || '—';
+  byId('setText').textContent = remoteState?.current_set || '—';
+  byId('songText').textContent = song?.song_name || song?.SongName || '—';
+  updateButtons();
+  renderRecommendations();
+}
+async function sync() {
+  try {
+    const [state, scene] = await Promise.all([getJSON(API.state), getJSON(API.scene)]);
+    remoteState = state;
+    sceneData = scene;
+    setConnection(true, 'Connected');
+    renderAll();
+  } catch (err) {
+    setConnection(false, `Offline · ${err.message}`);
+  }
+}
+async function sendAction(type, extra={}) {
+  try {
+    await postJSON(API.action, {type, ...extra});
+    await sync();
+  } catch (err) {
+    setConnection(false, `Action failed · ${err.message}`);
+  }
+}
+document.querySelectorAll('[data-set]').forEach(btn => btn.addEventListener('click', () => sendAction('set_set', {value: btn.dataset.set})));
+document.querySelectorAll('[data-crowd]').forEach(btn => btn.addEventListener('click', () => sendAction('set_crowd', {value: btn.dataset.crowd})));
+byId('prevBtn').addEventListener('click', () => sendAction('prev_song'));
+byId('nextBtn').addEventListener('click', () => sendAction('next_song'));
+byId('playBtn').addEventListener('click', () => sendAction('play_current'));
+byId('stopBtn').addEventListener('click', () => sendAction('stop'));
+byId('autoAdvanceBtn').addEventListener('click', () => sendAction('toggle_auto_advance'));
+byId('sceneRefreshBtn').addEventListener('click', () => sendAction('reload_scene'));
+byId('refreshBtn').addEventListener('click', sync);
+
+sync();
+setInterval(sync, 1500);
+</script>
+</body>
+</html>

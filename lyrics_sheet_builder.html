@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>T Stiles Lyrics Sheet Builder v3</title>
+<style>
+:root{
+  --gold:#f5c842; --gold-bright:#ffe680; --bg:#080a0e; --card:#0e1118;
+  --border:rgba(245,200,66,.28); --text:#fff; --dim:#aac4e0; --teal:#4ecdc4;
+  --danger:#ff6b6b; --ok:#80ffb0; --blue:#8fc3ff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top,#121722 0%,#080a0e 55%);color:var(--text);font-family:Arial,sans-serif}
+.wrap{max-width:1320px;margin:0 auto;padding:18px}
+.hero{background:linear-gradient(180deg,#111722 0%,#0a0d13 100%);border:2px solid var(--border);border-radius:20px;padding:22px;margin-bottom:16px}
+.hero h1{margin:0;color:var(--gold);font-size:clamp(1.8rem,4vw,3rem)}
+.hero p{color:var(--dim);margin:.5rem 0 0 0}
+.grid{display:grid;grid-template-columns:480px 1fr;gap:16px}
+.panel{background:var(--card);border:2px solid var(--border);border-radius:18px;padding:16px}
+.panel h2{margin:0 0 12px 0;color:var(--gold);font-size:1.15rem}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:.82rem;color:var(--gold-bright);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+input[type="text"], textarea, select{width:100%;padding:12px 14px;border-radius:12px;border:2px solid var(--border);background:#09101a;color:var(--text);font-size:1rem;outline:none}
+textarea{min-height:130px;resize:vertical;line-height:1.5}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btnbar{display:flex;flex-wrap:wrap;gap:10px}
+button{border:none;border-radius:12px;padding:12px 16px;cursor:pointer;font-weight:700;color:#111;background:var(--gold)}
+.secondary{background:#c9d7ea;color:#09101a}
+.teal{background:var(--teal)}
+.danger{background:var(--danger);color:white}
+.ghost{background:transparent;color:var(--gold);border:2px solid var(--border)}
+.small{padding:8px 12px;border-radius:10px;font-size:.9rem}
+.status{margin-top:8px;font-size:.92rem;color:var(--dim)}
+.status.ok{color:var(--ok)}
+.status.bad{color:var(--danger)}
+.sections{display:flex;flex-direction:column;gap:10px;max-height:420px;overflow:auto;padding-right:4px}
+.section-card{background:#0a121d;border:2px solid rgba(255,255,255,.07);border-radius:14px;padding:12px}
+.section-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(245,200,66,.12);color:var(--gold-bright);font-weight:700}
+.mini-actions{display:flex;gap:6px;flex-wrap:wrap}
+.preview{background:black;color:white;border-radius:18px;min-height:760px;overflow:hidden;border:2px solid rgba(255,255,255,.12)}
+.lyrics-header{position:sticky;top:0;background:#111;padding:15px;text-align:center;border-bottom:2px solid #444}
+.song-title{font-size:32px;font-weight:bold;letter-spacing:.02em}
+.song-meta{font-size:15px;color:#bbb;margin-top:5px}
+.lyrics-body{padding:20px;font-size:28px;line-height:1.6;white-space:pre-wrap}
+.section-label{color:#ffd966;font-weight:bold;font-size:24px;display:block;margin:18px 0 8px}
+.preview-note{font-size:18px;color:#bbb;margin-bottom:14px}
+.hint{font-size:.9rem;color:var(--dim)}
+.printbar{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.song-status-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.pill{display:inline-block;padding:6px 10px;border-radius:999px;font-size:.82rem;font-weight:700}
+.pill.ok{background:rgba(128,255,176,.12);color:var(--ok);border:1px solid rgba(128,255,176,.35)}
+.pill.warn{background:rgba(245,200,66,.12);color:var(--gold-bright);border:1px solid rgba(245,200,66,.35)}
+.pill.info{background:rgba(143,195,255,.12);color:var(--blue);border:1px solid rgba(143,195,255,.35)}
+.readout{background:#09101a;border:2px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.readout .caption{font-size:.74rem;color:var(--gold-bright);text-transform:uppercase;letter-spacing:.14em}
+.readout .big{font-size:1.18rem;color:#fff;margin-top:6px;font-weight:700}
+.readout .sub{font-size:.92rem;color:var(--dim);margin-top:4px}
+.admin-only{display:none}
+.admin-on .admin-only{display:block}
+.admin-toggle{display:flex;align-items:center;gap:10px;margin:8px 0 16px}
+.admin-toggle input{transform:scale(1.3)}
+@media (max-width:980px){.grid{grid-template-columns:1fr}}
+@media print{
+  body{background:white}
+  .wrap{max-width:none;padding:0}
+  .hero,.panel.left,.printbar{display:none !important}
+  .grid{display:block}
+  .panel.right{border:none;padding:0;background:white}
+  .preview{border:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <h1>T Stiles Lyrics Sheet Builder</h1>
+    <p>Song picker, section builder, voice input, Google lyric lookup, local draft recall, and one-click build of <strong>.html + PDF workflow</strong>.</p>
+  </section>
+
+  <div class="grid">
+    <section id="leftPanel" class="panel left">
+      <h2>Song Setup</h2>
+
+      <div class="admin-toggle">
+        <input id="adminMode" type="checkbox" />
+        <label for="adminMode" style="color:var(--gold-bright);font-weight:700;">Admin Mode</label>
+      </div>
+
+      <div class="field">
+        <label for="songPicker">Song Title</label>
+        <select id="songPicker">
+          <option value="">Select a song…</option>
+        </select>
+      </div>
+
+      <div class="song-status-row">
+        <span id="lyricsStatusPill" class="pill warn">No lyric page yet</span>
+        <span id="schemaStatusPill" class="pill info">Release year available only when stored</span>
+      </div>
+      <div class="hint" style="margin-top:8px;">Selecting a new song now recalls its saved draft when available. If no lyrics exist yet, the builder clears the editor for a clean start.</div>
+
+      <div class="readout" style="margin-top:12px;">
+        <div class="caption">Song Title</div>
+        <div id="songTitleReadout" class="big">Not selected</div>
+        <div id="songIdReadout" class="sub">song_master_id: —</div>
+      </div>
+
+      <div class="row">
+        <div class="readout">
+          <div class="caption">Release Year</div>
+          <div id="songYearReadout" class="big">—</div>
+          <div class="sub">Auto-populated when available</div>
+        </div>
+        <div class="readout">
+          <div class="caption">Artist</div>
+          <div id="songArtistReadout" class="big">—</div>
+          <div class="sub">Auto-populated from song master</div>
+        </div>
+      </div>
+
+      <div class="field admin-only">
+        <label for="lyricLoc">Lyric PDF Location (lyric_loc)</label>
+        <input id="lyricLoc" type="text" placeholder="/Lyrics/As_It_Was.pdf" />
+      </div>
+
+      <div class="field admin-only">
+        <label for="pdfFolder">Default PDF Save Folder</label>
+        <input id="pdfFolder" type="text" placeholder="/Lyrics" />
+      </div>
+
+      <div class="btnbar admin-only" style="margin-bottom:16px;">
+        <button id="openExistingBtn" class="secondary">Open Existing Lyric Page</button>
+        <button id="openSourcesBtn" class="ghost">Open Sources</button>
+      </div>
+
+      <div class="field">
+        <label for="sectionType">Add Section</label>
+        <select id="sectionType">
+          <option>Intro</option>
+          <option>Verse</option>
+          <option>Pre-Chorus</option>
+          <option>Chorus</option>
+          <option>Post-Chorus</option>
+          <option>Bridge</option>
+          <option>Solo</option>
+          <option>Breakdown</option>
+          <option>Outro</option>
+          <option>Custom</option>
+        </select>
+      </div>
+
+      <div class="field" id="customWrap" style="display:none;">
+        <label for="customName">Custom Section Name</label>
+        <input id="customName" type="text" placeholder="Tag / Refrain / Spoken Intro" />
+      </div>
+
+      <div class="field">
+        <label for="sectionText">Section Text</label>
+        <textarea id="sectionText" placeholder="Type or dictate this section here..."></textarea>
+      </div>
+
+      <div class="btnbar">
+        <button id="dictateBtn" class="teal">🎙 Start Mic Input</button>
+        <button id="stopDictateBtn" class="secondary">⏹ Stop Mic</button>
+        <button id="addSectionBtn">＋ Add Section</button>
+        <button id="clearTextBtn" class="ghost">Clear Text</button>
+      </div>
+
+      <div id="voiceStatus" class="status">Voice input idle. Run this page from http://localhost:8000/ for mic access.</div>
+      <div id="saveStatus" class="status">Build status idle.</div>
+
+      <div style="margin-top:18px;">
+        <h2>Song Sections</h2>
+        <div class="hint">Build the sheet in order. You can move sections up/down, edit them, or delete them.</div>
+        <div id="sectionsList" class="sections" style="margin-top:10px;"></div>
+      </div>
+    </section>
+
+    <section class="panel right">
+      <h2>Preview</h2>
+      <div id="preview" class="preview">
+        <div class="lyrics-header">
+          <div class="song-title">Song Title</div>
+          <div class="song-meta">Released: Year • Artist</div>
+        </div>
+        <div class="lyrics-body">
+          <div class="preview-note">Select a song, then build or edit its lyric page here.</div>
+        </div>
+      </div>
+
+      <div class="printbar">
+        <button id="buildBundleBtn">Build HTML + PDF Workflow</button>
+        <button id="printBtn" class="secondary">Print Binder Copy</button>
+        <button id="copyHtmlBtn" class="ghost">Copy HTML Source</button>
+      </div>
+      <div class="hint" style="margin-top:8px;">
+        <strong>Important:</strong> this builder now uses Google lyric search links and recalls saved local drafts per song for editing. Browsers still cannot directly verify arbitrary files on disk, so draft recall is handled through browser-local storage plus the stored <code>lyric_loc</code> value.
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+const SONGS = [{"song_master_id": 0, "song_name": "99", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=99", "backtrack_source": "https://www.youtube.com/results?search_query=+99+backing+track", "lyric_loc": ""}, {"song_master_id": 1, "song_name": "Adore You", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Adore+You", "backtrack_source": "https://www.youtube.com/results?search_query=+Adore+You+backing+track", "lyric_loc": ""}, {"song_master_id": 2, "song_name": "After the Love is Gone", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=After+the+Love+is+Gone", "backtrack_source": "https://www.youtube.com/results?search_query=+After+the+Love+is+Gone+backing+track", "lyric_loc": ""}, {"song_master_id": 3, "song_name": "Ain’t No Sunshine", "artist": "Bill Withers", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Bill+Withers+Ain%E2%80%99t+No+Sunshine", "backtrack_source": "https://www.youtube.com/results?search_query=Bill+Withers+Ain%E2%80%99t+No+Sunshine+backing+track", "lyric_loc": ""}, {"song_master_id": 4, "song_name": "As It Was", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=As+It+Was", "backtrack_source": "https://www.youtube.com/results?search_query=+As+It+Was+backing+track", "lyric_loc": ""}, {"song_master_id": 5, "song_name": "Boomerang", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Boomerang", "backtrack_source": "https://www.youtube.com/results?search_query=+Boomerang+backing+track", "lyric_loc": ""}, {"song_master_id": 6, "song_name": "Careless Whisper", "artist": "George Michael", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=George+Michael+Careless+Whisper", "backtrack_source": "https://www.youtube.com/results?search_query=George+Michael+Careless+Whisper+backing+track", "lyric_loc": ""}, {"song_master_id": 7, "song_name": "Cities", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Cities", "backtrack_source": "https://www.youtube.com/results?search_query=+Cities+backing+track", "lyric_loc": ""}, {"song_master_id": 8, "song_name": "Crazy", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Crazy", "backtrack_source": "https://www.youtube.com/results?search_query=+Crazy+backing+track", "lyric_loc": ""}, {"song_master_id": 9, "song_name": "Dare", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Dare", "backtrack_source": "https://www.youtube.com/results?search_query=+Dare+backing+track", "lyric_loc": ""}, {"song_master_id": 10, "song_name": "Day Tripper", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Day+Tripper", "backtrack_source": "https://www.youtube.com/results?search_query=+Day+Tripper+backing+track", "lyric_loc": ""}, {"song_master_id": 11, "song_name": "Deacon Blues", "artist": "Steely Dan", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Steely+Dan+Deacon+Blues", "backtrack_source": "https://www.youtube.com/results?search_query=Steely+Dan+Deacon+Blues+backing+track", "lyric_loc": ""}, {"song_master_id": 12, "song_name": "Don’t You Worry ‘Bout a Thing", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Don%E2%80%99t+You+Worry+%E2%80%98Bout+a+Thing", "backtrack_source": "https://www.youtube.com/results?search_query=+Don%E2%80%99t+You+Worry+%E2%80%98Bout+a+Thing+backing+track", "lyric_loc": ""}, {"song_master_id": 13, "song_name": "Everybody Wants to Rule", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Everybody+Wants+to+Rule", "backtrack_source": "https://www.youtube.com/results?search_query=+Everybody+Wants+to+Rule+backing+track", "lyric_loc": ""}, {"song_master_id": 14, "song_name": "Fly Me To The Moon", "artist": "Frank Sinatra", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Frank+Sinatra+Fly+Me+To+The+Moon", "backtrack_source": "https://www.youtube.com/results?search_query=Frank+Sinatra+Fly+Me+To+The+Moon+backing+track", "lyric_loc": ""}, {"song_master_id": 15, "song_name": "Georgy Porgy", "artist": "Toto", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Toto+Georgy+Porgy", "backtrack_source": "https://www.youtube.com/results?search_query=Toto+Georgy+Porgy+backing+track", "lyric_loc": ""}, {"song_master_id": 16, "song_name": "Get Lucky", "artist": "Daft Punk", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Daft+Punk+Get+Lucky", "backtrack_source": "https://www.youtube.com/results?search_query=Daft+Punk+Get+Lucky+backing+track", "lyric_loc": ""}, {"song_master_id": 17, "song_name": "God Only Knows", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=God+Only+Knows", "backtrack_source": "https://www.youtube.com/results?search_query=+God+Only+Knows+backing+track", "lyric_loc": ""}, {"song_master_id": 18, "song_name": "Hello Its Me", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Hello+Its+Me", "backtrack_source": "https://www.youtube.com/results?search_query=+Hello+Its+Me+backing+track", "lyric_loc": ""}, {"song_master_id": 19, "song_name": "Hey Nineteen", "artist": "Steely Dan", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Steely+Dan+Hey+Nineteen", "backtrack_source": "https://www.youtube.com/results?search_query=Steely+Dan+Hey+Nineteen+backing+track", "lyric_loc": ""}, {"song_master_id": 20, "song_name": "Holdin’ Back The Years", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Holdin%E2%80%99+Back+The+Years", "backtrack_source": "https://www.youtube.com/results?search_query=+Holdin%E2%80%99+Back+The+Years+backing+track", "lyric_loc": ""}, {"song_master_id": 21, "song_name": "Home At Last", "artist": "Steely Dan", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Steely+Dan+Home+At+Last", "backtrack_source": "https://www.youtube.com/results?search_query=Steely+Dan+Home+At+Last+backing+track", "lyric_loc": ""}, {"song_master_id": 22, "song_name": "Human Nature", "artist": "Michael Jackson", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Michael+Jackson+Human+Nature", "backtrack_source": "https://www.youtube.com/results?search_query=Michael+Jackson+Human+Nature+backing+track", "lyric_loc": ""}, {"song_master_id": 23, "song_name": "I Ain’t Worried", "artist": "OneRepublic", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=OneRepublic+I+Ain%E2%80%99t+Worried", "backtrack_source": "https://www.youtube.com/results?search_query=OneRepublic+I+Ain%E2%80%99t+Worried+backing+track", "lyric_loc": ""}, {"song_master_id": 24, "song_name": "I Just Wanna Stop", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=I+Just+Wanna+Stop", "backtrack_source": "https://www.youtube.com/results?search_query=+I+Just+Wanna+Stop+backing+track", "lyric_loc": ""}, {"song_master_id": 25, "song_name": "I Robot", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=I+Robot", "backtrack_source": "https://www.youtube.com/results?search_query=+I+Robot+backing+track", "lyric_loc": ""}, {"song_master_id": 28, "song_name": "IGY", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=IGY", "backtrack_source": "https://www.youtube.com/results?search_query=+IGY+backing+track", "lyric_loc": ""}, {"song_master_id": 29, "song_name": "Imagine", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Imagine", "backtrack_source": "https://www.youtube.com/results?search_query=+Imagine+backing+track", "lyric_loc": ""}, {"song_master_id": 30, "song_name": "Isn’t She Lovely", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Isn%E2%80%99t+She+Lovely", "backtrack_source": "https://www.youtube.com/results?search_query=+Isn%E2%80%99t+She+Lovely+backing+track", "lyric_loc": ""}, {"song_master_id": 31, "song_name": "It Fills Around Me", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=It+Fills+Around+Me", "backtrack_source": "https://www.youtube.com/results?search_query=+It+Fills+Around+Me+backing+track", "lyric_loc": ""}, {"song_master_id": 32, "song_name": "It Was a Very Good Year", "artist": "Frank Sinatra", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Frank+Sinatra+It+Was+a+Very+Good+Year", "backtrack_source": "https://www.youtube.com/results?search_query=Frank+Sinatra+It+Was+a+Very+Good+Year+backing+track", "lyric_loc": ""}, {"song_master_id": 26, "song_name": "I’ll Be There", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=I%E2%80%99ll+Be+There", "backtrack_source": "https://www.youtube.com/results?search_query=+I%E2%80%99ll+Be+There+backing+track", "lyric_loc": ""}, {"song_master_id": 27, "song_name": "I’m Not In Love", "artist": "10cc", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=10cc+I%E2%80%99m+Not+In+Love", "backtrack_source": "https://www.youtube.com/results?search_query=10cc+I%E2%80%99m+Not+In+Love+backing+track", "lyric_loc": ""}, {"song_master_id": 33, "song_name": "Josie", "artist": "Steely Dan", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Steely+Dan+Josie", "backtrack_source": "https://www.youtube.com/results?search_query=Steely+Dan+Josie+backing+track", "lyric_loc": ""}, {"song_master_id": 34, "song_name": "King of Pain", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=King+of+Pain", "backtrack_source": "https://www.youtube.com/results?search_query=+King+of+Pain+backing+track", "lyric_loc": ""}, {"song_master_id": 35, "song_name": "Kiss From a Rose", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Kiss+From+a+Rose", "backtrack_source": "https://www.youtube.com/results?search_query=+Kiss+From+a+Rose+backing+track", "lyric_loc": ""}, {"song_master_id": 36, "song_name": "Lady in Red", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Lady+in+Red", "backtrack_source": "https://www.youtube.com/results?search_query=+Lady+in+Red+backing+track", "lyric_loc": ""}, {"song_master_id": 37, "song_name": "Let’s Stay Together", "artist": "Al Green", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Al+Green+Let%E2%80%99s+Stay+Together", "backtrack_source": "https://www.youtube.com/results?search_query=Al+Green+Let%E2%80%99s+Stay+Together+backing+track", "lyric_loc": ""}, {"song_master_id": 38, "song_name": "Life on Mars", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Life+on+Mars", "backtrack_source": "https://www.youtube.com/results?search_query=+Life+on+Mars+backing+track", "lyric_loc": ""}, {"song_master_id": 39, "song_name": "Light Ray", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Light+Ray", "backtrack_source": "https://www.youtube.com/results?search_query=+Light+Ray+backing+track", "lyric_loc": ""}, {"song_master_id": 40, "song_name": "Logical Song", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Logical+Song", "backtrack_source": "https://www.youtube.com/results?search_query=+Logical+Song+backing+track", "lyric_loc": ""}, {"song_master_id": 41, "song_name": "Mary Jane’s Last Dance", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Mary+Jane%E2%80%99s+Last+Dance", "backtrack_source": "https://www.youtube.com/results?search_query=+Mary+Jane%E2%80%99s+Last+Dance+backing+track", "lyric_loc": ""}, {"song_master_id": 42, "song_name": "Masquerade", "artist": "George Benson", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=George+Benson+Masquerade", "backtrack_source": "https://www.youtube.com/results?search_query=George+Benson+Masquerade+backing+track", "lyric_loc": ""}, {"song_master_id": 43, "song_name": "Mr Magic", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Mr+Magic", "backtrack_source": "https://www.youtube.com/results?search_query=+Mr+Magic+backing+track", "lyric_loc": ""}, {"song_master_id": 44, "song_name": "My Stories", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=My+Stories", "backtrack_source": "https://www.youtube.com/results?search_query=+My+Stories+backing+track", "lyric_loc": ""}, {"song_master_id": 45, "song_name": "New Frontier", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=New+Frontier", "backtrack_source": "https://www.youtube.com/results?search_query=+New+Frontier+backing+track", "lyric_loc": ""}, {"song_master_id": 46, "song_name": "One Headlight", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=One+Headlight", "backtrack_source": "https://www.youtube.com/results?search_query=+One+Headlight+backing+track", "lyric_loc": ""}, {"song_master_id": 47, "song_name": "Papa Was a Rollin’ Stone", "artist": "The Temptations", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=The+Temptations+Papa+Was+a+Rollin%E2%80%99+Stone", "backtrack_source": "https://www.youtube.com/results?search_query=The+Temptations+Papa+Was+a+Rollin%E2%80%99+Stone+backing+track", "lyric_loc": ""}, {"song_master_id": 48, "song_name": "Peg", "artist": "Steely Dan", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Steely+Dan+Peg", "backtrack_source": "https://www.youtube.com/results?search_query=Steely+Dan+Peg+backing+track", "lyric_loc": ""}, {"song_master_id": 49, "song_name": "Power of Free", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Power+of+Free", "backtrack_source": "https://www.youtube.com/results?search_query=+Power+of+Free+backing+track", "lyric_loc": ""}, {"song_master_id": 50, "song_name": "Revolution", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Revolution", "backtrack_source": "https://www.youtube.com/results?search_query=+Revolution+backing+track", "lyric_loc": ""}, {"song_master_id": 51, "song_name": "Sarah Smile", "artist": "Hall & Oates", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Hall+%26+Oates+Sarah+Smile", "backtrack_source": "https://www.youtube.com/results?search_query=Hall+%26+Oates+Sarah+Smile+backing+track", "lyric_loc": ""}, {"song_master_id": 52, "song_name": "Shout", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Shout", "backtrack_source": "https://www.youtube.com/results?search_query=+Shout+backing+track", "lyric_loc": ""}, {"song_master_id": 53, "song_name": "Sign Your Name", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Sign+Your+Name", "backtrack_source": "https://www.youtube.com/results?search_query=+Sign+Your+Name+backing+track", "lyric_loc": ""}, {"song_master_id": 54, "song_name": "Sledgehammer", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Sledgehammer", "backtrack_source": "https://www.youtube.com/results?search_query=+Sledgehammer+backing+track", "lyric_loc": ""}, {"song_master_id": 55, "song_name": "Something About You", "artist": "Level 42", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Level+42+Something+About+You", "backtrack_source": "https://www.youtube.com/results?search_query=Level+42+Something+About+You+backing+track", "lyric_loc": ""}, {"song_master_id": 56, "song_name": "Space Oddity", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Space+Oddity", "backtrack_source": "https://www.youtube.com/results?search_query=+Space+Oddity+backing+track", "lyric_loc": ""}, {"song_master_id": 57, "song_name": "Steppin’ Out", "artist": "Joe Jackson", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Joe+Jackson+Steppin%E2%80%99+Out", "backtrack_source": "https://www.youtube.com/results?search_query=Joe+Jackson+Steppin%E2%80%99+Out+backing+track", "lyric_loc": ""}, {"song_master_id": 58, "song_name": "Superman", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Superman", "backtrack_source": "https://www.youtube.com/results?search_query=+Superman+backing+track", "lyric_loc": ""}, {"song_master_id": 59, "song_name": "That’s Life", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=That%E2%80%99s+Life", "backtrack_source": "https://www.youtube.com/results?search_query=+That%E2%80%99s+Life+backing+track", "lyric_loc": ""}, {"song_master_id": 60, "song_name": "The Nightfly", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=The+Nightfly", "backtrack_source": "https://www.youtube.com/results?search_query=+The+Nightfly+backing+track", "lyric_loc": ""}, {"song_master_id": 61, "song_name": "The Way You Look Tonight", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=The+Way+You+Look+Tonight", "backtrack_source": "https://www.youtube.com/results?search_query=+The+Way+You+Look+Tonight+backing+track", "lyric_loc": ""}, {"song_master_id": 62, "song_name": "Too Sweet", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Too+Sweet", "backtrack_source": "https://www.youtube.com/results?search_query=+Too+Sweet+backing+track", "lyric_loc": ""}, {"song_master_id": 63, "song_name": "Viva la Vita", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Viva+la+Vita", "backtrack_source": "https://www.youtube.com/results?search_query=+Viva+la+Vita+backing+track", "lyric_loc": ""}, {"song_master_id": 64, "song_name": "Way of the World", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Way+of+the+World", "backtrack_source": "https://www.youtube.com/results?search_query=+Way+of+the+World+backing+track", "lyric_loc": ""}, {"song_master_id": 65, "song_name": "We’re in This Love Together", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=We%E2%80%99re+in+This+Love+Together", "backtrack_source": "https://www.youtube.com/results?search_query=+We%E2%80%99re+in+This+Love+Together+backing+track", "lyric_loc": ""}, {"song_master_id": 66, "song_name": "What a Wonderful World", "artist": "Louis Armstrong", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Louis+Armstrong+What+a+Wonderful+World", "backtrack_source": "https://www.youtube.com/results?search_query=Louis+Armstrong+What+a+Wonderful+World+backing+track", "lyric_loc": ""}, {"song_master_id": 67, "song_name": "Wicked Game", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Wicked+Game", "backtrack_source": "https://www.youtube.com/results?search_query=+Wicked+Game+backing+track", "lyric_loc": ""}, {"song_master_id": 68, "song_name": "Wonderful Day", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Wonderful+Day", "backtrack_source": "https://www.youtube.com/results?search_query=+Wonderful+Day+backing+track", "lyric_loc": ""}, {"song_master_id": 69, "song_name": "Yellow", "artist": "", "release_year": "", "lyrics_source": "https://search.azlyrics.com/search.php?q=Yellow", "backtrack_source": "https://www.youtube.com/results?search_query=+Yellow+backing+track", "lyric_loc": ""}];
+
+
+function googleLyricsUrl(song){
+  const parts = [song.song_name || '', song.artist || '', 'lyrics']
+    .map(v => String(v || '').trim())
+    .filter(Boolean)
+    .join(' ');
+  return 'https://www.google.com/search?q=' + encodeURIComponent(parts);
+}
+
+function builderStorageKey(songId){
+  return 'lyricsBuilderDraft_' + String(songId);
+}
+
+function readSongDraft(songId){
+  try{
+    const raw = localStorage.getItem(builderStorageKey(songId));
+    return raw ? JSON.parse(raw) : null;
+  }catch(err){
+    return null;
+  }
+}
+
+function writeSongDraft(song){
+  if(!song) return;
+  const payload = {
+    song_master_id: song.song_master_id,
+    song_name: song.song_name,
+    artist: song.artist || '',
+    lyric_loc: lyricLoc.value || '',
+    sections: sections,
+    html_source: buildStandaloneHtml(),
+    updated_at: new Date().toISOString()
+  };
+  try{
+    localStorage.setItem(builderStorageKey(song.song_master_id), JSON.stringify(payload));
+  }catch(err){
+    console.warn('Unable to persist draft', err);
+  }
+}
+
+function clearEditorForSong(song){
+  sections = [];
+  activeEditIndex = null;
+  sectionText.value = '';
+  customName.value = '';
+  sectionType.value = 'Intro';
+  customWrap.style.display = 'none';
+  lyricLoc.value = song ? derivePdfLoc() : '';
+  saveStatus.textContent = 'Build status idle.';
+  saveStatus.className = 'status';
+  refreshSections();
+  renderPreview();
+}
+
+function loadSongDraft(song, draft){
+  sections = Array.isArray(draft.sections) ? draft.sections : [];
+  activeEditIndex = null;
+  sectionText.value = '';
+  customName.value = '';
+  sectionType.value = 'Intro';
+  customWrap.style.display = 'none';
+  lyricLoc.value = (draft.lyric_loc || '').trim() ? draft.lyric_loc : derivePdfLoc();
+  saveStatus.textContent = 'Existing lyric draft recalled for editing.';
+  saveStatus.className = 'status ok';
+  refreshSections();
+  renderPreview();
+}
+
+SONGS.forEach(song => {
+  song.lyrics_source = googleLyricsUrl(song);
+});
+
+const songPicker = document.getElementById('songPicker');
+const songTitleReadout = document.getElementById('songTitleReadout');
+const songIdReadout = document.getElementById('songIdReadout');
+const songYearReadout = document.getElementById('songYearReadout');
+const songArtistReadout = document.getElementById('songArtistReadout');
+const lyricLoc = document.getElementById('lyricLoc');
+const pdfFolder = document.getElementById('pdfFolder');
+const lyricsStatusPill = document.getElementById('lyricsStatusPill');
+const schemaStatusPill = document.getElementById('schemaStatusPill');
+const saveStatus = document.getElementById('saveStatus');
+const adminMode = document.getElementById('adminMode');
+const leftPanel = document.getElementById('leftPanel');
+
+const sectionType = document.getElementById('sectionType');
+const customWrap = document.getElementById('customWrap');
+const customName = document.getElementById('customName');
+const sectionText = document.getElementById('sectionText');
+const sectionsList = document.getElementById('sectionsList');
+const voiceStatus = document.getElementById('voiceStatus');
+
+let sections = [];
+let activeEditIndex = null;
+let recognition = null;
+let isListening = false;
+let selectedSong = null;
+
+function escapeHtml(text){
+  return String(text || '')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+
+function safeFileName(name){
+  return String(name || 'lyrics_sheet').replace(/[^a-z0-9]+/gi, '_').replace(/^_+|_+$/g, '') || 'lyrics_sheet';
+}
+
+function derivePdfLoc(){
+  const base = (pdfFolder.value || '').trim().replace(/\/$/, '');
+  const title = safeFileName(selectedSong ? selectedSong.song_name : 'lyrics_sheet');
+  return base ? (base + '/' + title + '.pdf') : (title + '.pdf');
+}
+
+function populateSongPicker(){
+  SONGS.forEach(song => {
+    const opt = document.createElement('option');
+    opt.value = String(song.song_master_id);
+    const hasLyrics = !!(song.lyric_loc && song.lyric_loc.trim());
+    opt.textContent = (hasLyrics ? '✓ ' : '○ ') + song.song_name;
+    songPicker.appendChild(opt);
+  });
+}
+
+function setSongMeta(song){
+  selectedSong = song;
+  songTitleReadout.textContent = song ? song.song_name : 'Not selected';
+  songIdReadout.textContent = 'song_master_id: ' + (song && song.song_master_id !== '' ? song.song_master_id : '—');
+  songYearReadout.textContent = song && song.release_year ? song.release_year : '—';
+  songArtistReadout.textContent = song && song.artist ? song.artist : '—';
+
+  const draft = song ? readSongDraft(song.song_master_id) : null;
+  const hasDraft = !!(draft && Array.isArray(draft.sections) && draft.sections.length);
+  lyricLoc.value = hasDraft ? (draft.lyric_loc || derivePdfLoc()) : (song && song.lyric_loc ? song.lyric_loc : derivePdfLoc());
+
+  lyricsStatusPill.textContent = hasDraft ? 'Existing lyric draft found' : 'No lyric page yet';
+  lyricsStatusPill.className = 'pill ' + (hasDraft ? 'ok' : 'warn');
+
+  const hasYear = !!(song && song.release_year && String(song.release_year).trim());
+  schemaStatusPill.textContent = hasYear ? 'Release year available' : 'Release year not stored in current master';
+  schemaStatusPill.className = 'pill ' + (hasYear ? 'ok' : 'info');
+
+  if(hasDraft){
+    loadSongDraft(song, draft);
+  } else {
+    clearEditorForSong(song);
+  }
+
+  renderPreview();
+}
+
+songPicker.addEventListener('change', () => {
+  const song = SONGS.find(s => String(s.song_master_id) === songPicker.value) || null;
+  setSongMeta(song);
+});
+
+adminMode.addEventListener('change', () => {
+  leftPanel.classList.toggle('admin-on', adminMode.checked);
+});
+
+document.getElementById('openExistingBtn').addEventListener('click', () => {
+  const loc = lyricLoc.value.trim();
+  if(!loc){
+    alert('No lyric_loc stored for this song yet.');
+    return;
+  }
+  window.open(loc, '_blank');
+  saveStatus.textContent = 'Opened current lyric_loc target in a new tab.';
+  saveStatus.className = 'status ok';
+});
+
+document.getElementById('openSourcesBtn').addEventListener('click', () => {
+  if(!selectedSong){
+    alert('Select a song first.');
+    return;
+  }
+  if(selectedSong.lyrics_source) window.open(selectedSong.lyrics_source, '_blank');
+  if(selectedSong.backtrack_source) window.open(selectedSong.backtrack_source, '_blank');
+});
+
+sectionType.addEventListener('change', () => {
+  customWrap.style.display = sectionType.value === 'Custom' ? 'block' : 'none';
+});
+
+function refreshSections(){
+  sectionsList.innerHTML = '';
+  sections.forEach((sec, i) => {
+    const card = document.createElement('div');
+    card.className = 'section-card';
+    card.innerHTML =
+      '<div class="section-top">' +
+      '<span class="badge">' + escapeHtml(sec.label) + '</span>' +
+      '<div class="mini-actions">' +
+      '<button class="small secondary" data-act="up" data-idx="' + i + '">↑</button>' +
+      '<button class="small secondary" data-act="down" data-idx="' + i + '">↓</button>' +
+      '<button class="small teal" data-act="edit" data-idx="' + i + '">Edit</button>' +
+      '<button class="small danger" data-act="del" data-idx="' + i + '">Delete</button>' +
+      '</div></div>' +
+      '<div style="color:#dce8ff; white-space:pre-wrap;">' + escapeHtml(sec.text) + '</div>';
+    sectionsList.appendChild(card);
+  });
+
+  sectionsList.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.dataset.idx);
+      const act = btn.dataset.act;
+      if(act === 'up' && idx > 0){
+        const tmp = sections[idx-1]; sections[idx-1] = sections[idx]; sections[idx] = tmp;
+      } else if(act === 'down' && idx < sections.length - 1){
+        const tmp = sections[idx+1]; sections[idx+1] = sections[idx]; sections[idx] = tmp;
+      } else if(act === 'del'){
+        sections.splice(idx, 1);
+        if(activeEditIndex === idx) activeEditIndex = null;
+      } else if(act === 'edit'){
+        const sec = sections[idx];
+        activeEditIndex = idx;
+        sectionType.value = sec.type === 'Custom' ? 'Custom' : sec.type;
+        customWrap.style.display = sectionType.value === 'Custom' ? 'block' : 'none';
+        customName.value = sec.type === 'Custom' ? sec.label : '';
+        sectionText.value = sec.text;
+        sectionText.focus();
+      }
+      refreshSections();
+      renderPreview();
+      if(selectedSong){ writeSongDraft(selectedSong); }
+    });
+  });
+}
+
+function buildPreviewLyrics(){
+  if(!sections.length){
+    return '<div class="preview-note">Select a song, then build or edit its lyric page here.</div>';
+  }
+  return sections.map(sec => {
+    return '<span class="section-label">' + escapeHtml(sec.label) + '</span>\n' + escapeHtml(sec.text);
+  }).join('\n\n');
+}
+
+function renderPreview(){
+  const preview = document.getElementById('preview');
+  const title = selectedSong ? selectedSong.song_name : 'Song Title';
+  const year = selectedSong && selectedSong.release_year ? selectedSong.release_year : 'Year';
+  const artist = selectedSong && selectedSong.artist ? selectedSong.artist : 'Artist';
+  preview.innerHTML =
+    '<div class="lyrics-header">' +
+      '<div class="song-title">' + escapeHtml(title) + '</div>' +
+      '<div class="song-meta">Released: ' + escapeHtml(year) + ' • ' + escapeHtml(artist) + '</div>' +
+    '</div>' +
+    '<div class="lyrics-body">' + buildPreviewLyrics() + '</div>';
+}
+
+function getSelectedSectionLabel(){
+  if(sectionType.value === 'Custom'){
+    return (customName.value || 'Custom').trim();
+  }
+  const base = sectionType.value;
+  const count = sections.filter(s => s.type === base).length + (activeEditIndex !== null && sections[activeEditIndex] && sections[activeEditIndex].type === base ? 0 : 1);
+  if(['Verse','Chorus','Pre-Chorus','Post-Chorus'].includes(base)){
+    return base + ' ' + count;
+  }
+  return base;
+}
+
+document.getElementById('addSectionBtn').addEventListener('click', () => {
+  const text = sectionText.value.trim();
+  if(!text){
+    alert('Enter or dictate section text first.');
+    return;
+  }
+
+  const type = sectionType.value;
+  const label = getSelectedSectionLabel();
+  const payload = { type:type, label:label, text:text };
+
+  if(activeEditIndex !== null){
+    sections[activeEditIndex] = payload;
+    activeEditIndex = null;
+  } else {
+    sections.push(payload);
+  }
+
+  sectionText.value = '';
+  customName.value = '';
+  sectionType.value = 'Intro';
+  customWrap.style.display = 'none';
+
+  refreshSections();
+  renderPreview();
+  if(selectedSong){ writeSongDraft(selectedSong); }
+});
+
+document.getElementById('clearTextBtn').addEventListener('click', () => {
+  sectionText.value = '';
+  activeEditIndex = null;
+});
+
+function buildStandaloneHtml(){
+  const title = selectedSong ? selectedSong.song_name : 'Song Title';
+  const year = selectedSong && selectedSong.release_year ? selectedSong.release_year : 'Year';
+  const artist = selectedSong && selectedSong.artist ? selectedSong.artist : 'Artist';
+  const lyricsBody = sections.map(sec => {
+    const id = sec.label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    return '<div id="' + id + '" class="lyrics-section">\n<div class="section-label">' + escapeHtml(sec.label) + '</div>\n' + escapeHtml(sec.text) + '\n</div>';
+  }).join('\n\n');
+
+  return '<!DOCTYPE html>' +
+'<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">' +
+'<title>' + escapeHtml(title) + '</title>' +
+'<style>' +
+'body { margin: 0; font-family: Arial, sans-serif; background: black; color: white; }' +
+'.header { position: sticky; top: 0; background: #111; padding: 15px; text-align: center; border-bottom: 2px solid #444; }' +
+'.song-title { font-size: 28px; font-weight: bold; }' +
+'.song-meta { font-size: 14px; color: #bbb; margin-top: 5px; }' +
+'.lyrics { padding: 20px; font-size: 28px; line-height: 1.6; white-space: pre-wrap; }' +
+'.large { font-size: 36px; }' +
+'.section-label { color: #ffd966; font-weight: bold; font-size: 24px; display:block; margin: 18px 0 8px; }' +
+'.lyrics-section { margin-bottom: 8px; }' +
+'</style></head><body>' +
+'<div class="header"><div class="song-title">' + escapeHtml(title) + '</div><div class="song-meta">Released: ' + escapeHtml(year) + ' • ' + escapeHtml(artist) + '</div></div>' +
+'<div class="lyrics" id="lyrics">' + (lyricsBody || 'Add sections in the builder first.') + '</div>' +
+'<script>document.body.addEventListener("click", function(){ document.getElementById("lyrics").classList.toggle("large"); });</' + 'script>' +
+'</body></html>';
+}
+
+document.getElementById('buildBundleBtn').addEventListener('click', () => {
+  const html = buildStandaloneHtml();
+  const title = safeFileName(selectedSong ? selectedSong.song_name : 'lyrics_sheet');
+  const blob = new Blob([html], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = title + '.html';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+
+  if(!lyricLoc.value.trim()) {
+    lyricLoc.value = derivePdfLoc();
+  }
+  saveStatus.textContent = 'HTML built. Next, use the print dialog to Save as PDF. lyric_loc set to: ' + lyricLoc.value;
+  if(selectedSong){ writeSongDraft(selectedSong); }
+  saveStatus.className = 'status ok';
+  setTimeout(() => window.print(), 300);
+});
+
+document.getElementById('printBtn').addEventListener('click', () => {
+  if(!lyricLoc.value.trim()) {
+    lyricLoc.value = derivePdfLoc();
+  }
+  saveStatus.textContent = 'Print dialog opened for binder copy. lyric_loc currently: ' + lyricLoc.value;
+  if(selectedSong){ writeSongDraft(selectedSong); }
+  saveStatus.className = 'status ok';
+  window.print();
+});
+
+document.getElementById('copyHtmlBtn').addEventListener('click', async () => {
+  try{
+    await navigator.clipboard.writeText(buildStandaloneHtml());
+    if(selectedSong){ writeSongDraft(selectedSong); }
+    alert('HTML source copied.');
+  }catch(err){
+    alert('Clipboard copy failed in this browser.');
+  }
+});
+
+function setupVoice(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){
+    voiceStatus.textContent = 'Voice input not available in this browser. Chrome works best.';
+    voiceStatus.className = 'status bad';
+    return;
+  }
+
+  recognition = new SR();
+  recognition.lang = 'en-US';
+  recognition.interimResults = true;
+  recognition.continuous = true;
+
+  recognition.onstart = () => {
+    isListening = true;
+    voiceStatus.textContent = 'Listening… speak the lyrics for this section.';
+    voiceStatus.className = 'status ok';
+  };
+
+  recognition.onend = () => {
+    isListening = false;
+    voiceStatus.textContent = 'Voice input idle. Run this page from http://localhost:8000/ for mic access.';
+    voiceStatus.className = 'status';
+  };
+
+  recognition.onerror = (event) => {
+    voiceStatus.textContent = 'Mic error: ' + event.error;
+    voiceStatus.className = 'status bad';
+  };
+
+  recognition.onresult = (event) => {
+    let transcript = '';
+    for(let i = event.resultIndex; i < event.results.length; i++) {
+      transcript += event.results[i][0].transcript;
+    }
+    sectionText.value = (sectionText.value ? sectionText.value + ' ' : '') + transcript.trim();
+  };
+}
+
+document.getElementById('dictateBtn').addEventListener('click', () => {
+  if(!recognition){ setupVoice(); }
+  if(recognition && !isListening){
+    sectionText.focus();
+    recognition.start();
+  }
+});
+
+document.getElementById('stopDictateBtn').addEventListener('click', () => {
+  if(recognition && isListening){ recognition.stop(); }
+});
+
+populateSongPicker();
+setupVoice();
+renderPreview();
+</script>
+</body>
+</html>

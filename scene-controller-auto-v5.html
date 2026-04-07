@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T Stiles — Scene Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold:#f5c842; --gold-bright:#ffe680; --gold-dark:#b8860b; --gold-glow:rgba(245,168,0,0.55);
+    --white:#ffffff; --cream:#fff9e6; --bg-deep:#080a0e; --bg-card:#0e1118; --bg-hover:#161b26;
+    --border-gold:rgba(245,200,66,0.35); --text-main:#ffffff; --text-sub:#ffe082; --text-dim:#aac4e0;
+    --go-bg:#b8860b; --go-hover:#d4a017; --active-glow:rgba(245,200,66,0.13);
+    --s1:#1a4a7a; --s2:#4a1a6b; --s3:#1a5c30; --s4:#7a3a1a;
+    --scene-indigo:#6d5dfc; --scene-violet:#8b5cf6; --scene-glow:rgba(139,92,246,.45);
+  }
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  html { font-size:16px; }
+  body { background:var(--bg-deep); color:var(--text-main); font-family:'DM Mono', monospace; min-height:100vh; overflow-x:hidden; }
+  .hero { position:relative; width:100%; height:240px; overflow:hidden; background:radial-gradient(ellipse 60% 70% at 50% 55%, #171036 0%, #0c071b 45%, #060408 100%); }
+  .hero-glow { position:absolute; top:50%; left:50%; transform:translate(-50%,-48%); width:320px; height:320px; border-radius:50%; background:radial-gradient(circle, rgba(139,92,246,0.16) 0%, rgba(109,93,252,0.06) 45%, transparent 70%); animation:glowPulse 3s ease-in-out infinite alternate; pointer-events:none; }
+  @keyframes glowPulse { 0%{opacity:.7;transform:translate(-50%,-48%) scale(1)} 100%{opacity:1;transform:translate(-50%,-48%) scale(1.12)} }
+  .hero-brand { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:10; pointer-events:none; text-align:center; padding:0 16px; }
+  .brand-name { font-family:'Cinzel Decorative',serif; font-weight:900; font-size:clamp(2rem,6vw,3.8rem); color:var(--gold); letter-spacing:.08em; line-height:1; text-shadow:0 0 30px rgba(255,200,50,.9),0 0 60px rgba(139,92,246,.35),2px 2px 0 rgba(0,0,0,.8); }
+  .brand-subtitle { font-family:'Cinzel',serif; font-weight:600; font-size:clamp(.6rem,1.6vw,.88rem); color:#d8c7ff; letter-spacing:.4em; text-transform:uppercase; margin-top:5px; text-shadow:0 0 12px rgba(139,92,246,.45),1px 1px 3px rgba(0,0,0,.9); }
+  .set-nav { display:flex; background:#06080c; border-bottom:3px solid var(--gold); box-shadow:0 4px 20px rgba(0,0,0,.6); }
+  .nav-btn { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:11px 8px; text-decoration:none; font-family:'Bebas Neue',sans-serif; font-size:1.25rem; letter-spacing:.15em; color:var(--text-dim); border-right:1px solid rgba(245,200,66,.12); transition:background .15s,color .15s; line-height:1; gap:3px; position:relative; }
+  .nav-btn:last-child { border-right:none; }
+  .nav-btn span { font-family:'Cinzel',serif; font-size:.52rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--text-dim); opacity:.65; transition:color .15s,opacity .15s; }
+  .nav-btn:hover { background:rgba(245,200,66,.07); color:var(--gold); }
+  .nav-btn:hover span { color:var(--gold); opacity:1; }
+  .nav-btn.nav-scene { border-left:2px solid rgba(139,92,246,.3); }
+  .nav-btn.nav-scene.active { color:var(--scene-violet); border-bottom:3px solid var(--scene-violet); margin-bottom:-3px; background:rgba(139,92,246,.08); box-shadow:0 0 14px rgba(139,92,246,.15); }
+  .nav-btn.nav-scene.active span { color:#c9b2ff; opacity:1; }
+  .nav-btn.nav-scene:hover { background:rgba(139,92,246,.08); color:#c9b2ff; }
+  .nav-btn.nav-scene:hover span { color:#c9b2ff; opacity:1; }
+  .container { max-width:1320px; margin:0 auto; padding:16px 14px 60px; }
+  .status-row { display:flex; align-items:center; justify-content:space-between; background:var(--bg-card); border:2px solid var(--border-gold); border-radius:10px; padding:10px 16px; margin-bottom:11px; flex-wrap:wrap; gap:8px; }
+  .status-indicator { display:flex; align-items:center; gap:8px; font-family:'Oswald',sans-serif; font-size:.95rem; font-weight:600; letter-spacing:.2em; color:var(--text-dim); text-transform:uppercase; }
+  .dot { width:11px; height:11px; border-radius:50%; background:#444; flex-shrink:0; transition:background .3s,box-shadow .3s; }
+  .dot.live { background:#00e676; box-shadow:0 0 10px #00e676,0 0 20px rgba(0,230,118,.4); animation:pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.45} }
+  .now-playing { font-family:'Cinzel',serif; font-size:.88rem; font-weight:700; color:#d8c7ff; letter-spacing:.06em; text-align:right; max-width:520px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-shadow:0 0 12px rgba(139,92,246,.45); }
+  .toolbar { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
+  .action-btn { background:linear-gradient(160deg,#432b7c,#241544); border:1px solid rgba(255,255,255,.08); color:#fff; font-family:'Oswald',sans-serif; font-size:.85rem; letter-spacing:.12em; text-transform:uppercase; border-radius:9px; padding:10px 14px; cursor:pointer; transition:filter .15s, transform .1s; }
+  .action-btn:hover { filter:brightness(1.16); transform:translateY(-1px); }
+  .action-btn.on { background:linear-gradient(160deg,#6d5dfc,#8b5cf6); }
+  .route-btn { background:linear-gradient(160deg,#5a2a8b,#2c1246); text-decoration:none; display:inline-flex; align-items:center; justify-content:center; }
+  .grid { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:14px; }
+  .span-12 { grid-column:span 12; } .span-8{grid-column:span 8;} .span-6{grid-column:span 6;} .span-4{grid-column:span 4;}
+  @media (max-width:1100px){ .span-8,.span-6,.span-4 { grid-column:span 12; } }
+  .panel { background:var(--bg-card); border:2px solid var(--border-gold); border-radius:12px; overflow:hidden; box-shadow:0 8px 26px rgba(0,0,0,.35); }
+  .panel-head { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 15px; border-bottom:1px solid rgba(245,200,66,.15); background:linear-gradient(180deg,rgba(255,255,255,.03),transparent); flex-wrap:wrap; }
+  .panel-title { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:.12em; color:var(--gold); }
+  .panel-sub { font-family:'Cinzel',serif; font-size:.62rem; letter-spacing:.2em; color:var(--text-dim); text-transform:uppercase; }
+  .panel-body { padding:14px; }
+  .stack { display:flex; flex-direction:column; gap:10px; }
+  .fact-row { display:flex; align-items:baseline; justify-content:space-between; gap:12px; border-bottom:1px solid rgba(255,255,255,.05); padding-bottom:8px; }
+  .fact-label { font-family:'Oswald',sans-serif; letter-spacing:.12em; text-transform:uppercase; color:var(--text-dim); font-size:.8rem; }
+  .fact-value { text-align:right; color:var(--white); font-size:.9rem; }
+  .fact-value.scene { color:#d8c7ff; text-shadow:0 0 8px rgba(139,92,246,.18); }
+  .bullet-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .bullet-list li { padding-left:14px; position:relative; line-height:1.45; color:#f7f7fb; }
+  .bullet-list li::before { content:'•'; position:absolute; left:0; color:#b48cff; }
+  .phase-bar { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .phase-chip { border:1px solid rgba(255,255,255,.08); border-radius:999px; padding:8px 12px; font-family:'Oswald',sans-serif; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-dim); background:#090c13; }
+  .phase-chip.primary { border-color:rgba(139,92,246,.35); color:#d8c7ff; background:rgba(139,92,246,.08); }
+  .crowd-pills,.set-pills { display:flex; gap:6px; flex-wrap:wrap; }
+  .pill { border-radius:20px; border:2px solid transparent; padding:5px 14px; font-family:'Oswald',sans-serif; font-size:.75rem; font-weight:600; letter-spacing:.1em; cursor:pointer; transition:all .15s; text-transform:uppercase; opacity:.55; background:#0c1017; color:var(--text-dim); }
+  .pill:hover { opacity:.85; }
+  .pill.on { opacity:1; border-color:currentColor; }
+  .pill-s1 { color:#6ab0ff; background:rgba(26,74,122,.4); }
+  .pill-s2 { color:#c59eff; background:rgba(74,26,107,.4); }
+  .pill-s3 { color:#80ffb0; background:rgba(26,92,48,.4); }
+  .pill-s4 { color:#ffb870; background:rgba(122,58,26,.4); }
+  .search-row,.set-flow-head { display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap; align-items:center; }
+  .search-input { flex:1; min-width:200px; background:var(--bg-card); border:2px solid var(--border-gold); border-radius:8px; padding:10px 16px; color:var(--white); font-family:'DM Mono',monospace; font-size:.9rem; outline:none; transition:border-color .2s; }
+  .search-input:focus { border-color:var(--scene-violet); }
+  .search-input::placeholder { color:var(--text-dim); }
+  .song-grid { display:grid; grid-template-columns:1fr; gap:6px; }
+  .song-card { background:var(--bg-card); border:2px solid var(--border-gold); border-radius:9px; display:flex; align-items:stretch; overflow:hidden; position:relative; min-height:54px; transition:border-color .15s,background .15s,transform .15s; }
+  .song-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:transparent; transition:background .2s; }
+  .song-card:hover { border-color:var(--scene-violet); background:var(--bg-hover); transform:translateX(3px); }
+  .song-card.active { border-color:var(--gold); background:var(--active-glow); box-shadow:0 0 16px rgba(245,200,66,.1); }
+  .song-card.active::before { background:var(--gold); }
+  .song-card[data-set="Set1"] .track-num { border-left:4px solid #1a4a7a; }
+  .song-card[data-set="Set2"] .track-num { border-left:4px solid #4a1a6b; }
+  .song-card[data-set="Set3"] .track-num { border-left:4px solid #1a5c30; }
+  .song-card[data-set="Set4"] .track-num { border-left:4px solid #7a3a1a; }
+  .track-num { width:50px; display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:var(--gold-dark); border-right:2px solid var(--border-gold); flex-shrink:0; letter-spacing:.05em; transition:color .2s; }
+  .song-info { flex:1; display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:14px; padding:6px 16px; min-width:0; }
+  .song-name { font-family:'Oswald',sans-serif; font-size:clamp(.98rem,2.2vw,1.1rem); font-weight:600; letter-spacing:.05em; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:var(--white); line-height:1.2; flex:1; min-width:0; }
+  .song-artist { font-family:'DM Mono',monospace; font-size:.84rem; color:#d7e7fb; letter-spacing:.05em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:0; font-style:italic; text-align:right; text-shadow:0 0 8px rgba(255,255,255,.12); flex-shrink:0; max-width:42%; }
+  .set-badge { font-family:'Oswald',sans-serif; font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; padding:0 16px; border-left:2px solid var(--border-gold); display:flex; align-items:center; height:100%; flex-shrink:0; white-space:nowrap; }
+  .set-badge-s1 { color:#6ab0ff; } .set-badge-s2 { color:#c59eff; } .set-badge-s3 { color:#80ffb0; } .set-badge-s4 { color:#ffb870; }
+  .dur-badge { font-family:'DM Mono',monospace; font-size:.78rem; font-weight:500; flex-shrink:0; padding:0 14px; border-left:2px solid var(--border-gold); display:flex; align-items:center; height:100%; white-space:nowrap; color:#7aaa7a; letter-spacing:.05em; }
+  .go-btn { background:var(--go-bg); border:none; border-left:2px solid rgba(0,0,0,.4); color:var(--cream); font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:.18em; padding:0 26px; cursor:pointer; height:100%; flex-shrink:0; transition:background .15s; text-shadow:1px 1px 3px rgba(0,0,0,.6); }
+  .go-btn:hover { background:var(--go-hover); }
+  .go-btn:active { background:#8b6508; }
+  .empty-note { color:var(--text-dim); font-style:italic; padding:8px 2px; }
+  .catalog-meta { color:var(--text-dim); font-size:.82rem; margin:-2px 0 10px; }
+  .rec-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+  @media (max-width:950px){ .rec-grid{grid-template-columns:1fr;} .song-artist{display:none;} .set-badge{display:none;} }
+  .rec-card { border:1px solid rgba(139,92,246,.18); border-radius:10px; padding:12px; background:#0b0f18; }
+  .rec-label { font-family:'Oswald',sans-serif; letter-spacing:.14em; font-size:.72rem; color:#c9b2ff; text-transform:uppercase; margin-bottom:6px; }
+  .rec-song { font-family:'Oswald',sans-serif; font-size:1.15rem; letter-spacing:.06em; color:var(--white); text-transform:uppercase; margin-bottom:6px; }
+  .rec-note { color:var(--text-dim); line-height:1.45; font-size:.84rem; }
+  .footer { color:#6d7486; text-align:center; padding:18px 8px 6px; letter-spacing:.08em; font-size:.78rem; }
+  .toast { position:fixed; bottom:18px; right:18px; background:#141925; color:#fff; border:1px solid rgba(255,255,255,.08); padding:10px 14px; border-radius:10px; box-shadow:0 10px 22px rgba(0,0,0,.35); opacity:0; pointer-events:none; transform:translateY(8px); transition:opacity .18s, transform .18s; z-index:50; }
+  .toast.show { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-brand">
+    <div class="brand-name">SCENE</div>
+    <div class="brand-subtitle">Performance Intelligence</div>
+  </div>
+</div>
+
+<nav class="set-nav">
+  <a class="nav-btn" href="alpha-controller.html">Songs<span>All</span></a>
+  <a class="nav-btn" href="lyrics-controller.html">Lyrics<span>PDF</span></a>
+  <a class="nav-btn nav-scene active" href="#">Scene<span>Intel</span></a>
+</nav>
+
+<div class="container">
+  <div class="status-row">
+    <div class="status-indicator"><span class="dot live"></span><span id="statusText">Live</span><span id="syncStamp">—</span></div>
+    <div class="now-playing" id="nowPlayingHeader">Scene synced</div>
+  </div>
+
+  <div class="toolbar">
+    <a class="action-btn route-btn" id="routeBtn" href="#" target="_blank" rel="noopener">Open Transit Route</a>
+    <button class="action-btn" id="refreshBtn">Refresh Data</button>
+    <button class="action-btn on" id="toggleAutoBtn">Pause Auto</button>
+    <button class="action-btn" id="softReloadBtn">Reload Page Data</button>
+    <div class="action-btn" style="cursor:default;">Auto <span id="autoState">On</span> · <span id="countdown">60s</span></div>
+  </div>
+
+  <div class="grid">
+    <section class="panel span-12">
+      <div class="panel-head">
+        <div><div class="panel-title" id="showName">Show</div><div class="panel-sub" id="showHeadline">Audience line</div></div>
+        <div class="phase-bar">
+          <div class="phase-chip primary" id="phaseLabel">Scene overview</div>
+          <div class="phase-chip" id="venueName">—</div>
+          <div class="phase-chip" id="showTime">—</div>
+          <div class="phase-chip" id="arrivalTime">—</div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="crowd-pills">
+          <button class="pill on" data-crowd="auto">Auto</button>
+          <button class="pill" data-crowd="young">Young</button>
+          <button class="pill" data-crowd="mixed">Mixed</button>
+          <button class="pill" data-crowd="older">Older</button>
+          <button class="pill" data-crowd="romance">Couples</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel span-12">
+      <div class="panel-head"><div class="panel-title">Recommended Next Moves</div><div class="panel-sub">Live recommendation engine</div></div>
+      <div class="panel-body">
+        <div class="rec-grid">
+          <div class="rec-card"><div class="rec-label">Play Next</div><div class="rec-song" id="recPrimarySong">—</div><div class="rec-note" id="recPrimaryNote">—</div></div>
+          <div class="rec-card"><div class="rec-label">Crowd Hook</div><div class="rec-song" id="recHookSong">—</div><div class="rec-note" id="recHookNote">—</div></div>
+          <div class="rec-card"><div class="rec-label">Money Move</div><div class="rec-song" id="recMoneySong">—</div><div class="rec-note" id="recMoneyNote">—</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel span-6"><div class="panel-head"><div class="panel-title">Timing & Route</div><div class="panel-sub">Travel tuned for setup</div></div><div class="panel-body stack" id="timingFacts"></div></section>
+    <section class="panel span-6"><div class="panel-head"><div class="panel-title">Weather</div><div class="panel-sub">Outside performance impact</div></div><div class="panel-body stack" id="weatherFacts"></div></section>
+    <section class="panel span-4"><div class="panel-head"><div class="panel-title">Crowd</div><div class="panel-sub">Who you will see</div></div><div class="panel-body"><ul class="bullet-list" id="crowdList"></ul></div></section>
+    <section class="panel span-4"><div class="panel-head"><div class="panel-title">Special Factors</div><div class="panel-sub">Things that can swing the day</div></div><div class="panel-body"><ul class="bullet-list" id="specialList"></ul></div></section>
+    <section class="panel span-4"><div class="panel-head"><div class="panel-title">Hazards</div><div class="panel-sub">Protect the performance</div></div><div class="panel-body"><ul class="bullet-list" id="hazardsList"></ul></div></section>
+    <section class="panel span-4"><div class="panel-head"><div class="panel-title">Banter</div><div class="panel-sub">Talk that fits the room</div></div><div class="panel-body"><ul class="bullet-list" id="banterList"></ul></div></section>
+
+    <section class="panel span-8">
+      <div class="panel-head"><div class="panel-title">Set Flow</div><div class="panel-sub" id="setFlowSub">Show-specific proposed sets</div></div>
+      <div class="panel-body">
+        <div class="set-flow-head">
+          <div class="set-pills" id="proposedSetTabs"></div>
+        </div>
+        <div class="catalog-meta" id="setFlowMeta">Click a set to load its songs.</div>
+        <div class="song-grid" id="setFlowGrid"></div>
+      </div>
+    </section>
+
+    <section class="panel span-12">
+      <div class="panel-head"><div class="panel-title">Catalog Call Sheet</div><div class="panel-sub"><span id="catalogCount">0 songs</span></div></div>
+      <div class="panel-body">
+        <div class="search-row">
+          <input class="search-input" id="songSearch" type="text" placeholder="Search song titles…">
+          <div class="set-pills">
+            <button class="pill pill-s1 on" data-setfilter="all">All</button>
+            <button class="pill pill-s1" data-setfilter="1">Set 1</button>
+            <button class="pill pill-s2" data-setfilter="2">Set 2</button>
+            <button class="pill pill-s3" data-setfilter="3">Set 3</button>
+            <button class="pill pill-s4" data-setfilter="4">Set 4</button>
+          </div>
+        </div>
+        <div class="catalog-meta">Mirrors the All page body fields: set, song, artist, badge, time, and go action.</div>
+        <div class="song-grid" id="songGrid"></div>
+      </div>
+    </section>
+  </div>
+  <div class="footer">T Stiles · Scene Intelligence · dynamic show mode engaged</div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script>
+const AUTO_REFRESH_MS = 60 * 1000;
+let autoRefreshEnabled = true;
+let countdownValue = Math.floor(AUTO_REFRESH_MS / 1000);
+let countdownTimer = null;
+let pollTimer = null;
+let currentScene = null;
+let currentCrowdMode = 'auto';
+let currentSetFilter = 'all';
+let currentProposedSetId = null;
+
+const byId = (id) => document.getElementById(id);
+const escapeHtml = (s='') => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const setBadgeClass = (setNum) => `set-badge-s${setNum}`;
+
+function buildSceneDataUrl() {
+  return './scene-data.js';
+}
+async function loadSceneDataScript() {
+  return new Promise((resolve, reject) => {
+    const old = document.getElementById('sceneDataScript');
+    if (old) old.remove();
+    window.SCENE_DATA = undefined;
+    const s = document.createElement('script');
+    s.id = 'sceneDataScript';
+    s.src = buildSceneDataUrl();
+    s.onload = () => resolve(window.SCENE_DATA);
+    s.onerror = () => reject(new Error('scene-data.js failed to load'));
+    document.head.appendChild(s);
+  });
+}
+function showToast(msg) {
+  const el = byId('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => el.classList.remove('show'), 1800);
+}
+function setList(el, items) {
+  el.innerHTML = (items || []).map(item => `<li>${escapeHtml(item)}</li>`).join('') || '<li>—</li>';
+}
+function setFacts(el, rows) {
+  el.innerHTML = rows.map(([label, value, scene]) => `
+    <div class="fact-row">
+      <div class="fact-label">${escapeHtml(label)}</div>
+      <div class="fact-value ${scene ? 'scene' : ''}">${escapeHtml(value || '—')}</div>
+    </div>`).join('');
+}
+function songCardMarkup(song) {
+  const setNum = Number(song.set || 0) || 1;
+  const badgeText = song.order ? `#${song.order}` : `Set ${setNum}`;
+  const timeText = song.start_time || song.time || '—';
+  return `
+    <div class="song-card" data-set="Set${setNum}">
+      <div class="track-num">${setNum}</div>
+      <div class="song-info">
+        <div class="song-name">${escapeHtml(song.song_name || song.name || '—')}</div>
+        <div class="song-artist">${escapeHtml(song.artist || '')}</div>
+      </div>
+      <div class="set-badge ${setBadgeClass(setNum)}">${escapeHtml(badgeText)}</div>
+      <div class="dur-badge">${escapeHtml(timeText)}</div>
+      <button class="go-btn" data-song="${escapeHtml(song.song_name || song.name || '')}" data-set="${setNum}" data-start="${escapeHtml(timeText)}">GO</button>
+    </div>`;
+}
+function renderCatalogSongs() {
+  const grid = byId('songGrid');
+  const search = (byId('songSearch').value || '').toLowerCase().trim();
+  let songs = (currentScene?.catalog_songs || []).slice();
+  if (currentSetFilter !== 'all') songs = songs.filter(s => String(s.set) === currentSetFilter);
+  if (search) songs = songs.filter(s => (s.song_name || '').toLowerCase().includes(search) || (s.artist || '').toLowerCase().includes(search));
+  songs.sort((a,b) => {
+    if ((a.song_name||'').toLowerCase() < (b.song_name||'').toLowerCase()) return -1;
+    if ((a.song_name||'').toLowerCase() > (b.song_name||'').toLowerCase()) return 1;
+    return 0;
+  });
+  byId('catalogCount').textContent = `${songs.length} song${songs.length === 1 ? '' : 's'}`;
+  grid.innerHTML = songs.length ? songs.map(songCardMarkup).join('') : '<div class="empty-note">No songs match the current search/filter.</div>';
+}
+function renderProposedSetTabs() {
+  const wrap = byId('proposedSetTabs');
+  const sets = currentScene?.proposed_sets || [];
+  if (!sets.length) {
+    wrap.innerHTML = '';
+    currentProposedSetId = null;
+    byId('setFlowMeta').textContent = 'No show-specific sets loaded yet.';
+    byId('setFlowGrid').innerHTML = '<div class="empty-note">No proposed set flow data found.</div>';
+    return;
+  }
+  if (!currentProposedSetId || !sets.find(s => String(s.set_list_id) === String(currentProposedSetId))) {
+    currentProposedSetId = String(sets[0].set_list_id);
+  }
+  wrap.innerHTML = sets.map(setObj => {
+    const n = Number(setObj.set_order || 1);
+    const cls = `pill pill-s${Math.min(n,4)} ${String(setObj.set_list_id) === String(currentProposedSetId) ? 'on' : ''}`;
+    return `<button class="${cls}" data-proposed-set="${escapeHtml(setObj.set_list_id)}">Set ${escapeHtml(setObj.set_order)}<\/button>`;
+  }).join('');
+  wrap.querySelectorAll('[data-proposed-set]').forEach(btn => btn.addEventListener('click', () => {
+    currentProposedSetId = btn.dataset.proposedSet;
+    renderProposedSetTabs();
+    renderSetFlow();
+  }));
+}
+function renderSetFlow() {
+  const grid = byId('setFlowGrid');
+  const sets = currentScene?.proposed_sets || [];
+  const activeSet = sets.find(s => String(s.set_list_id) === String(currentProposedSetId));
+  if (!activeSet) {
+    grid.innerHTML = '<div class="empty-note">No set selected.</div>';
+    return;
+  }
+  byId('setFlowSub').textContent = activeSet.set_name || `Set ${activeSet.set_order}`;
+  byId('setFlowMeta').textContent = activeSet.set_description || activeSet.notes || 'Show-specific set flow.';
+  const songs = activeSet.songs || [];
+  grid.innerHTML = songs.length ? songs.map(songCardMarkup).join('') : '<div class="empty-note">No songs loaded for this set.</div>';
+}
+function getCurrentPhase(scene) {
+  if (!scene?.schedule_blocks?.length) return { key:'overview', label:'Scene overview', activeSet: null };
+  const nowEpoch = Math.floor(Date.now()/1000);
+  for (const block of scene.schedule_blocks) {
+    if (nowEpoch >= block.start_epoch && nowEpoch < block.end_epoch) {
+      return { key:block.phase, label:block.label, activeSet:block.set_num || null };
+    }
+  }
+  if (nowEpoch < scene.schedule_blocks[0].start_epoch) return { key:'pre_show', label:'Pre-show setup window', activeSet: 1 };
+  return { key:'post_show', label:'Post-show / wrap', activeSet: null };
+}
+function computeRecommendations(scene) {
+  const phase = getCurrentPhase(scene);
+  const mode = currentCrowdMode === 'auto' ? (scene.recommendation_defaults?.crowd_mode || 'mixed') : currentCrowdMode;
+  const recs = scene.recommendation_map?.[phase.key]?.[mode] || scene.recommendation_map?.fallback?.[mode] || [];
+  byId('phaseLabel').textContent = `${phase.label} · ${mode}`;
+  const slots = [['recPrimarySong','recPrimaryNote', recs[0]], ['recHookSong','recHookNote', recs[1]], ['recMoneySong','recMoneyNote', recs[2]]];
+  for (const [songId,noteId,rec] of slots) {
+    byId(songId).textContent = rec?.song || '—';
+    byId(noteId).textContent = rec?.note || 'No recommendation loaded yet.';
+  }
+  const header = recs[0]?.song ? `${phase.label} · Play next: ${recs[0].song}` : 'Scene synced';
+  byId('nowPlayingHeader').textContent = header;
+  if (phase.activeSet) {
+    const target = (currentScene?.proposed_sets || []).find(s => Number(s.set_order) === Number(phase.activeSet));
+    if (target) currentProposedSetId = String(target.set_list_id);
+  }
+}
+function applyScene(scene) {
+  currentScene = scene;
+  byId('statusText').textContent = 'Live';
+  byId('syncStamp').textContent = `Updated ${scene.generated_at_local}`;
+  byId('showName').textContent = scene.show_name || 'Show';
+  byId('showHeadline').textContent = scene.headline || '—';
+  byId('venueName').textContent = scene.venue_name || '—';
+  byId('showTime').textContent = scene.show_window || '—';
+  byId('arrivalTime').textContent = scene.arrival_target || '—';
+  byId('routeBtn').href = scene.route_url || '#';
+  setFacts(byId('timingFacts'), [
+    ['Origin', scene.origin, false],
+    ['Location', scene.location, false],
+    ['Arrive By', scene.arrival_target, true],
+    ['Setup Buffer', `${scene.setup_minutes || 25} minutes`, false],
+  ]);
+  setFacts(byId('weatherFacts'), [
+    ['Summary', scene.weather?.summary, false],
+    ['Temp', scene.weather?.temp_range_f, true],
+    ['Wind', scene.weather?.wind, false],
+    ['Play Note', scene.weather?.performance_note, false],
+  ]);
+  setList(byId('crowdList'), scene.crowd_description);
+  setList(byId('specialList'), scene.special_occurrences);
+  setList(byId('hazardsList'), scene.hazards);
+  setList(byId('banterList'), scene.banter);
+  renderCatalogSongs();
+  computeRecommendations(scene);
+  renderProposedSetTabs();
+  renderSetFlow();
+}
+async function loadScene() {
+  try {
+    byId('statusText').textContent = 'Syncing';
+    const scene = await loadSceneDataScript();
+    if (!scene) throw new Error('No SCENE_DATA found');
+    applyScene(scene);
+    showToast('Scene refreshed');
+    countdownValue = Math.floor(AUTO_REFRESH_MS / 1000);
+  } catch (err) {
+    byId('statusText').textContent = 'Waiting';
+    byId('syncStamp').textContent = 'Expected scene-data.js next to this HTML file';
+    console.error(err);
+    showToast('Scene data not ready yet — check scene-data.js location');
+  }
+}
+function startTimers() {
+  clearInterval(countdownTimer); clearInterval(pollTimer);
+  countdownTimer = setInterval(() => {
+    if (!autoRefreshEnabled) return;
+    countdownValue -= 1;
+    if (countdownValue <= 0) countdownValue = Math.floor(AUTO_REFRESH_MS / 1000);
+    byId('countdown').textContent = `${countdownValue}s`;
+  }, 1000);
+  pollTimer = setInterval(() => { if (autoRefreshEnabled) loadScene(); }, AUTO_REFRESH_MS);
+}
+document.querySelectorAll('[data-crowd]').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('[data-crowd]').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  currentCrowdMode = btn.dataset.crowd;
+  if (currentScene) computeRecommendations(currentScene);
+  renderSetFlow();
+}));
+document.querySelectorAll('[data-setfilter]').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('[data-setfilter]').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  currentSetFilter = btn.dataset.setfilter;
+  renderCatalogSongs();
+}));
+byId('songSearch').addEventListener('input', renderCatalogSongs);
+byId('refreshBtn').addEventListener('click', loadScene);
+byId('softReloadBtn').addEventListener('click', loadScene);
+byId('toggleAutoBtn').addEventListener('click', () => {
+  autoRefreshEnabled = !autoRefreshEnabled;
+  byId('autoState').textContent = autoRefreshEnabled ? 'On' : 'Off';
+  byId('toggleAutoBtn').textContent = autoRefreshEnabled ? 'Pause Auto' : 'Resume Auto';
+  byId('toggleAutoBtn').classList.toggle('on', autoRefreshEnabled);
+  showToast(autoRefreshEnabled ? 'Auto refresh resumed' : 'Auto refresh paused');
+});
+document.addEventListener('click', (ev) => {
+  const btn = ev.target.closest('.go-btn');
+  if (!btn) return;
+  showToast(`GO  ${btn.dataset.song}  →  ${btn.dataset.start || '—'}`);
+});
+startTimers();
+loadScene();
+</script>
+</body>
+</html>
